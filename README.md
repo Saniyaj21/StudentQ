@@ -1,6 +1,6 @@
 ## StudentQ
 
-## Final year project
+## Final Year Project
 ### README file managed by Saniyaj Mallik.
 
 ### Group Members 

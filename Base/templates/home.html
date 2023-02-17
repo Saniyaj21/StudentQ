@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+
+{% block body %}
+  hi sani<hr />
+  {{ msg }}
+  <hr />user id
+  <br />
+
+  {% for user in users %}
+    {{ user.id }} ===> user-name ===> {{ user.username }}
+    <br />
+  {% endfor %}
+  <hr />
+
+  {% for profile in profiles %}
+    {{ profile }} ===> {{ profile.role }}
+    <br />
+  {% endfor %}
+
+  <hr />
+  {% for teacher in teachers %}
+    teacher location ===> {{ teacher.location }}
+    <br />
+  {% endfor %}
+  <hr />
+
+  {% for student in students %}
+    student institute ===> {{ student.institute }}
+    <br />
+  {% endfor %}
+  <hr />
+
+  {% for mess in messes %}
+    mess.mess_name ===> {{ mess.mess_name }}
+    <br />
+  {% endfor %}
+  <hr />
+{% endblock %}

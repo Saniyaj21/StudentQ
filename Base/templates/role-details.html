@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+{% block body %}
+  <hr />role page,<br />
+  {% if page == 'student' %}
+    <h3>you are Student</h3>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <input type="text" name="institute" placeholder="institute" />
+      <button type="submit">Submit</button>
+    </form>
+
+    {% elif page == 'teacher' %}
+    <h3>you are Teacher</h3>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <input type="text" name="location" placeholder="location" />
+      <button type="submit">Submit</button>
+    </form>
+
+    {% elif page == 'owner' %}
+    <h3>you are Owner</h3>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <input type="text" name="mess_name" placeholder="mess Name" />
+      <button type="submit">Submit</button>
+    </form>
+  {% endif %}
+{% endblock %}

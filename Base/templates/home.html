@@ -1,7 +1,29 @@
 {% extends 'main.html' %}
 
 {% block body %}
-  Hello {{ user.username }} ==> {{ user.profile.role }}<hr />
+  <style>
+    span {
+      color: green;
+      font-weight: 700;
+    }
+  </style>
+
+  <div class="main">
+    Hello <span>{{ user.username|capfirst }}</span>
+    <br />
+    You are a <span>{{ user.profile.role|capfirst }}</span>
+    <br />
+
+    {% if user.profile.role == 'teacher' %}
+      Teacher Location is <span>{{ teacher.location|capfirst }}</span>
+      <br />
+      {% elif user.profile.role == 'student' %}Student Institute is <span>{{ student.institute|capfirst }}</span>
+      <br />
+      {% elif user.profile.role == 'student' %}Owner of Mess <span>{{ owner.mess_name|capfirst }}</span>
+    {% endif %}
+  </div>
+
+  {% comment %} <hr />
 
   <hr />user id
   <br />
@@ -34,5 +56,5 @@
     mess.mess_name ===> {{ mess.mess_name }}
     <br />
   {% endfor %}
-  <hr />
+  <hr /> {% endcomment %}
 {% endblock %}

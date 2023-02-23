@@ -1,5 +1,5 @@
-from django.shortcuts import render
 
+from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import RegisterUserForm
@@ -12,6 +12,8 @@ from .models import Profile, Student, Teacher, Owner
 
 
 def loginPage(request):
+
+    context = {}
     
     if request.user.is_authenticated:
         return redirect('home')
@@ -21,8 +23,12 @@ def loginPage(request):
 
         try:
             user = User.objects.get(username=username)
+            if user.password != password:
+                context['messages'] = "Password not matched"
         except:
-            messages.error(request, 'User does not exists')
+            context['messages'] = "User does not exists"
+            # messages.error(request, 'User does not exists')
+
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
@@ -30,9 +36,8 @@ def loginPage(request):
             return redirect('home')
         else:
             messages.error(request, 'Username or passward does not exists')
-
    
-    return render(request, 'login.html')
+    return render(request, 'login.html', context)
 
 
 
@@ -46,8 +51,6 @@ def registerUser(request):
     
     form = RegisterUserForm()
   
-
-
     if request.method == "POST":
         form = RegisterUserForm(request.POST)
         # form = UserCreationForm(request.POST)
@@ -58,30 +61,28 @@ def registerUser(request):
             login(request, user)
             profile = Profile.objects.create(user=user)
             return redirect('profile-details')
-            
-        
-            
+                        
         else:
             messages.error(request, 'Something error happend,Try again!')
 
     return render(request, 'register.html', {'form': form})
 
-
+@login_required(login_url='login')
 def home(request):
-    msg = "Message from backend"
+    context = {}
 
-    users = User.objects.all()
-    profiles = Profile.objects.all()
-    students = Student.objects.all()
-    teachers = Teacher.objects.all()
-    messes = Owner.objects.all()
+    if request.user.profile.role == 'student': 
+        student = Student.objects.get(student_userid  = request.user.id)
+        context["student"] = student
 
+    elif request.user.profile.role == 'teacher': 
+        teacher = Teacher.objects.get(teacher_userid  = request.user.id)
+        context["teacher"] = teacher
+
+    if request.user.profile.role == 'owner': 
+        owner = Owner.objects.get(mess_userid  = request.user.id)
+        context["owner"] = owner
     
-
-    
-
-
-    context = {'msg': msg, 'users':users,'profiles':profiles, 'teachers':teachers, 'students':students, 'messes':messes}
     return render(request, 'home.html', context )
 
 
@@ -162,13 +163,7 @@ def roleDetails(request):
 
             return redirect('home')
         
-
-
-
     context ={'page':page}
-
-
-
     
     return render(request, 'role-details.html', context)
 

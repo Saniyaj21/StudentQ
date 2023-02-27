@@ -8,9 +8,14 @@
   <form action="" method="POST">
     {% csrf_token %}
 
+    {% comment %}profile data inputs{% endcomment %}
+
     <input type="text" name="full-name" placeholder="full-name" />
     <input type="email" name="email" placeholder="Email" />
     <input type="text" name="role" placeholder="Role" />
+    <input type="text" name="phNo" placeholder="phone No" />
+    <input type="text" name="socialId" placeholder="socialId" />
+    <input type="text" name="desc" placeholder="desc" />
 
     <button type="submit">Submit</button>
   </form>

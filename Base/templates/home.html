@@ -8,53 +8,60 @@
     }
   </style>
 
-  <div class="main">
-    Hello <span>{{ user.username|capfirst }}</span>
-    <br />
-    You are a <span>{{ user.profile.role|capfirst }}</span>
-    <br />
-
-    {% if user.profile.role == 'teacher' %}
-      Teacher Location is <span>{{ teacher.location|capfirst }}</span>
+  {% if request.user.is_authenticated %}
+    <div class="main">
+      Hello <span>{{ user.username|capfirst }}</span>
       <br />
-      {% elif user.profile.role == 'student' %}Student Institute is <span>{{ student.institute|capfirst }}</span>
+      I am a <span>{{ user.profile.role|capfirst }}</span>
       <br />
-      {% elif user.profile.role == 'student' %}Owner of Mess <span>{{ owner.mess_name|capfirst }}</span>
-    {% endif %}
-  </div>
+      Phone no <span>{{ user.profile.phNo }}</span>
+      <br />
+      Social media link <span>{{ user.profile.socialId }}</span>
+      <br />
+      About me - <span>{{ user.profile.desc }}</span>
+      <br />
 
-  {% comment %} <hr />
+      <h3>Role details</h3>
 
-  <hr />user id
-  <br />
+      {% if user.profile.role == 'teacher' %}
+        Teacher Location is <span>{{ teacher.location|capfirst }}</span>
+        <br />
+        dptOfTeaching is <span>{{ teacher.dptOfTeaching|upper }}</span>
+        <br />
+        Teacher Location is <span>{{ teacher.qualification|upper }}</span>
+        <br />
 
-  {% for user in users %}
-    {{ user.id }} ===> user-name ===> {{ user.username }}
-    <br />
-  {% endfor %}
-  <hr />
+        {% elif user.profile.role == 'student' %}Student Institute is <span>{{ student.institute|capfirst }}</span>
+        <br />
+        Student subject is <span>{{ student.subject|upper }}</span>
+        <br />
+        interest in <span>{{ student.interest }}</span>
+        <br />
+        Student courseDuration is <span>{{ student.courseDuration }}</span>
+        <br />
 
-  {% for profile in profiles %}
-    {{ profile }} ===> {{ profile.role }}
-    <br />
-  {% endfor %}
-
-  <hr />
-  {% for teacher in teachers %}
-    teacher location ===> {{ teacher.location }}
-    <br />
-  {% endfor %}
-  <hr />
-
-  {% for student in students %}
-    student institute ===> {{ student.institute }}
-    <br />
-  {% endfor %}
-  <hr />
-
-  {% for mess in messes %}
-    mess.mess_name ===> {{ mess.mess_name }}
-    <br />
-  {% endfor %}
-  <hr /> {% endcomment %}
+        {% elif user.profile.role == 'owner' %}Owner of Mess <span>{{ owner.mess_name|capfirst }}</span>
+        <br />
+        Room rent <span>{{ owner.rent }}</span>
+        <br />
+        bedAvailable<span>{{ owner.bedAvailable }}</span>
+        <br />
+        address <span>{{ owner.address }}</span>
+        <br />
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="welcome">
+      <h3>Welcome page</h3>
+      <h3>Reviews</h3>
+      <hr />
+      {% for rv in reviews %}
+        <div>
+          <h4>{{ rv.poster }}</h4>
+          <p>{{ rv.review }}</p>
+          <hr />
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
 {% endblock %}

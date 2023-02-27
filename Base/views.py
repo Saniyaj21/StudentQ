@@ -7,8 +7,11 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Student, Teacher, Owner
+from .models import Profile, Student, Teacher, Owner, Review
 
+
+# notes 
+# pip install -r requirements.txt       to download all required packages
 
 
 def loginPage(request):
@@ -67,23 +70,30 @@ def registerUser(request):
 
     return render(request, 'register.html', {'form': form})
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def home(request):
     context = {}
 
-    if request.user.profile.role == 'student': 
-        student = Student.objects.get(student_userid  = request.user.id)
-        context["student"] = student
+    if request.user.is_authenticated:
 
-    elif request.user.profile.role == 'teacher': 
-        teacher = Teacher.objects.get(teacher_userid  = request.user.id)
-        context["teacher"] = teacher
+        if request.user.profile.role == 'student': 
+            student = Student.objects.get(student_userid  = request.user.id)
+            context["student"] = student
 
-    if request.user.profile.role == 'owner': 
-        owner = Owner.objects.get(mess_userid  = request.user.id)
-        context["owner"] = owner
+        elif request.user.profile.role == 'teacher': 
+            teacher = Teacher.objects.get(teacher_userid  = request.user.id)
+            context["teacher"] = teacher
+
+        if request.user.profile.role == 'owner': 
+            owner = Owner.objects.get(mess_userid  = request.user.id)
+            context["owner"] = owner
+    
+    reviews = Review.objects.all()
+    context["reviews"] = reviews
     
     return render(request, 'home.html', context )
+
+
 
 
 def profileDetails(request):
@@ -93,16 +103,25 @@ def profileDetails(request):
 
     # print(profile.user)
 
+    # profile data taking input
+
     if request.method == "POST":
         fullname = request.POST['full-name']
         email =  request.POST['email'].lower()
         role = request.POST['role'].lower()
+        phNo = request.POST['phNo']
+        socialId = request.POST['socialId']
+        desc = request.POST['desc']
 
         # print(fullname,email,role)
 
         profile.fullName = fullname
         profile.email = email
         profile.role = role
+        profile.phNo = phNo
+        profile.socialId = socialId
+        profile.desc = desc
+       
 
         profile.save()
 
@@ -131,10 +150,17 @@ def roleDetails(request):
 
         if request.method == "POST":
             institute = request.POST['institute']
+            subject = request.POST['subject']
+            interest = request.POST['interest']
+            courseDuration = request.POST['courseDuration']
             
             student = Student.objects.get(student_userid = uId)
 
             student.institute = institute
+            student.subject = subject
+            student.interest = interest
+            student.courseDuration = courseDuration
+
             student.save()
             return redirect('home')
 
@@ -144,10 +170,15 @@ def roleDetails(request):
 
         if request.method == "POST":
             location = request.POST['location']
+            dptOfTeaching = request.POST['dptOfTeaching']
+            qualification = request.POST['qualification']
             
             teacher = Teacher.objects.get(teacher_userid = uId)
 
             teacher.location = location
+            teacher.dptOfTeaching = dptOfTeaching
+            teacher.qualification = qualification
+
             teacher.save()
             return redirect('home')
 
@@ -155,10 +186,17 @@ def roleDetails(request):
         page = 'owner'
         if request.method == "POST":
             mess_name = request.POST['mess_name']
+            rent = request.POST['rent']
+            bedAvailable = request.POST['bedAvailable']
+            address = request.POST['address']
             
             owner = Owner.objects.get(mess_userid = uId)
 
             owner.mess_name = mess_name
+            owner.rent = rent
+            owner.bedAvailable = bedAvailable
+            owner.address = address
+
             owner.save()
 
             return redirect('home')

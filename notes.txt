@@ -1,0 +1,17 @@
+Most used comments
+
+pip install -r requirements.txt     ->   to download all required packages
+
+virtualenv env     ->  create environment 
+
+.\env\Scripts\activate      ->  Activate the environment
+
+deactivate    ->  Deactivate the environment
+
+python manage.py runserver      -> activate the surver
+
+python manage.py createsuperuser        -> create super user (admin)
+
+
+*****  Start writing notes or questions from here and everyone is adviced to look over this file everyday before 
+                start coding so he can understand what to do and that is happining   *****

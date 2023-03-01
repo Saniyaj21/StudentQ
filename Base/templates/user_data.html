@@ -2,21 +2,50 @@
 
 {% extends 'main.html' %}
 
-{% block body %}
-  <h3>Complete all details</h3>
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'mStyle/profile_details.css' %}">
+{% endblock %}
 
+
+{% block body %}
+<div id="form1">
+ 
   <form action="" method="POST">
+
+    <header id="in_head">
+      <h2 class="header_in">Personal</h2>
+      <h2 class="header_in">Details</h2>
+     </header>
+
     {% csrf_token %}
 
     {% comment %}profile data inputs{% endcomment %}
+    <div  class="file_show">
+    <input id="input_photo" class="input_role" type="file" name="photo" accept="image/*">
+    </div>
+    <input  class="input_role" type="text" name="full-name" placeholder="full-name" />
+    <input class="input_role" type="email" name="email" placeholder="Email" />
+    
+    <select name="role" id="role" class="input_role" type="">
+      <option value="student">Student</option>
+        <option value="techar">Techer</option>
+    
+      <option value="owner">Room Owner</option>
+    
+    </select>
 
-    <input type="text" name="full-name" placeholder="full-name" />
-    <input type="email" name="email" placeholder="Email" />
-    <input type="text" name="role" placeholder="Role" />
-    <input type="text" name="phNo" placeholder="phone No" />
-    <input type="text" name="socialId" placeholder="socialId" />
-    <input type="text" name="desc" placeholder="desc" />
 
-    <button type="submit">Submit</button>
+    <input class="input_role" type="text" name="phNo" placeholder="phone No" />
+    <input class="input_role" type="text" name="socialId" placeholder="socialId" />
+    <input class="input_role" type="text" name="desc" placeholder="desc" />
+
+    <button id="submit" type="submit">Submit</button>
   </form>
+
+  </div>
+
+  <script>
+     
+  </script>
 {% endblock %}

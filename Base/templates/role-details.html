@@ -1,21 +1,36 @@
 {% extends 'main.html' %}
 
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'mStyle/role_details.css' %}">
+{% endblock %}
+
+
 {% block body %}
-  <hr />role page,<br />
 
   {% if page == 'student' %}
-    <h3>you are Student</h3>
+
+  <div id="form1">
+  
     <form action="" method="POST">
+
+      <header id="in_head">
+        <h2 class="header_in">Professional</h2>
+        <h2 class="header_in">Details</h2>
+       </header>
+
       {% csrf_token %}
 
+
       {% comment %}student data input form{% endcomment %}
+  
+      <input class="input_role"  type="text" name="institute" placeholder="institute" />
+      <input class="input_role" type="text" name="subject" placeholder="subject" />
+      <input class="input_role" type="text" name="interest" placeholder="interest" />
+      <input class="input_role" type="text" name="courseDuration" placeholder="courseDuration" />
 
-      <input type="text" name="institute" placeholder="institute" />
-      <input type="text" name="subject" placeholder="subject" />
-      <input type="text" name="interest" placeholder="interest" />
-      <input type="text" name="courseDuration" placeholder="courseDuration" />
-
-      <button type="submit">Submit</button>
+      <button id="submit"type="submit">Submit</button>
     </form>
 
     {% comment %}teacher data input form{% endcomment %}
@@ -23,11 +38,11 @@
     <h3>you are Teacher</h3>
     <form action="" method="POST">
       {% csrf_token %}
-      <input type="text" name="location" placeholder="location" />
-      <input type="text" name="dptOfTeaching" placeholder="dptOfTeaching" />
-      <input type="text" name="qualification" placeholder="qualification" />
+      <input class="input_role" class="input_role" type="text" name="location" placeholder="location" />
+      <input class="input_role"type="text" name="dptOfTeaching" placeholder="dptOfTeaching" />
+      <input class="input_role"type="text" name="qualification" placeholder="qualification" />
 
-      <button type="submit">Submit</button>
+      <button id="submit"type="submit">Submit</button>
     </form>
 
     {% comment %}mess details input form{% endcomment %}
@@ -35,12 +50,13 @@
     <h3>you are Owner</h3>
     <form action="" method="POST">
       {% csrf_token %}
-      <input type="text" name="mess_name" placeholder="mess Name" />
-      <input type="text" name="rent" placeholder="rent " />
-      <input type="text" name="bedAvailable" placeholder="bedAvailable" />
-      <input type="text" name="address" placeholder="address" />
+      <input class="input_role"  type="text" name="mess_name" placeholder="mess Name" />
+      <input class="input_role" type="text" name="rent" placeholder="rent " />
+      <input class="input_role" type="text" name="bedAvailable" placeholder="bedAvailable" />
+      <input class="input_role" type="text" name="address" placeholder="address" />
 
-      <button type="submit">Submit</button>
+      <button id="submit"type="submit">Submit</button>
     </form>
+    </div>
   {% endif %}
 {% endblock %}

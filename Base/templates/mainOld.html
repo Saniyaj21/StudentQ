@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudentQ</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+  <link rel="stylesheet" href="{% static 'mStyle/main.css' %}">
+
+  {% comment %} font awesome cdn {% endcomment %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body>
+
+  <nav class="nav" id="nav">
+
+    <div class="header" id="header">
+      <a href="/"><img src="{% static 'media/Site_Logo.png' %}" alt="Site_Logo"></a>
+      <div class="btnContainer">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'logout' %}" role="button" class="btn btn-green rounded-corner">Log Out</a>
+        {% else %}
+        <a href="{% url 'login' %}" role="button" class="btn btn-green rounded-corner">Log In</a>
+        <a href="{% url 'register' %}" role="button" class="btn btn-green rounded-corner">Register</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <ul class="navber" id="navber">
+      <li class="navlink active">
+        <a href="{% url 'home' %}"><i class="fa-solid fa-house-chimney"></i>&nbsp;Home</a>
+      </li>
+      <li class="navlink">
+        <a href="/"><i class="fa-solid fa-graduation-cap"></i>&nbsp;Institute&nbsp;<i
+            class="fa-solid fa-chevron-down"></i></a>
+      </li>
+      <li class="navlink">
+        <a href="/"><i class="fa-solid fa-book"></i>&nbsp;Study Material</a>
+      </li>
+      <li class="navlink">
+        <a href="/"><i class="fa-solid fa-book"></i>&nbsp;Home</a>
+      </li>
+      <li class="navlink">
+        <a href="/"><i class="fa-solid fa-book"></i>&nbsp;Home</a>
+      </li>
+    </ul>
+
+  </nav>
+
+  
+
+
+
+  {% comment %} closeable messages {% endcomment %}
+
+  {% for message in messages %}
+  {{message}}
+  {% endfor %}
+
+
+  {% block body %}
+
+  {% endblock %}
+</body>
+
+</html>

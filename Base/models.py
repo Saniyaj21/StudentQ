@@ -14,6 +14,7 @@ class Profile(models.Model):
     phNo = models.CharField(max_length=20, null=True)
     socialId = models.CharField(max_length=200, null=True)
     desc =models.TextField(null = True)
+    dp = models.ImageField(null = True, blank = True, default='bydefault.jpg', upload_to="media")
 
     # dp
     

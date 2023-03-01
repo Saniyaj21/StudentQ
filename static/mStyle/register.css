@@ -1,0 +1,80 @@
+#form1{
+ 
+    position: relative;
+    margin-top:10%;
+    left: 40%;
+    height: 40%;
+    width:30%;
+}
+
+#in_head{
+
+width: 30%;
+height:30px;
+margin-left:5px;
+font-family: 'Righteous';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+border-left: solid 10px #075E53 ;
+color: #075E53;
+}
+
+.header_in{
+    margin-left: 5px;
+}
+
+input:focus{
+    outline: none;
+    color: #075E53;
+    background-color: #075E53;
+}
+
+
+#form-input1 , #id_password1 , #id_password2 {
+
+width: 80%;
+height:40px;
+left: 40%;
+top: 35px;
+
+background: #D9D9D9;
+border: none;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 15px;
+font-size:large;
+text-align:left;
+
+}
+
+
+
+form input.in_form1:focus{
+    box-shadow:  inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    outline: none;
+    color: #075E53;
+   
+}
+::placeholder{
+   font-size: 15px;
+   text-align:justify;
+   
+}
+#submit{
+
+    width: 90px;
+    height:40px;
+    left: 40%;
+    top: 35px;
+    margin-top: 15px;
+    background: #075E53;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    font-size:large;
+    text-align:left;
+    color:aliceblue;
+    text-align: center;
+    left:80%;
+
+}

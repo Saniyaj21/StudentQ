@@ -1,8 +1,8 @@
 {% extends 'main.html' %}
 
+{% load static %}
 
 {% block css %}
-{% load static %}
 <link rel="stylesheet" href="{% static 'mStyle/role_details.css' %}">
 {% endblock %}
 
@@ -13,12 +13,12 @@
 
   <div id="form1">
   
-    <form action="" method="POST">
-
+    
+    <form id="form1" action="" method="POST">
       <header id="in_head">
-        <h2 class="header_in">Professional</h2>
-        <h2 class="header_in">Details</h2>
+        <h2 class="header_in">Professional Details</h2>
        </header>
+
 
       {% csrf_token %}
 
@@ -35,8 +35,12 @@
 
     {% comment %}teacher data input form{% endcomment %}
     {% elif page == 'teacher' %}
-    <h3>you are Teacher</h3>
-    <form action="" method="POST">
+   
+    <form id="form1" action="" method="POST">
+      <header id="in_head">
+        <h2 class="header_in">Professional Details</h2>
+        
+       </header>
       {% csrf_token %}
       <input class="input_role" class="input_role" type="text" name="location" placeholder="location" />
       <input class="input_role"type="text" name="dptOfTeaching" placeholder="dptOfTeaching" />
@@ -47,8 +51,11 @@
 
     {% comment %}mess details input form{% endcomment %}
     {% elif page == 'owner' %}
-    <h3>you are Owner</h3>
-    <form action="" method="POST">
+
+    <form id="form1" action="" method="POST">
+      <header id="in_head">
+        <h2 class="header_in">Professional Details</h2>
+       </header>
       {% csrf_token %}
       <input class="input_role"  type="text" name="mess_name" placeholder="mess Name" />
       <input class="input_role" type="text" name="rent" placeholder="rent " />
@@ -57,6 +64,10 @@
 
       <button id="submit"type="submit">Submit</button>
     </form>
-    </div>
+
+
+  </div>
+
+
   {% endif %}
 {% endblock %}

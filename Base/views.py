@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Student, Teacher, Owner, Review
 
+from django.core.files.storage import FileSystemStorage
 
 # notes 
 # pip install -r requirements.txt       to download all required packages
@@ -76,6 +77,9 @@ def home(request):
 
     if request.user.is_authenticated:
 
+        dp = request.user.profile.dp
+        context['dp'] = dp
+
         if request.user.profile.role == 'student': 
             student = Student.objects.get(student_userid  = request.user.id)
             context["student"] = student
@@ -91,6 +95,7 @@ def home(request):
     reviews = Review.objects.all()
     context["reviews"] = reviews
     
+    
     return render(request, 'home.html', context )
 
 
@@ -100,18 +105,24 @@ def profileDetails(request):
     uId = request.user.id
     user = User.objects.get(id = uId)
     profile = Profile.objects.get(user = user)
+    context = {}
 
     # print(profile.user)
 
     # profile data taking input
-
-    if request.method == "POST":
+    
+    if request.method == "POST" and request.FILES['dp']:
         fullname = request.POST['full-name']
         email =  request.POST['email'].lower()
         role = request.POST['role'].lower()
         phNo = request.POST['phNo']
         socialId = request.POST['socialId']
         desc = request.POST['desc']
+        dp = request.FILES['dp']
+        
+        fs = FileSystemStorage()
+        dp =fs.save(dp.name,dp)
+    
 
         # print(fullname,email,role)
 
@@ -121,6 +132,7 @@ def profileDetails(request):
         profile.phNo = phNo
         profile.socialId = socialId
         profile.desc = desc
+        profile.dp = dp
        
 
         profile.save()
@@ -135,7 +147,7 @@ def profileDetails(request):
 
         return redirect("role-details")
     
-    return render(request, 'user_data.html')
+    return render(request, 'user_data.html', context)
 
 
 def roleDetails(request):

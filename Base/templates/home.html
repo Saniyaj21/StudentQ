@@ -6,6 +6,10 @@
       color: green;
       font-weight: 700;
     }
+    .dpProfile{
+      height:100px;
+      width:100px;
+    }
   </style>
 
   {% if request.user.is_authenticated %}
@@ -19,6 +23,8 @@
       Social media link <span>{{ user.profile.socialId }}</span>
       <br />
       About me - <span>{{ user.profile.desc }}</span>
+      <br />
+      <img src="{{dp.url}}" alt="" class="dpProfile">
       <br />
 
       <h3>Role details</h3>

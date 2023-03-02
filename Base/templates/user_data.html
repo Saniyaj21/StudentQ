@@ -21,9 +21,11 @@
     {% csrf_token %}
 
     {% comment %}profile data inputs{% endcomment %}
-    <div  class="file_show">
-    <input id="input_photo" class="input_role" type="file" name="dp" accept="image/*">
-    </div>
+    <div  class="file_show"  >
+    <input  id="input_photo" class="input_role" type="file" name="dp" accept="image/*">
+    <p class="msg" >This is requird field, picture size also (30kb-70kb)</p>
+    </div> 
+    
     <input  class="input_role" type="text" name="full-name" placeholder="full-name" />
     <input class="input_role" type="email" name="email" placeholder="Email" />
     
@@ -45,7 +47,7 @@
 
   </div>
 
-  <script>
-     
-  </script>
+
+
+  <script src="{% static 'mscript/profile_details.js' %}"></script>
 {% endblock %}

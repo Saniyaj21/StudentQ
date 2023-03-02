@@ -9,12 +9,14 @@
 
 {% block body %}
 
-  {% if page == 'student' %}
 
-  <div id="form1">
+<div id="form1">
   
+  
+  
+  {% if page == 'student' %}
     
-    <form id="form1" action="" method="POST">
+    <form class="form1" action="" method="POST">
       <header id="in_head">
         <h2 class="header_in">Professional Details</h2>
        </header>
@@ -36,7 +38,7 @@
     {% comment %}teacher data input form{% endcomment %}
     {% elif page == 'teacher' %}
    
-    <form id="form1" action="" method="POST">
+    <form class="form1" action="" method="POST">
       <header id="in_head">
         <h2 class="header_in">Professional Details</h2>
         
@@ -52,7 +54,7 @@
     {% comment %}mess details input form{% endcomment %}
     {% elif page == 'owner' %}
 
-    <form id="form1" action="" method="POST">
+    <form class="form1" action="" method="POST">
       <header id="in_head">
         <h2 class="header_in">Professional Details</h2>
        </header>
@@ -65,9 +67,10 @@
       <button id="submit"type="submit">Submit</button>
     </form>
 
-
+    {% endif %}
   </div>
 
+ 
 
-  {% endif %}
+
 {% endblock %}

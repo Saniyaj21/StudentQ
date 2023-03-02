@@ -27,7 +27,7 @@
     margin-left: 5px;
    }  
    
-   .input_role{
+.input_role{
    
    width: 80%;
    height:40px;
@@ -82,7 +82,7 @@
     outline: none;
     border: none;
 
-    width: 30%;
+   width: 30%;
    height:40px;
    left: 40%;
    top: 35px;
@@ -90,4 +90,12 @@
 
 
 }  
+
+.msg{
+    width: 80%;
+    color:#075E53;
+    display: none; 
+    font-size: 15px;
+}
+
 

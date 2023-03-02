@@ -1,5 +1,7 @@
 {% extends 'main.html' %}
 
+{% load static %}
+
 {% block body %}
   <style>
     span {
@@ -57,7 +59,35 @@
       {% endif %}
     </div>
   {% else %}
-    <div class="welcome">
+
+
+{% comment %} image slider starts from hare {% endcomment %}
+
+<div class="slider__container">
+  <div class="slide">
+    <ul class="slideImages__container">
+      <li class="slideImage"><img src="media/sliderImages/first_1.jpg" alt="sliderImages"></li>
+      <li class="slideImage"><img src="media/sliderImages/first_2.jpg" alt="sliderImages"></li>
+      <li class="slideImage"><img src="media/sliderImages/first_3.jpg" alt="sliderImages"></li>
+      <li class="slideImage"><img src="media/sliderImages/first_4.jpg" alt="sliderImages"></li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% comment %} image slider ends hare {% endcomment %}
+
+
+
+
+    {% comment %} <div class="welcome">
       <h3>Welcome page</h3>
       <h3>Reviews</h3>
       <hr />
@@ -68,6 +98,6 @@
           <hr />
         </div>
       {% endfor %}
-    </div>
+    </div> {% endcomment %}
   {% endif %}
 {% endblock %}

@@ -4,6 +4,9 @@
 
 
   <h2>Register</h2>
+  <div class="image">
+    <img src="{% static 'media/Wlcome-screen.png' %}" alt="welcome" class="imageSize">
+  </div>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

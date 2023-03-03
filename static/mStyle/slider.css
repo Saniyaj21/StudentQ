@@ -4,25 +4,29 @@
     height: 50rem;
     background-color: var(--theme-clr);
 }
-.slide{
+
+.slide {
     position: inherit;
     width: 100%;
     height: 50rem;
 }
-.slideImages__container{
+
+.slideImages__container {
     position: relative;
     height: 50rem;
     padding: 0;
     margin: 0;
     list-style: none;
 }
-.slideImages__container li img{
+
+.slideImages__container li img {
     position: absolute;
     width: 100%;
     height: 50rem;
     object-fit: cover;
 }
-.pagination--dot__container{
+
+.pagination--dot__container {
     position: absolute;
     /* background-color: aliceblue; */
     width: 100%;
@@ -34,7 +38,8 @@
     bottom: 0;
     left: 0;
 }
-.pagination__dot{
+
+.pagination__dot {
     height: 1.4rem;
     width: 1.4rem;
     background-color: rgba(0, 0, 0, 0.25);
@@ -42,10 +47,12 @@
     border-radius: 50%;
     cursor: pointer;
 }
-.pagination__current{
+
+.pagination__current {
     background-color: var(--main-blue);
 }
-.arrow__container{
+
+.arrow__container {
     position: absolute;
     /* height: 50rem; */
     height: 100%;
@@ -54,7 +61,8 @@
     top: 0;
     left: 0;
 }
-.carousel__arrow{
+
+.carousel__arrow {
     position: absolute;
     top: 50%;
     color: aliceblue;
@@ -65,14 +73,11 @@
     cursor: pointer;
     transition: all 0.5s ease;
 }
-.carousel__arrow:hover{
-    color: var(--light-green-theme);
-    /* font-size: 4.5rem; */
-    transform: rotate(360deg);
-}
+
 .carousel__arrow.left__arrow {
     left: 5rem;
 }
+
 .carousel__arrow.right__arrow {
     right: 5rem;
 }

@@ -1,11 +1,48 @@
 {% extends 'main.html' %}
+{% load static %}
+
+
+
+{% block css %} 
+  <link rel="stylesheet" href="{% static 'mStyle/login.css' %} ">
+{% endblock css %}
+
+
+{% block login %}{% endblock login %}
 
 {% block body %}
-  <h2>Login</h2>
+
+<div class="image">
+  <img src="{% static 'media/Wlcome-screen.png' %}" alt="welcome" class="imageSize">
+</div>
+
+<div class="position">
+  <header class="loginStyle " >
+    <h2 class='margin'> Login </h2>
+  </header>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <label for="userName" class="labels"  >Username</label> <br>
+    <input type="text" id="userName" name="username" placeholder="Enter your username"><br>
+    <label for="password" class="labels">Password</label><br>
+    <input type="password" id="password" name="password" placeholder="Enter your password"><br>
+    <button type="submit">Sign in</button>
+  </form>
+  <div  class="linkPosition">
+    <a href="{% url 'register' %}" target="_blank" rel="" class="linkDecoration">Don't have an account? Register</a><br>
+    <a href="/" target="_blank" rel="" class="linkDecoration"> Forgot Password</a>
+  </div>
+  
+</div>
+
+
+
+  {% comment %} <h2>Login</h2>
   <form method="post">
     {% csrf_token %}
     <input type="text" name="username" />
     <input type="password" name="password" />
     <button type="submit">Sign in</button>
-  </form>
+  </form> {% endcomment %}
 {% endblock %}

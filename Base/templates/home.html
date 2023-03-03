@@ -1,4 +1,9 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'mStyle/slider.css' %}">
+{% endblock css %}
 
 {% block body %}
   <style>
@@ -57,8 +62,64 @@
       {% endif %}
     </div>
   {% else %}
-    <div class="welcome">
-      <h3>Welcome page</h3>
+
+
+  {% comment %} <img src="{% static 'sliderImages/first_1.jpg' %}" alt="sliderImages" class="carousel__image"> {% endcomment %}
+
+
+
+    
+   
+
+
+{% comment %} image slider starts from hare {% endcomment %}
+
+{% comment %} carousel  {% endcomment %}
+<div class="slider__container">
+
+  {% comment %} carousel__track-container  {% endcomment %}
+  <div class="slide">
+
+    {% comment %} carousel__track {% endcomment %}
+    <ul class="slideImages__container"> 
+
+      {% comment %} carousel__slide  {% endcomment %}
+      <li class="slideImage">
+        {% comment %} carousel__image {% endcomment %}
+        <img src="{% static 'sliderImages/first_1.jpg' %}" alt="sliderImages" class="carousel__image">
+        {% comment %} <img src="media/sliderImages/first_1.jpg" alt="sliderImages" class="carousel__image"> {% endcomment %}
+      </li>
+      <li class="slideImage">
+        <img src="{% static 'sliderImages/first_2.jpg' %}" alt="sliderImages" class="carousel__image">
+      </li>
+      <li class="slideImage">
+        <img src="{% static 'sliderImages/first_3.jpg' %}" alt="sliderImages" class="carousel__image">
+      </li>
+      <li class="slideImage">
+        <img src="{% static 'sliderImages/first_4.jpg' %}" alt="sliderImages" class="carousel__image">
+      </li>
+    </ul>
+  </div>
+
+  <div class="arrow__container">
+    {% comment %} carousel__button carousel__button--left {% endcomment %}
+    <span class="carousel__arrow left__arrow" onclick = "control(-1)">&#10094;</span>
+    {% comment %} carousel__button carousel__button--right {% endcomment %}
+    <span class="carousel__arrow right__arrow" onclick = "control(1)">&#10095;</span>
+  </div>
+
+  {% comment %} carousel__nav  {% endcomment %}
+  <div class="pagination--dot__container">
+
+    {% comment %} carousel__indicator {% endcomment %}
+    <div class="pagination__dot pagination__current"></div>
+    <div class="pagination__dot"></div>
+    <div class="pagination__dot"></div>
+    <div class="pagination__dot"></div>
+
+  </div>
+  
+</div>
       <h3>Reviews</h3>
       <hr />
       {% for rv in reviews %}
@@ -70,4 +131,6 @@
       {% endfor %}
     </div>
   {% endif %}
+
+
 {% endblock %}

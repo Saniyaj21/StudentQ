@@ -1,7 +1,5 @@
 {% extends 'main.html' %}
 
-{% load static %}
-
 {% block body %}
   <style>
     span {
@@ -16,7 +14,7 @@
 
   {% if request.user.is_authenticated %}
     <div class="main">
-      Hello <span>{{ user.username|capfirst }}</span>
+      Hello <span>{{ user.profile.fullName|capfirst }}</span>
       <br />
       I am a <span>{{ user.profile.role|capfirst }}</span>
       <br />
@@ -59,48 +57,7 @@
       {% endif %}
     </div>
   {% else %}
-
-
-  
-{% comment %} image slider starts from hare {% endcomment %}
-
-<div class="slider__container">
-  <div class="slide">
-    <ul class="slideImages__container">
-      <li class="slideImage"><img src="media/sliderImages/first_1.jpg" alt="sliderImages"></li>
-      <li class="slideImage"><img src="media/sliderImages/first_2.jpg" alt="sliderImages"></li>
-      <li class="slideImage"><img src="media/sliderImages/first_3.jpg" alt="sliderImages"></li>
-      <li class="slideImage"><img src="media/sliderImages/first_4.jpg" alt="sliderImages"></li>
-    </ul>
-  </div>
-  <div class="arrow__container">
-    <span class="carousel__arrow left__arrow">&#10094;</span>
-    <span class="carousel__arrow right__arrow">&#10095;</span>
-  </div>
-  <div class="pagination--dot__container">
-    <div class="pagination__dot pagination__current"></div>
-    <div class="pagination__dot"></div>
-    <div class="pagination__dot"></div>
-    <div class="pagination__dot"></div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-{% comment %} image slider ends hare {% endcomment %}
-
-
-
-
-    {% comment %} <div class="welcome">
+    <div class="welcome">
       <h3>Welcome page</h3>
       <h3>Reviews</h3>
       <hr />
@@ -111,6 +68,6 @@
           <hr />
         </div>
       {% endfor %}
-    </div> {% endcomment %}
+    </div>
   {% endif %}
 {% endblock %}

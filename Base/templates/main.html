@@ -10,16 +10,13 @@
   <title>StudentQ</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
-  {% comment %} Custom Stylesheet {% endcomment %}
   <link rel="stylesheet" href="{% static 'mStyle/main.css' %}">
-  <link rel="stylesheet" href="{% static 'mStyle/slider.css' %}">
-
 
   <!-- for other css file are used-->
   {%block css%}
   {%endblock%}
 
-   {% comment %} Font awesome CDN link  {% endcomment %}
+  {% comment %} font awesome cdn {% endcomment %}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -77,11 +74,6 @@
   {% block body %}
 
   {% endblock %}
-
-
-
-
-<script src="{% static 'js/index.js' %}" type="text/javaScript"></script>
 </body>
 
 </html>

@@ -30,8 +30,8 @@
 
 }
 
-input.input_role {
-
+.input_role {
+    padding-left: 10px;
     width: 80%;
     height: 40px;
     left: 40%;
@@ -60,7 +60,7 @@ input.input_role:focus {
 }
 
 #submit {
-
+    cursor: pointer;
     width: 90px;
     height: 40px;
     left: 40%;

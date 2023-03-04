@@ -21,6 +21,7 @@ slider(image);
 function slider(no) {
 
     var slider_class = document.getElementsByClassName("slideImage");
+    var pagination = document.getElementsByClassName("pagination__dot")
 
 
 
@@ -38,6 +39,12 @@ function slider(no) {
         y.style.display = "none";
     }
     slider_class[no].style.display = "block";
+
+    for (let y of pagination) {
+        y.classList.remove("pagination__current")
+    }
+
+    pagination[no].classList.add("pagination__current");
 
 }
 

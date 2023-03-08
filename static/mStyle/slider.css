@@ -1,7 +1,9 @@
 .slider__container {
     position: relative;
     width: 100%;
+
     height: 35rem;
+
     background-color: var(--theme-clr);
     overflow: hidden;
     margin-top: 0.3rem;
@@ -10,7 +12,9 @@
 .slide {
     position: inherit;
     width: 100%;
+
     height: 35rem;
+
 }
 
 /* .slideImages__container {
@@ -36,7 +40,9 @@
 .slideImages__container li img {
     position: absolute;
     width: 100%;
+
     height: 35rem;
+
     object-fit: cover;
 }
 

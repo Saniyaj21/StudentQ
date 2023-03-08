@@ -90,6 +90,10 @@ toggle.addEventListener('click',()=>{
 //         no = slider_class.length - 1;
 //     }
 
+    var slider_class = document.getElementsByClassName("slideImage");
+    var pagination = document.getElementsByClassName("pagination__dot")
+
+
 //     for (let y of slider_class) {
        
 //         y.style.display = "none";
@@ -104,6 +108,7 @@ toggle.addEventListener('click',()=>{
 //         y.classList.remove("pagination__current")
 
 //     }
+
 
 //     pagination[no].classList.add("pagination__current")
     
@@ -163,6 +168,15 @@ toggle.addEventListener('click',()=>{
 //     slider_class[no].style.display = "block";
 
 // }
+
+    for (let y of pagination) {
+        y.classList.remove("pagination__current")
+    }
+
+    pagination[no].classList.add("pagination__current");
+
+}
+
 
 
 

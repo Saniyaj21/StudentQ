@@ -30,7 +30,7 @@
     <button type="submit">Sign in</button>
   </form>
   <div  class="linkPosition">
-    <a href="{% url 'register' %}" target="_blank" rel="" class="linkDecoration">Don't have an account? Register</a><br>
+    <a href="{% url 'register' %}" target="_blank" rel="" class="linkDecoration">Don't have an account? <u>Register</u></a><br>
     <a href="/" target="_blank" rel="" class="linkDecoration"> Forgot Password</a>
   </div>
   
@@ -45,4 +45,5 @@
     <input type="password" name="password" />
     <button type="submit">Sign in</button>
   </form> {% endcomment %}
+  
 {% endblock %}

@@ -5,6 +5,8 @@ const menu = document.getElementById("navber");
 const toggle = document.querySelector(".toggle");
 const navber = document.querySelector(".navber");
 const toggleBarIcon = document.querySelector(".toggle__bars");
+const logInOut = document.querySelector(".log__in--out");
+const visibleBtnsDiv = document.querySelector(".btnContainer--btns");
 
 window.onscroll = function () {
     if (window.pageYOffset >= menu.offsetTop) {
@@ -20,6 +22,11 @@ toggle.addEventListener('click',()=>{
     navber.classList.toggle("toggle__active");
     // toggleBarIcon.classList.remove('fa-bars');
     toggleBarIcon.classList.toggle('fa-xmark');
+})
+
+logInOut.addEventListener('click',()=>{
+    console.log("log in out clicked");
+    visibleBtnsDiv.classList.toggle("btnContainer--btns__active");
 })
 
 

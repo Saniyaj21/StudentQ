@@ -3,6 +3,9 @@
 /* Googlefont Poppins CDN Link ==> font-family: 'Poppins', sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* Googlefont Poppins CDN Link ==> font-family: 'Righteous', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 /*--- Import fonts from google ends ---*/
 
 
@@ -11,6 +14,7 @@
     --light-blue: #669CFF;
     --main-blue: #2F6BDA;
     --dark-blue: #1a376e;
+    --light-dark-blue: #083891; 
     --theme-clr: #075E53;
     --hover-green: #094a42;
     --black: #000;
@@ -56,7 +60,7 @@ html {
 
 @media screen and (max-width: 450px) {
     html {
-        font-size: 55%;
+        font-size: 50%;
         overflow-x: hidden;
     }
 

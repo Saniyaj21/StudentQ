@@ -1,0 +1,96 @@
+{% load static %}
+
+  {% comment %} image slider starts from hare {% endcomment %}
+
+  <div class="slider__container">
+
+    <div class="slide">
+
+      <ul class="slideImages__container"> 
+
+        <li class="slideImage">
+          <img src="{% static 'sliderImages/first_1.jpg' %}" alt="sliderImages" class="carousel__image">
+        </li>
+        <li class="slideImage">
+          <img src="{% static 'sliderImages/first_2.jpg' %}" alt="sliderImages" class="carousel__image">
+        </li>
+        <li class="slideImage">
+          <img src="{% static 'sliderImages/first_3.jpg' %}" alt="sliderImages" class="carousel__image">
+        </li>
+        <li class="slideImage">
+          <img src="{% static 'sliderImages/first_4.jpg' %}" alt="sliderImages" class="carousel__image">
+        </li>
+      </ul>
+    </div>
+
+    <div class="arrow__container">
+      <span class="carousel__arrow left__arrow">&#10094;</span>
+      <span class="carousel__arrow right__arrow">&#10095;</span>
+    </div>
+
+   
+    <div class="pagination--dot__container">
+
+      <div class="pagination__dot pagination__current"></div>
+      <div class="pagination__dot"></div>
+      <div class="pagination__dot"></div>
+      <div class="pagination__dot"></div>
+
+    </div>
+    
+  </div>
+
+{% comment %} Image carousel ends hare  {% endcomment %}
+
+
+
+{% comment %} welcome image will be displayed hare  {% endcomment %}
+
+<div class="welcome__img">
+  <img src={% static 'media/Wlcome-screen.png' %} alt="Welcome to StudentQ" />
+</div>
+
+{% comment %} welcome image will be displayed hare  {% endcomment %}
+
+
+
+{% comment %} home body designing starts from hare  {% endcomment %}
+
+
+  <div class="home__body">
+    <h3 class="stylish__desc--heading">Description</h3>
+    <p class="home__body--description">
+      A student helping website is an online platform designed to provide academic support and resources to students of all levels, from elementary to higher education. The website may offer a variety of features, including study tips, exam preparation resources, homework help, subject-specific tutorials, and personalized tutoring services. The site may also feature a community forum where students can connect with peers, share ideas, and collaborate on projects. The goal of a student helping website is to empower students to achieve their academic goals and develop the skills necessary for lifelong learning.
+    </p>
+
+    <h3 class="stylish__desc--heading">Our Goals</h3>
+    <p class="home__body--description">
+      A student helping website is an online platform designed to provide academic support and resources to students of all levels, from elementary to higher education. The website may offer a variety of features, including study tips, exam preparation resources, homework help, subject-specific tutorials, and personalized tutoring services. The site may also feature a community forum where students can connect with peers, share ideas, and collaborate on projects. The goal of a student helping website is to empower students to achieve their academic goals and develop the skills necessary for lifelong learning.
+    </p>
+  </div>
+
+
+  {% comment %} Review Slider Designing starts from hare  {% endcomment %}
+
+  <div class="review__slider">
+
+    
+
+  </div>
+
+
+{% comment %} home body designing starts from hare  {% endcomment %}
+
+
+
+  <div>
+    <h3>Reviews</h3>
+    <hr />
+    {% for rv in reviews %}
+      <div>
+        <h4>{{ rv.poster }}</h4>
+        <p>{{ rv.review }}</p>
+        <hr />
+      </div>
+    {% endfor %}
+  </div>

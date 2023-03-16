@@ -5,6 +5,8 @@ const menu = document.getElementById("navber");
 const toggle = document.querySelector(".toggle");
 const navber = document.querySelector(".navber");
 const toggleBarIcon = document.querySelector(".toggle__bars");
+const logInOut = document.querySelector(".log__in--out");
+const visibleBtnsDiv = document.querySelector(".btnContainer--btns");
 
 window.onscroll = function () {
     if (window.pageYOffset >= menu.offsetTop) {
@@ -20,6 +22,11 @@ toggle.addEventListener('click',()=>{
     navber.classList.toggle("toggle__active");
     // toggleBarIcon.classList.remove('fa-bars');
     toggleBarIcon.classList.toggle('fa-xmark');
+})
+
+logInOut.addEventListener('click',()=>{
+    console.log("log in out clicked");
+    visibleBtnsDiv.classList.toggle("btnContainer--btns__active");
 })
 
 
@@ -90,10 +97,6 @@ toggle.addEventListener('click',()=>{
 //         no = slider_class.length - 1;
 //     }
 
-    var slider_class = document.getElementsByClassName("slideImage");
-    var pagination = document.getElementsByClassName("pagination__dot")
-
-
 //     for (let y of slider_class) {
        
 //         y.style.display = "none";
@@ -108,7 +111,6 @@ toggle.addEventListener('click',()=>{
 //         y.classList.remove("pagination__current")
 
 //     }
-
 
 //     pagination[no].classList.add("pagination__current")
     
@@ -168,15 +170,6 @@ toggle.addEventListener('click',()=>{
 //     slider_class[no].style.display = "block";
 
 // }
-
-    for (let y of pagination) {
-        y.classList.remove("pagination__current")
-    }
-
-    pagination[no].classList.add("pagination__current");
-
-}
-
 
 
 

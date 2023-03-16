@@ -77,6 +77,97 @@
 .swiper-container .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  background: var(--theme-clr-light);
+  border: none;
+  border-radius: 2.5rem;
+  overflow: hidden;
+  filter: blur(4px);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.swiper-container .swiper-slide .testimonialBox {
+  position: relative;
+  width: 100%;
+  padding: 2.5rem;
+  color: var(--drk-white);
+}
+.swiper-container .swiper-slide .testimonialBox .quote {
+  position: absolute;
+  top: 1.53rem;
+  right: 2.53rem;
+  height: 5.5rem;
+  filter: invert(100%);
+  opacity: 0.5;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.swiper-container .swiper-slide .testimonialBox .details_of_review {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.swiper-container .swiper-slide .testimonialBox .details_of_review .imgBox {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+}
+.swiper-container .swiper-slide .testimonialBox .details_of_review .imgBox .dp-profile {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  top: 0;
+  left: 0;
+}
+.swiper-container .swiper-slide .testimonialBox .details_of_review .poster-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  color: var(--drk-white);
+  text-transform: capitalize;
+  line-height: 1.8rem;
+}
+.swiper-container .swiper-slide .testimonialBox .details_of_review .poster-name span {
+  font-size: 1.25rem;
+  color: var(--light-gray);
+  font-weight: 200;
+}
+.swiper-container .swiper-slide .testimonialBox .contentReview {
+  font-size: 1.4rem;
+}
+.swiper-container .swiper-slide .testimonialBox .contentReview p {
+  text-align: justify;
+  color: var(--light-gray);
+}
+.swiper-container .swiper-slide-active {
+  filter: blur(0px);
+  background: var(--theme-clr);
+}
+.swiper-container .swiper-button-prev {
+  left: 10rem;
+  color: var(--drk-white);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+@media screen and (max-width: 450px) {
+  .swiper-container .swiper-button-prev {
+    display: none;
+  }
+}
+.swiper-container .swiper-button-next {
+  right: 10rem;
+  color: var(--drk-white);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+@media screen and (max-width: 450px) {
+  .swiper-container .swiper-button-next {
+    display: none;
+  }
 }/*# sourceMappingURL=home.css.map */

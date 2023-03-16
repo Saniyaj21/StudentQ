@@ -1,0 +1,12 @@
+.footer {
+  background-image: url("../icons/Footer-back.png");
+  height: 45rem;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7rem 4rem 5rem;
+}/*# sourceMappingURL=footer.css.map */

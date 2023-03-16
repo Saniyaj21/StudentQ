@@ -81,15 +81,32 @@
     <div class="swiper-wrapper">
       {% for rv in reviews %}
       <div class="swiper-slide">
-        <h4>{{ rv.poster }}</h4>
-        <p>{{ rv.review }}</p>
+
+        <div class="testimonialBox">
+          <img src="{% static 'icons/right-quote-64.png' %}" alt="quotePNG" class="quote">
+
+          <div class="details_of_review">
+            <div class="imgBox">
+              <img src="{% static 'media/bydefault.jpg' %}" alt="dp profile" class="dp-profile">
+            </div>
+            <h4 class="poster-name">{{ rv.poster }} <br><span>Poster Role </span></h4>
+          </div>
+
+          <div class="contentReview">
+            <p>
+              {{ rv.review }}
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam minus laudantium officiis iusto, quas et 
+            </p>
+          </div>
+
+        </div>
       </div>
       {% endfor %}
 
     </div>
   
-    <div class="swiper-pagination"></div>
-  
+    {% comment %} <div class="swiper-pagination"></div> {% endcomment %}
+   
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
   
@@ -99,8 +116,11 @@
 {% comment %} home body designing starts from hare  {% endcomment %}
 
 
+{% comment %} footer added to the home page  {% endcomment %}
+  {% include 'footer.html' %}
+{% comment %} footer added to the home page  {% endcomment %}
 
-  <div>
+  {% comment %} ! old code without styling  <div>
     <h3>Reviews</h3>
     <hr />
     {% for rv in reviews %}
@@ -110,34 +130,30 @@
         <hr />
       </div>
     {% endfor %}
-  </div>
+  </div> {% endcomment %}
 
 
   {% block javaScript %}
       <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
       <script>
     
-
         var swiper = new Swiper(".swiper-container", {
           effect: "coverflow",
           grabCursor: true,
           centeredSlides: true,
           slidesPerView: "auto",
           coverflowEffect: {
-            rotate: 50,
+            rotate: 0,
             stretch: 0,
             depth: 100,
-            modifier: 1,
+            modifier: 2,
             slideShadows: true,
-          },
-          pagination: {
-            el: ".swiper-pagination",
-            clickable:true,
           },
           navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
           },
+          loop: true,
         });
 
 
@@ -159,4 +175,5 @@
         }); {% endcomment %}
       
       </script>
+
   {% endblock javaScript %}

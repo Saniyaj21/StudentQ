@@ -2,12 +2,14 @@
 {% load static %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'mStyle/slider.css' %}">
+
+  <link rel="stylesheet" href="{% static 'mStyle/slider.css' %}">
+  <link rel="stylesheet" href="{% static 'mstyle/home.css' %}">
 
 {% endblock css %}
 
 {% block body %}
-  <style>
+  {% comment %} <style>
     span {
       color: green;
       font-weight: 700;
@@ -16,7 +18,7 @@
       height:100px;
       width:100px;
     }
-  </style>
+  </style> {% endcomment %}
 
   {% if request.user.is_authenticated %}
 
@@ -66,64 +68,8 @@
   {% else %}
 
     
-   
+      {% include 'homeBody.html' %}
 
-
-  {% comment %} image slider starts from hare {% endcomment %}
-
-  <div class="slider__container">
-
-    <div class="slide">
-
-      <ul class="slideImages__container"> 
-
-        <li class="slideImage">
-          <img src="{% static 'sliderImages/first_1.jpg' %}" alt="sliderImages" class="carousel__image">
-        </li>
-        <li class="slideImage">
-          <img src="{% static 'sliderImages/first_2.jpg' %}" alt="sliderImages" class="carousel__image">
-        </li>
-        <li class="slideImage">
-          <img src="{% static 'sliderImages/first_3.jpg' %}" alt="sliderImages" class="carousel__image">
-        </li>
-        <li class="slideImage">
-          <img src="{% static 'sliderImages/first_4.jpg' %}" alt="sliderImages" class="carousel__image">
-        </li>
-      </ul>
-    </div>
-
-    <div class="arrow__container">
-      <span class="carousel__arrow left__arrow">&#10094;</span>
-      <span class="carousel__arrow right__arrow">&#10095;</span>
-    </div>
-
-   
-    <div class="pagination--dot__container">
-
-      <div class="pagination__dot pagination__current"></div>
-      <div class="pagination__dot"></div>
-      <div class="pagination__dot"></div>
-      <div class="pagination__dot"></div>
-
-    </div>
-    
-  </div>
-
-
-
- 
-
-  <div>
-    <h3>Reviews</h3>
-    <hr />
-    {% for rv in reviews %}
-      <div>
-        <h4>{{ rv.poster }}</h4>
-        <p>{{ rv.review }}</p>
-        <hr />
-      </div>
-    {% endfor %}
-  </div>
 
   {% endif %}
 

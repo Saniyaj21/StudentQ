@@ -3,25 +3,29 @@
   flex-wrap: nowrap;
   flex-direction: column;
   width: 100%;
-  z-index: 9999;
+  z-index: 9999 !important;
 }
 @media screen and (max-width: 450px) {
   .nav {
     flex-direction: row;
-    background-color: var(--light-blue);
+    background-color: var(--dark-blue);
+    align-items: center;
+    justify-content: center;
   }
 }
 .nav .header {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 999;
 }
 .nav .header .site__logo {
   height: 6.21rem;
 }
 @media screen and (max-width: 450px) {
   .nav .header .site__logo {
-    height: 4.2rem;
+    height: 5.51rem;
+    filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%);
   }
 }
 .nav .header .btnContainer {
@@ -48,11 +52,26 @@
   .nav .header .btnContainer {
     flex-direction: column;
     position: relative;
+    gap: 0.2rem;
+    position: relative;
+    display: flex;
+    gap: 1rem;
   }
-  .nav .header .btnContainer .btn-green {
+  .nav .header .btnContainer .btnContainer--btns {
     display: none;
-    visibility: hidden;
-    opacity: 1;
+    position: absolute;
+    top: 3.85rem;
+    padding: 0.1rem 1rem;
+  }
+  .nav .header .btnContainer .btnContainer--btns .btn {
+    margin-bottom: 0.38rem;
+    width: 12rem;
+    display: block;
+    text-align: center;
+    border-radius: 0.85rem;
+  }
+  .nav .header .btnContainer .btnContainer--btns__active {
+    display: block;
   }
 }
 @media screen and (max-width: 450px) {
@@ -62,12 +81,16 @@
     width: 80%;
   }
 }
+@media screen and (max-width: 450px) {
+  .nav .header {
+    padding: 0.4rem 0rem;
+  }
+}
 .nav .navber {
   width: 100%;
   position: relative;
   background-color: var(--main-blue);
   display: flex;
-  gap: 1.3rem;
   align-items: center;
   justify-content: center;
   list-style: none;
@@ -77,10 +100,10 @@
   font-size: 1.8rem;
   font-weight: 200;
   color: var(--drk-white);
-  padding: 0.85rem 0.6rem;
+  padding: 0.85rem 1.2rem;
 }
 .nav .navber .navlink.navlink__active {
-  background: var(--dark-blue);
+  background: var(--dark-blue) !important;
   font-weight: 500;
 }
 .nav .navber .navlink a {
@@ -88,12 +111,15 @@
   font-size: 1.8rem;
   font-weight: 500;
 }
+.nav .navber .navlink:hover {
+  background: var(--light-dark-blue);
+}
 @media screen and (max-width: 450px) {
   .nav .navber {
     flex-direction: column;
     position: absolute;
     width: 30rem;
-    transform: translateX(100%);
+    right: -30rem;
     top: 0;
     height: 100vh;
     z-index: 999;
@@ -105,7 +131,7 @@
     transition: 2.5s ease-in-out;
   }
   .nav .navber.toggle__active {
-    transform: translateX(0%);
+    right: 0 !important;
     display: block !important;
   }
   .nav .navber .navlink {
@@ -120,6 +146,7 @@
   display: none;
   visibility: hidden;
   opacity: 0;
+  z-index: 9999;
 }
 @media screen and (max-width: 450px) {
   .nav .toggle {

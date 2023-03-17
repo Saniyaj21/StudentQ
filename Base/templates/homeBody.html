@@ -1,0 +1,179 @@
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+{% endblock css %}
+
+  {% comment %} image slider starts from hare {% endcomment %}
+
+  <div class="slider__container">
+
+    <div class="slide">
+
+      <ul class="slideImages__container"> 
+
+        <li class="slideImage">
+          <img src="{% static 'sliderImages/first_1.jpg' %}" alt="sliderImages" class="carousel__image">
+        </li>
+        <li class="slideImage">
+          <img src="{% static 'sliderImages/first_2.jpg' %}" alt="sliderImages" class="carousel__image">
+        </li>
+        <li class="slideImage">
+          <img src="{% static 'sliderImages/first_3.jpg' %}" alt="sliderImages" class="carousel__image">
+        </li>
+        <li class="slideImage">
+          <img src="{% static 'sliderImages/first_4.jpg' %}" alt="sliderImages" class="carousel__image">
+        </li>
+      </ul>
+    </div>
+
+    <div class="arrow__container">
+      <span class="carousel__arrow left__arrow">&#10094;</span>
+      <span class="carousel__arrow right__arrow">&#10095;</span>
+    </div>
+
+   
+    <div class="pagination--dot__container">
+
+      <div class="pagination__dot pagination__current"></div>
+      <div class="pagination__dot"></div>
+      <div class="pagination__dot"></div>
+      <div class="pagination__dot"></div>
+
+    </div>
+    
+  </div>
+
+{% comment %} Image carousel ends hare  {% endcomment %}
+
+
+
+{% comment %} welcome image will be displayed hare  {% endcomment %}
+
+<div class="welcome__img">
+  <img src={% static 'media/Wlcome-screen.png' %} alt="Welcome to StudentQ" />
+</div>
+
+{% comment %} welcome image will be displayed hare  {% endcomment %}
+
+
+
+{% comment %} home body designing starts from hare  {% endcomment %}
+
+
+  <div class="home__body">
+    <h3 class="stylish__desc--heading">Description</h3>
+    <p class="home__body--description">
+      A student helping website is an online platform designed to provide academic support and resources to students of all levels, from elementary to higher education. The website may offer a variety of features, including study tips, exam preparation resources, homework help, subject-specific tutorials, and personalized tutoring services. The site may also feature a community forum where students can connect with peers, share ideas, and collaborate on projects. The goal of a student helping website is to empower students to achieve their academic goals and develop the skills necessary for lifelong learning.
+    </p>
+
+    <h3 class="stylish__desc--heading">Our Goals</h3>
+    <p class="home__body--description">
+      A student helping website is an online platform designed to provide academic support and resources to students of all levels, from elementary to higher education. The website may offer a variety of features, including study tips, exam preparation resources, homework help, subject-specific tutorials, and personalized tutoring services. The site may also feature a community forum where students can connect with peers, share ideas, and collaborate on projects. The goal of a student helping website is to empower students to achieve their academic goals and develop the skills necessary for lifelong learning.
+    </p>
+  </div>
+
+
+  {% comment %} Review Slider Designing starts from hare  {% endcomment %}
+
+  <div class="swiper-container">
+    
+    <div class="swiper-wrapper">
+      {% for rv in reviews %}
+      <div class="swiper-slide">
+
+        <div class="testimonialBox">
+          <img src="{% static 'icons/right-quote-64.png' %}" alt="quotePNG" class="quote">
+
+          <div class="details_of_review">
+            <div class="imgBox">
+              <img src="{% static 'media/bydefault.jpg' %}" alt="dp profile" class="dp-profile">
+            </div>
+            <h4 class="poster-name">{{ rv.poster }} <br><span>Poster Role </span></h4>
+          </div>
+
+          <div class="contentReview">
+            <p>
+              {{ rv.review }}
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam minus laudantium officiis iusto, quas et 
+            </p>
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  
+    {% comment %} <div class="swiper-pagination"></div> {% endcomment %}
+   
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  
+  </div>
+
+
+{% comment %} home body designing starts from hare  {% endcomment %}
+
+
+{% comment %} footer added to the home page  {% endcomment %}
+  {% include 'footer.html' %}
+{% comment %} footer added to the home page  {% endcomment %}
+
+  {% comment %} ! old code without styling  <div>
+    <h3>Reviews</h3>
+    <hr />
+    {% for rv in reviews %}
+      <div>
+        <h4>{{ rv.poster }}</h4>
+        <p>{{ rv.review }}</p>
+        <hr />
+      </div>
+    {% endfor %}
+  </div> {% endcomment %}
+
+
+  {% block javaScript %}
+      <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+      <script>
+    
+        var swiper = new Swiper(".swiper-container", {
+          effect: "coverflow",
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: "auto",
+          coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2,
+            slideShadows: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          loop: true,
+        });
+
+
+        {% comment %} var swiper = new Swiper(".swiper-container", {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        }); {% endcomment %}
+      
+      </script>
+
+  {% endblock javaScript %}

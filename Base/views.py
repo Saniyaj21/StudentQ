@@ -223,6 +223,13 @@ def roleDetails(request):
 
         
 
+def postPage(request):
+    return render(request,'post.html')
+
+
+
+
+
 
 
 

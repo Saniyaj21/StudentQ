@@ -12,6 +12,7 @@ urlpatterns = [
 
     path('profile-details/', views.profileDetails, name='profile-details'),
     path('role-details/', views.roleDetails, name='role-details'),
+    path('post/',views.postPage, name='post'),
 ]
 
 # owner -

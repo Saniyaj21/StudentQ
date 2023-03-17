@@ -3,27 +3,40 @@
 /* Googlefont Poppins CDN Link ==> font-family: 'Poppins', sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* Googlefont Poppins CDN Link ==> font-family: 'Righteous', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 /*--- Import fonts from google ends ---*/
 
 
 :root {
     --light-green-theme: #D2FFF9;
+    --light-blue: #669CFF;
     --main-blue: #2F6BDA;
+    --dark-blue: #1a376e;
+    --light-dark-blue: #083891;
     --theme-clr: #075E53;
+    --theme-clr-light: #178274;
     --hover-green: #094a42;
-    --dark-blue: #32538F;
     --black: #000;
     --white: #fff;
     --drk-white: #f8f8f8;
     --light-gray: #d9d9d9;
     --placeholder-clr: #707070;
     --main-yellow: #FFE454;
+    scrollbar-width: thin;
+    scrollbar-color: var(--theme-clr) var(--light-gray);
 }
 
 *::selection {
     background-color: var(--theme-clr);
     color: var(--light-green-theme);
 }
+
+*::-moz-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+  }
 
 *::-webkit-scrollbar {
     background: var(--light-gray);
@@ -53,6 +66,14 @@ html {
     overflow-x: hidden;
 }
 
+@media screen and (max-width: 450px) {
+    html {
+        font-size: 50%;
+        overflow-x: hidden;
+    }
+
+}
+
 
 
 body {
@@ -63,7 +84,46 @@ body {
     /* background-position: fixed; */
 }
 
-.nav {
+a {
+    text-decoration: none;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 0.6rem 1.6rem;
+    font-size: 1.6rem;
+    transition: all 0.5s ease-out;
+    cursor: pointer;
+}
+
+.btn-green {
+    color: var(--drk-white);
+    background-color: var(--theme-clr);
+}
+
+.btn-green:hover {
+    background-color: var(--hover-green);
+    transform: scale(1.05);
+}
+
+.rounded-corner {
+    border-radius: 3rem;
+}
+
+.sml__arrow {
+    font-size: 1.5rem;
+    margin-left: -0.2rem;
+}
+
+.toggle__cross::before {
+    content: '\f00d';
+}
+
+.toggle__bars::before {
+    content: '\f0c9';
+}
+
+/* .nav {
     width: 100%;
     background-color: transparent;
     display: flex;
@@ -79,19 +139,17 @@ body {
     flex-wrap: nowrap;
     padding: 1rem auto;
     position: relative;
-}
+} */
 
-.header a {
-    text-decoration: none;
-}
 
-.header img {
+
+/* .header img {
     height: 6.5rem;
     user-select: none;
 }
 
 .header .btnContainer {
-    /* background-color: #000; */
+    background-color: #000;
     display: flex;
     gap: 0.6rem;
     flex-wrap: nowrap;
@@ -146,3 +204,12 @@ body {
     font-size: 1.8rem;
     font-family: 'Poppins', sans-serif;
 }
+
+@media screen and (max-width : 400px) {
+    .nav{
+        background-color: var(--main-blue) !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+} */

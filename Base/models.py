@@ -81,6 +81,18 @@ class Review(models.Model):
 
     def __str__(self):
         return self.poster
+
+# public share video model
+class Tutorial(models.Model):
+    poster_user_id = models.CharField(max_length=10)
+    name = models.CharField(max_length=200 ,null=True)
+    link = models.CharField(max_length=500)
+    topic = models.CharField(max_length=500)
+    desc = models.CharField(max_length=200, null=True)
+    date_of_post =models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.poster_user_id
      
 
     

@@ -3,38 +3,40 @@
 
 
 
-{% block css %} 
-  <link rel="stylesheet" href="{% static 'mStyle/post.css' %} ">
+{% block css %}
+<link rel="stylesheet" href="{% static 'mStyle/post.css' %} ">
 {% endblock css %}
 
 
 
 {% block body %}
 
-    <div class="image">
-        <img src="{% static 'media/Wlcome-screen.png' %}" alt="welcome" class="imageSize">
-    </div>
-  
-    <div class="position">
-        <header class="headerStyle " >
-            <h2 class='margin'> Share Study Materials </h2>
-        </header>
-  
-        <form action="http://127.0.0.1:8000/" method="post">
-            {% csrf_token %}
-            <div class="iButton">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-            </div>
-            <input type="url" id="videoLink" name="iframeLink" placeholder="Enter video iframe link" required><br>
-            
-            
-            <input type="text" id="videoTitle" name="videoTitle" placeholder="Enter video title" required><br>
-            <input type="text" id="videoTopic" name="videoTopic" placeholder="Enter video topic or subject" required><br>
-            <button type="submit" value='submit'>Submit</button>
-         </form>
-    
-    </div>
+<div class="image">
+    <img src="{% static 'media/Wlcome-screen.png' %}" alt="welcome" class="imageSize">
+</div>
 
-    <script src="{% static 'mscript/post.js' %}" ></script>
-  
+<div class="position">
+    <header class="headerStyle ">
+        <h2 class='margin'> Share Study Materials </h2>
+    </header>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="iButton">
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </div>
+
+
+        <input type="url" id="videoLink" name="link" placeholder="Enter video link" required><br>
+
+
+        <input type="text" id="videoTitle" name="topic" placeholder="Enter video topic" required><br>
+        <input type="text" id="videoTopic" name="desc" placeholder="Enter video description"><br>
+        <button type="submit" value='submit'>Submit</button>
+    </form>
+
+</div>
+
+<script src="{% static 'mscript/post.js' %}"></script>
+
 {% endblock body %}

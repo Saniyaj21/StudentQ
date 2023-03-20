@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Student, Teacher, Owner, Review
+from .models import Profile, Student, Teacher, Owner, Review,Tutorial
 
 from django.core.files.storage import FileSystemStorage
 
@@ -218,12 +218,44 @@ def roleDetails(request):
     return render(request, 'role-details.html', context)
 
 
+# study meririal
+def studyMetirial(request):
+
+    user = request.user
+    context={}
+
+    posts = Tutorial.objects.all()
+    context["posts"] = posts
+    return render(request,"study_metirial.html", context)
 
         
 
         
 
 def postPage(request):
+
+    user = request.user
+
+    poster_user_id = user.id
+    name = user.username
+
+    if request.method == "POST":
+            link = request.POST['link']
+            topic = request.POST['topic']
+            desc = request.POST['desc']
+
+            Tutorial.objects.create(
+                poster_user_id = poster_user_id,
+                name = name,
+                link = link,
+                topic = topic,
+                desc = desc
+            )
+
+
+           
+            
+           
     return render(request,'post.html')
 
 

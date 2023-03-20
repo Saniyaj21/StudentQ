@@ -12,6 +12,11 @@ urlpatterns = [
 
     path('profile-details/', views.profileDetails, name='profile-details'),
     path('role-details/', views.roleDetails, name='role-details'),
+
+
+    # study metirial 
+
+    path('study-metirial/',views.studyMetirial, name='studyMetirial'),
     path('post/',views.postPage, name='post'),
 ]
 

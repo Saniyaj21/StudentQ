@@ -3,75 +3,84 @@
 
 {% block css %}
 
-  <link rel="stylesheet" href="{% static 'mStyle/slider.css' %}">
-  <link rel="stylesheet" href="{% static 'mstyle/home.css' %}">
+<link rel="stylesheet" href="{% static 'mStyle/slider.css' %}">
+<link rel="stylesheet" href="{% static 'mstyle/home.css' %}">
 
 {% endblock css %}
 
 {% block body %}
-  {% comment %} <style>
-    span {
-      color: green;
-      font-weight: 700;
-    }
-    .dpProfile{
-      height:100px;
-      width:100px;
-    }
-  </style> {% endcomment %}
+{% comment %} <style>
+  span {
+    color: green;
+    font-weight: 700;
+  }
 
-  {% if request.user.is_authenticated %}
+  .dpProfile {
+    height: 100px;
+    width: 100px;
+  }
+</style> {% endcomment %}
 
-    <div class="main">
-      Hello <span>{{ user.profile.fullName|capfirst }}</span>
-      <br />
-      I am a <span>{{ user.profile.role|capfirst }}</span>
-      <br />
-      Phone no <span>{{ user.profile.phNo }}</span>
-      <br />
-      Social media link <span>{{ user.profile.socialId }}</span>
-      <br />
-      About me - <span>{{ user.profile.desc }}</span>
-      <br />
-      <img src="{{dp.url}}" alt="" class="dpProfile">
-      <br />
+{% if request.user.is_authenticated %}
 
-      <h3>Role details</h3>
-
-      {% if user.profile.role == 'teacher' %}
-        Teacher Location is <span>{{ teacher.location|capfirst }}</span>
-        <br />
-        dptOfTeaching is <span>{{ teacher.dptOfTeaching|upper }}</span>
-        <br />
-        Teacher Location is <span>{{ teacher.qualification|upper }}</span>
-        <br />
-
-        {% elif user.profile.role == 'student' %}Student Institute is <span>{{ student.institute|capfirst }}</span>
-        <br />
-        Student subject is <span>{{ student.subject|upper }}</span>
-        <br />
-        interest in <span>{{ student.interest }}</span>
-        <br />
-        Student courseDuration is <span>{{ student.courseDuration }}</span>
-        <br />
-
-        {% elif user.profile.role == 'owner' %}Owner of Mess <span>{{ owner.mess_name|capfirst }}</span>
-        <br />
-        Room rent <span>{{ owner.rent }}</span>
-        <br />
-        bedAvailable<span>{{ owner.bedAvailable }}</span>
-        <br />
-        address <span>{{ owner.address }}</span>
-        <br />
-      {% endif %}
-    </div>
-  {% else %}
-
-    
-      {% include 'homeBody.html' %}
+<div class="main">
 
 
+  <!-- display total user of this website -->
+  <div class="userVisits">
+
+    <h1>User total -- {{TotalUser}}</h1>
+  </div>
+
+  Hello <span>{{ user.profile.fullName|capfirst }}</span>
+  <br />
+  I am a <span>{{ user.profile.role|capfirst }}</span>
+  <br />
+  Phone no <span>{{ user.profile.phNo }}</span>
+  <br />
+  Social media link <span>{{ user.profile.socialId }}</span>
+  <br />
+  About me - <span>{{ user.profile.desc }}</span>
+  <br />
+  <img src="{{dp.url}}" alt="" class="dpProfile">
+  <br />
+
+  <h3>Role details</h3>
+
+  {% if user.profile.role == 'teacher' %}
+  Teacher Location is <span>{{ teacher.location|capfirst }}</span>
+  <br />
+  dptOfTeaching is <span>{{ teacher.dptOfTeaching|upper }}</span>
+  <br />
+  Teacher Location is <span>{{ teacher.qualification|upper }}</span>
+  <br />
+
+  {% elif user.profile.role == 'student' %}Student Institute is <span>{{ student.institute|capfirst }}</span>
+  <br />
+  Student subject is <span>{{ student.subject|upper }}</span>
+  <br />
+  interest in <span>{{ student.interest }}</span>
+  <br />
+  Student courseDuration is <span>{{ student.courseDuration }}</span>
+  <br />
+
+  {% elif user.profile.role == 'owner' %}Owner of Mess <span>{{ owner.mess_name|capfirst }}</span>
+  <br />
+  Room rent <span>{{ owner.rent }}</span>
+  <br />
+  bedAvailable<span>{{ owner.bedAvailable }}</span>
+  <br />
+  address <span>{{ owner.address }}</span>
+  <br />
   {% endif %}
+</div>
+{% else %}
+
+
+{% include 'homeBody.html' %}
+
+
+{% endif %}
 
 
 {% endblock %}
@@ -81,5 +90,5 @@
 
 
 {% block javaScript %}
-  <script src="{% static 'mscript/slider.js' %}" type="text/javaScript"></script>  
+<script src="{% static 'mscript/slider.js' %}" type="text/javaScript"></script>
 {% endblock javaScript %}

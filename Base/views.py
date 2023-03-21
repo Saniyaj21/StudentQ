@@ -75,6 +75,14 @@ def registerUser(request):
 def home(request):
     context = {}
 
+    # user counting
+    userCount = User.objects.all().count()
+ 
+    context['TotalUser'] = userCount
+
+ 
+  
+
     if request.user.is_authenticated:
 
         dp = request.user.profile.dp
@@ -224,6 +232,8 @@ def studyMetirial(request):
     user = request.user
     context={}
 
+    
+
     posts = Tutorial.objects.all()
     context["posts"] = posts
     return render(request,"study_metirial.html", context)
@@ -251,6 +261,8 @@ def postPage(request):
                 topic = topic,
                 desc = desc
             )
+            return redirect("studyMetirial")
+           
 
 
            

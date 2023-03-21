@@ -93,6 +93,8 @@ class Tutorial(models.Model):
     
     def __str__(self):
         return self.poster_user_id
+    
+
      
 
     

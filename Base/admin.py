@@ -10,3 +10,4 @@ admin.site.register(Student)
 admin.site.register(Owner)
 admin.site.register(Review)
 admin.site.register(Tutorial)
+

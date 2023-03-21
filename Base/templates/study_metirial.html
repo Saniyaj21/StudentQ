@@ -56,8 +56,9 @@
 
         <div class="post-block">
             {% for tuts in posts %}
-            <div>{{tuts.name}} || Posted - {{tuts.date_of_post}}</div>
+            <div>{{tuts.name}} || Posted - {{tuts.date_of_post | timesince}} ago</div>
             <a href="{{tuts.link}}" target="_blank"><button>Visit</button></a>
+            <p>{{tuts.topic}}</p>
             <p>{{tuts.desc}}</p>
             <hr>
 

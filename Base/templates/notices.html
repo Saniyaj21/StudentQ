@@ -6,7 +6,7 @@
 
 <!-- {{ins_notices.id}} -->
 
-
+<a href="{% url 'postNotice' id %}"><button>post</button></a>
 {% for notice in ins_notices %}
 {{notice.institute}}
 {{notice.date_of_post}}

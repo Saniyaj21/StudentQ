@@ -5,7 +5,7 @@
 
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{form.as_p}}
+    <input type="file" name="notice"  >
     <input type="submit" value="Create" class="btn btn-success">
     <a class="my-3 mx-5 text-end" href="{{request.META.HTTP_REFERER}}">Go Back</a>
 

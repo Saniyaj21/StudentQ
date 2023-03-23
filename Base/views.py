@@ -2,12 +2,12 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from .forms import RegisterUserForm
+from .forms import RegisterUserForm, NoticeForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Student, Teacher, Owner, Review,Tutorial
+from .models import Profile, Student, Teacher, Owner, Review,Tutorial, Institute, Notice
 
 from django.core.files.storage import FileSystemStorage
 
@@ -262,13 +262,44 @@ def postPage(request):
                 desc = desc
             )
             return redirect("studyMetirial")
+    return render(request,'post.html')
+
+def Institutes(request):
+    all_institutes = Institute.objects.all()
+    context ={}
+    context["all_institutes"] = all_institutes
+    return render(request, "institute.html", context)
+
+def Notices(request, id):
+
+    context = {}
+    context["id"] = id
+    institute = Institute.objects.get(id = id)
+    ins_notices = institute.notice_set.all()
+    context["ins_notices"] = ins_notices
+
+    return render(request, "notices.html", context)
+
+# def PostNotice(request,id):
+#     form = NoticeForm
+#     if request.method == 'POST':
+#         form = NoticeForm(request.POST)
+#         if form.is_valid():
+#             print(Institute.objects.get(id =id))
+#             notice = form.save(commit=False)
+#             notice.institute = Institute.objects.get(id =id)
+#             notice.save()
+#             return redirect ("notices")
+    
+#     context = {'form': form}
+          
+#     return render(request, "postNotice.html", context)
            
 
 
            
             
            
-    return render(request,'post.html')
 
 
 

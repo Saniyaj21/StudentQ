@@ -95,6 +95,23 @@ class Tutorial(models.Model):
         return self.poster_user_id
     
 
+class Institute(models.Model):
+    name = models.CharField(max_length=200)
+    
+
+    def __str__(self):
+        return self.name
+    
+class Notice(models.Model):
+    notice = models.ImageField(null = False, blank = False, upload_to="media/notice")
+    institute = models.ForeignKey(Institute, on_delete=models.CASCADE, null=True)
+    date_of_post =models.DateTimeField(auto_now_add=True, null=True)
+
+    
+
+   
+    
+
      
 
     

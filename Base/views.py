@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from .forms import RegisterUserForm, NoticeForm
+from .forms import RegisterUserForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -280,20 +280,19 @@ def Notices(request, id):
 
     return render(request, "notices.html", context)
 
-# def PostNotice(request,id):
-#     form = NoticeForm
-#     if request.method == 'POST':
-#         form = NoticeForm(request.POST)
-#         if form.is_valid():
-#             print(Institute.objects.get(id =id))
-#             notice = form.save(commit=False)
-#             notice.institute = Institute.objects.get(id =id)
-#             notice.save()
-#             return redirect ("notices")
-    
-#     context = {'form': form}
-          
-#     return render(request, "postNotice.html", context)
+def PostNotice(request,id):
+
+    institute = Institute.objects.get(id = id)
+   
+    if request.method == "POST" and request.FILES['notice']:
+        notice = request.FILES['notice']
+        
+        Notice.objects.create(notice=notice , institute = institute)
+        return redirect('institute')
+     
+    return render(request, "postNotice.html")
+
+
            
 
 

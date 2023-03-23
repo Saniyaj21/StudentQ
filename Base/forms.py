@@ -23,15 +23,15 @@ class RegisterUserForm(UserCreationForm):
 
 
     
-class NoticeForm(forms.ModelForm):
-    class Meta:
-        model = Notice
-        fields = '__all__'
-        exclude = ['institute' ]
-        labels={
-            'notice':'Upload Notice',
-            'institute':'Chose institute',
-        }
+# class NoticeForm(forms.ModelForm):
+#     class Meta:
+#         model = Notice
+#         fields = '__all__'
+#         exclude = ['institute' ]
+#         labels={
+#             'notice':'Upload Notice',
+#             'institute':'Chose institute',
+#         }
 
         # widgets={
         #     'name': forms.TextInput(attrs={'class':'form-control'}),

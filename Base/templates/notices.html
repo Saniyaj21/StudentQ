@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+
+{% block body %}
+<h2>Notices</h2>
+<!-- {{id}} -->
+
+<!-- {{ins_notices.id}} -->
+
+
+{% for notice in ins_notices %}
+{{notice.institute}}
+{{notice.date_of_post}}
+
+<img src="{{notice.notice.url}}" alt="">
+
+{% endfor %}
+
+{% endblock body %}

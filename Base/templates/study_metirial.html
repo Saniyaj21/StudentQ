@@ -1,0 +1,93 @@
+{% include "main.html" %}
+
+{% block body %}
+<style>
+    .main-study {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    iframe {
+        width: 560px;
+        height: 315px;
+    }
+</style>
+
+<h2>Study Metirial</h2>
+
+
+
+<div class="main-study">
+
+    <!-- two options will be there one is iframes that will hard code us....and other will be public that they can post by sharing link of youtube video -->
+    <div class="head-mini-nav">
+        <button id="public" onclick="publicBox()">Public Resources</button>
+        <button id="Recomandations" onclick="recomand()">Our Recomandations</button>
+        <a href="{% url 'post' %}"><button>Post</button></a>
+
+
+        <br>
+
+    </div>
+
+    <!-- Recomandations -->
+    <div id="recomand-videos">
+        <div id="c-sharp">
+            <div class="title">C# in one video from <span class="channel-name">Code With Harry</span></div>
+            <iframe src="https://www.youtube.com/embed/SuLiu5AK9Ps" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        </div>
+        <div id="python">
+            <div class="title">Python in one video from <span class="channel-name">Apna College</span></div>
+            <iframe src="https://www.youtube.com/embed/vLqTf2b6GZw" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+
+    <!-- public shares -->
+    <div id="public-videos">
+        <h2>Public Shared resources</h2>
+
+        <div class="post-block">
+            {% for tuts in posts %}
+            <div>{{tuts.name}} || Posted - {{tuts.date_of_post | timesince}} ago</div>
+            <a href="{{tuts.link}}" target="_blank"><button>Visit</button></a>
+            <p>{{tuts.topic}}</p>
+            <p>{{tuts.desc}}</p>
+            <hr>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    let public = document.getElementById('public');
+    let recomandations = document.getElementById('Recomandations');
+
+    let rdVideosBox = document.getElementById('recomand-videos');
+    let pbVideosBox = document.getElementById('public-videos');
+
+    function publicBox() {
+        console.log("public clicked")
+        pbVideosBox.style.display = 'block'
+        rdVideosBox.style.display = 'none'
+
+    }
+    function recomand() {
+        console.log("recomand clicked")
+        pbVideosBox.style.display = 'none'
+        rdVideosBox.style.display = 'block'
+
+    }
+
+
+</script>
+
+{% endblock body %}

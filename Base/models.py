@@ -81,6 +81,37 @@ class Review(models.Model):
 
     def __str__(self):
         return self.poster
+
+# public share video model
+class Tutorial(models.Model):
+    poster_user_id = models.CharField(max_length=10)
+    name = models.CharField(max_length=200 ,null=True)
+    link = models.CharField(max_length=500)
+    topic = models.CharField(max_length=500)
+    desc = models.CharField(max_length=200, null=True)
+    date_of_post =models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.poster_user_id
+    
+
+class Institute(models.Model):
+    name = models.CharField(max_length=200)
+    
+
+    def __str__(self):
+        return self.name
+    
+class Notice(models.Model):
+    notice = models.ImageField(null = False, blank = False, upload_to="media/notice")
+    institute = models.ForeignKey(Institute, on_delete=models.CASCADE, null=True)
+    date_of_post =models.DateTimeField(auto_now_add=True, null=True)
+
+    
+
+   
+    
+
      
 
     

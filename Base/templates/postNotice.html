@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% block body %}
+
+<h2>Post Notice</h2>
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Create" class="btn btn-success">
+    <a class="my-3 mx-5 text-end" href="{{request.META.HTTP_REFERER}}">Go Back</a>
+
+
+</form>
+
+{% endblock body %}

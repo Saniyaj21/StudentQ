@@ -18,6 +18,12 @@ urlpatterns = [
 
     path('study-metirial/',views.studyMetirial, name='studyMetirial'),
     path('post/',views.postPage, name='post'),
+
+    # institute  section
+    path('institute/',views.Institutes, name='institute'),
+    # notices
+    path('notices/<str:id>/',views.Notices, name='notices'),
+    # path('upload-notice/<str:id>/', views.PostNotice, name='PostNotice')
 ]
 
 # owner -
@@ -30,3 +36,14 @@ urlpatterns = [
 # student
 # 1. home (blog/source/video/) 
 
+# def PostNotice(request):
+#     form = NoticeForm
+#     if request.method == 'POST':
+#         form = NoticeForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect ("notices")
+    
+#     context = {'form': form}
+          
+#     return render(request, "postNotice.html", context)

@@ -1,0 +1,10 @@
+{% extends "main.html" %}
+
+{% block body %}
+<h2>Institutes</h2>
+{% for instut in all_institutes %}
+<a href="{% url 'notices' instut.id  %}">{{instut.name}}</a>
+
+{% endfor %}
+
+{% endblock body %}

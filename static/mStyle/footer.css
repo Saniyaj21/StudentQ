@@ -1,12 +1,145 @@
 .footer {
   background-image: url("../icons/Footer-back.png");
-  height: 45rem;
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   margin-top: 5rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 7rem 4rem 5rem;
+  padding: 8rem 5rem 4rem;
+}
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.footer__content .quick__links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.footer__content .quick__links--link {
+  display: block;
+  font-size: 1.9rem;
+  color: var(--drk-white);
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.footer__content .quick__links--link:hover {
+  transform: translateX(1.5rem);
+  color: var(--main-yellow);
+}
+.footer__content .quick__links--link .fab,
+.footer__content .quick__links--link .fas {
+  margin-right: 0.8rem;
+}
+.footer__content .footer__right--side {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  font-family: "Poppins", sans-serif;
+}
+.footer__content .footer__right--side .footer__review {
+  display: flex;
+  flex-direction: column;
+}
+.footer__content .footer__right--side .footer__review .foot__review--heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--main-yellow);
+  margin-bottom: 1.2rem;
+  position: relative;
+  padding-left: 1rem;
+  font-family: var(--font-secondary);
+  letter-spacing: 0.2rem;
+}
+.footer__content .footer__right--side .footer__review .foot__review--heading::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 0.528rem;
+  background-color: var(--main-yellow);
+  left: 0rem;
+  top: 0;
+  border: none;
+  border-radius: 0.2rem;
+}
+.footer__content .footer__right--side .footer__review .review__textBox {
+  width: 35rem;
+  height: 12rem;
+  resize: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--main-yellow);
+  padding: 1rem 0.8rem;
+  font-weight: 400;
+  font-family: var(--font-primary);
+  font-size: 1.6rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  scrollbar-color: var(--main-yellow) transparent;
+}
+.footer__content .footer__right--side .footer__review .review__textBox::-moz-placeholder {
+  color: var(--main-yellow);
+  opacity: 0.6;
+}
+.footer__content .footer__right--side .footer__review .review__textBox::placeholder {
+  color: var(--main-yellow);
+  opacity: 0.6;
+}
+.footer__content .footer__right--side .footer__review .review__textBox::-webkit-scrollbar {
+  background-color: transparent;
+  width: 4px;
+}
+.footer__content .footer__right--side .footer__review .review__textBox::-webkit-scrollbar-thumb {
+  background: var(--main-yellow);
+}
+.footer__content .footer__right--side .footer__review .star__rating--container {
+  margin: 0.7rem 0rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.footer__content .footer__right--side .footer__review .star__rating--container label {
+  font-size: 3.2rem;
+  color: var(--placeholder-clr);
+  cursor: pointer;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--main-yellow);
+  transition: all 0.5s ease;
+}
+.footer__content .footer__right--side .footer__review .star__rating--container label:hover {
+  color: var(--main-yellow);
+}
+.footer__content .footer__right--side .footer__review .star__rating--container input[type=radio] {
+  display: none;
+}
+.footer__content .footer__right--side .footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 3.7rem;
+  align-items: center;
+  justify-content: center;
+}
+.footer__content .footer__right--side .footer__social a {
+  color: var(--drk-white);
+  transition: all 0.3s ease-in;
+}
+.footer__content .footer__right--side .footer__social a:hover {
+  transform: scale(1.25);
+  color: var(--main-yellow);
+}
+@media screen and (max-width: 450px) {
+  .footer__content {
+    flex-direction: column;
+    justify-content: center;
+  }
 }/*# sourceMappingURL=footer.css.map */

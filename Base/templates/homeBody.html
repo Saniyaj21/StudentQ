@@ -164,8 +164,21 @@
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
     loop: true,
   });
+
+        {% comment %} swiper.el.onmouseover = function() {
+          swiper.autoplay.stop();
+        };
+      
+        swiper.el.onmouseleave = function() {
+            swiper.autoplay.start();
+        }; {% endcomment %}
+
 
 
   {% comment %} var swiper = new Swiper(".swiper-container", {

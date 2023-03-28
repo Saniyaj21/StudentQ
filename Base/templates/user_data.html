@@ -22,7 +22,13 @@
 
     {% comment %}profile data inputs{% endcomment %}
     <div  class="file_show"  >
-    <input  id="input_photo" class="input_role" type="file" name="dp" accept="image/*">
+    <!-- <div class="in"><input  id="input_photo" class="input_role" type="file" name="dp" accept="image/*"></div>
+    <div class="in"><img id="img" src="{% static 'media/insta.png' %}" alt="not img"></div> -->
+    <div class="dp">
+      <img src="{% static 'media/img.jpg' %}" alt="not" id="img" >
+      <input type="file" name="dp" id="file" accept="image/*">
+      <label for="file" id="upload">➕</label>
+    </div>
     <p class="msg" >This is requird field, picture size also (30kb-70kb)</p>
     </div> 
     

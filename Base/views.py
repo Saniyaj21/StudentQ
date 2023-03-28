@@ -1,5 +1,6 @@
 
 from django.shortcuts import render
+from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import RegisterUserForm
@@ -162,6 +163,7 @@ def roleDetails(request):
     uId = request.user.id
     user = User.objects.get(id = uId)
     profile = Profile.objects.get(user = user)
+    all_inst=Institute.objects.all()
 
     page = 'student'
 
@@ -172,6 +174,10 @@ def roleDetails(request):
             institute = request.POST['institute']
             subject = request.POST['subject']
             interest = request.POST['interest']
+            
+            if institute not in all_inst:
+                Institute.objects.create(name=institute)
+                
             courseDuration = request.POST['courseDuration']
             
             student = Student.objects.get(student_userid = uId)
@@ -275,7 +281,7 @@ def Notices(request, id):
     context = {}
     context["id"] = id
     institute = Institute.objects.get(id = id)
-    ins_notices = institute.notice_set.all()
+    ins_notices = institute.notice_set.all().order_by('-id')
     context["ins_notices"] = ins_notices
 
     return render(request, "notices.html", context)
@@ -286,9 +292,9 @@ def PostNotice(request,id):
    
     if request.method == "POST" and request.FILES['notice']:
         notice = request.FILES['notice']
-        
+        url=reverse('notices',args=[id])
         Notice.objects.create(notice=notice , institute = institute)
-        return redirect('institute')
+        return redirect(url)
      
     return render(request, "postNotice.html")
 

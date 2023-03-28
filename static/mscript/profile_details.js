@@ -1,23 +1,35 @@
-var x=document.getElementById("input_photo")
+var upload=document.getElementById("upload")
+const file=document.querySelector('#file')
+const img=document.querySelector('#img')
 
-x.addEventListener("mouseover", function(){
+upload.addEventListener("mouseover", function(){
  document.querySelector("p.msg").style.display="block"
 })
 
+file.addEventListener("change", function(){
 
+const dp=file.files[0]
+console.log(dp)
+if(dp){
+    const readar= new FileReader()
 
-x.addEventListener("change", function(){
+    readar.addEventListener('load',function(){
 
-var file=x.files;
-console.log(file)
-console.log(file[0].size)
+        img.setAttribute('src', readar.result)
 
-if(file[0].size <= 30*1024 || file[0].size >= 70*1024){
+    })
+
+    readar.readAsDataURL(dp)
+}
+
+if(dp.size <= 30*1024 || dp.size >= 70*1024){
   
 document.querySelector("p.msg").innerHTML="picture must be (30kb-70kb)"
 document.querySelector("p.msg").style.display="block"
 document.querySelector("p.msg").style.color="red"
 document.getElementById("submit").disabled=true;
+img.style.border="solid 3px red"
+
 
 
  return;
@@ -27,8 +39,13 @@ else{
  document.querySelector("p.msg").innerHTML="image add successfully"
  document.querySelector("p.msg").style.color="green"
  document.getElementById("submit").disabled=false;
+ img.style.border="solid 2px green"
+//  upload.style.display="none"
  return;
 
 
 }
 })
+
+
+

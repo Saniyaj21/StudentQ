@@ -101,3 +101,42 @@ input.input_role:focus {
     display: none;
     font-size: 15px;
 }
+
+.dp{
+    /* margin: 20%;
+    margin-left: 40%; */
+    align-items: center;
+    /* border: solid 3px red; */
+    height: 180px;
+    width: 180px;
+    position: relative;
+    padding-top: 20px;
+    
+}
+
+#img{
+    border: solid 2px green;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 150px;
+    width: 150px;
+    
+    
+}
+#file{
+    display: none;
+}
+#upload{
+    /* border: solid 4px rgb(251, 252, 251); */
+    /* border-radius:50% ; */
+    /* background-color: rgb(102, 225, 102); */
+    width: 22px;
+    position: absolute;
+    bottom:40px;
+    left:40px;
+    padding: 3px;
+    font-size: 50px;
+    
+    
+}

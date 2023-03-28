@@ -175,8 +175,14 @@ def roleDetails(request):
             subject = request.POST['subject']
             interest = request.POST['interest']
             
-            if institute not in all_inst:
-                Institute.objects.create(name=institute)
+            try:
+                institute_obj = Institute.objects.get(name=institute)
+            except Institute.DoesNotExist:
+                institute_obj = None
+
+            if institute_obj is None:
+                # Create new Institute object if it doesn't exist
+                institute_obj = Institute.objects.create(name=institute)
                 
             courseDuration = request.POST['courseDuration']
             
@@ -276,6 +282,7 @@ def Institutes(request):
     context["all_institutes"] = all_institutes
     return render(request, "institute.html", context)
 
+@login_required(login_url='login')
 def Notices(request, id):
 
     context = {}
@@ -283,7 +290,21 @@ def Notices(request, id):
     institute = Institute.objects.get(id = id)
     ins_notices = institute.notice_set.all().order_by('-id')
     context["ins_notices"] = ins_notices
+     
+    user=request.user
+    context['post_able']=False
 
+  
+    if user.profile.role=='student':
+        student=Student.objects.get(student_userid=user.id)
+        
+   
+        if institute.name == student.institute:
+            context['post_able']=True
+ 
+    
+
+    
     return render(request, "notices.html", context)
 
 def PostNotice(request,id):

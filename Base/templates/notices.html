@@ -2,11 +2,17 @@
 
 {% block body %}
 <h2>Notices</h2>
-<!-- {{id}} -->
 
-<!-- {{ins_notices.id}} -->
-
+<!-- checks if user is student and his institute is this institute -->
+{% if post_able %}
 <a href="{% url 'postNotice' id %}"><button>post</button></a>
+
+{% endif %}
+
+
+
+
+
 {% for notice in ins_notices %}
 {{notice.institute}}
 {{notice.date_of_post}}

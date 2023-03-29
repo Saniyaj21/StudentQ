@@ -238,6 +238,37 @@ def roleDetails(request):
     return render(request, 'role-details.html', context)
 
 
+# profile section
+@login_required(login_url='login')
+def profile(request,id):
+    context = {}
+
+
+    if request.user.is_authenticated:
+        profileUser = User.objects.get(id = id)
+        print(profileUser.username)
+        context['profileUser'] = profileUser
+
+        dp = profileUser.profile.dp
+        context['dp'] = dp
+        print(dp)
+
+        if profileUser.profile.role == 'student': 
+            student = Student.objects.get(student_userid  = id)
+            context["student"] = student
+
+        elif profileUser.profile.role == 'teacher': 
+            teacher = Teacher.objects.get(teacher_userid  = id)
+            context["teacher"] = teacher
+
+        if profileUser.profile.role == 'owner': 
+            owner = Owner.objects.get(mess_userid  = id)
+            context["owner"] = owner
+    
+    return render(request, 'profile.html', context)
+
+
+
 # study meririal
 def studyMetirial(request):
 

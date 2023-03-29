@@ -33,6 +33,7 @@
   </div>
 
   Hello <span>{{ user.profile.fullName|capfirst }}</span>
+  <a href="{% url 'profile' user.id %}"><button>Your Profile</button></a>
   <br />
   I am a <span>{{ user.profile.role|capfirst }}</span>
   <br />

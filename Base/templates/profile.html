@@ -1,0 +1,82 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block body %}
+<style>
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .details-main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        margin: 10px 20px;
+    }
+
+    img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+</style>
+
+<div class="main">
+    <div class="profile-pic"><img src="{{dp.url}}" alt="{{profileUser.profile.fullName | upper}}"></div>
+    <div class="details-main">
+        <div class="details-left box">
+            <div>User Name : {{profileUser.username}} </div>
+            <div>Full Name : {{profileUser.profile.fullName | upper}} </div>
+            <div>Email : {{profileUser.profile.email}} </div>
+            <div>Profession : {{profileUser.profile.role}} </div>
+            <div>Phone Number : {{profileUser.profile.phNo}} </div>
+            <div>Social Media : {{profileUser.profile.socialId}}
+            </div>
+            <div>About : {{profileUser.profile.desc}} </div>
+
+        </div>
+
+
+        <div class="details-right box">
+            {% if profileUser.profile.role == 'teacher' %}
+            Teacher Location is <span>{{ teacher.location|capfirst }}</span>
+            <br />
+            dptOfTeaching is <span>{{ teacher.dptOfTeaching|upper }}</span>
+            <br />
+            Teacher Location is <span>{{ teacher.qualification|upper }}</span>
+            <br />
+
+            {% elif profileUser.profile.role == 'student' %}
+            Student Institute is <span>{{ student.institute|capfirst }}</span>
+            <br />
+            Student subject is <span>{{ student.subject|upper }}</span>
+            <br />
+            interest in <span>{{ student.interest }}</span>
+            <br />
+            Student courseDuration is <span>{{ student.courseDuration }}</span>
+            <br />
+
+            {% elif profileUser.profile.role == 'owner' %}
+            Owner of Mess <span>{{ owner.mess_name|capfirst }}</span>
+            <br />
+            Room rent <span>{{ owner.rent }}</span>
+            <br />
+            bedAvailable<span>{{ owner.bedAvailable }}</span>
+            <br />
+            address <span>{{ owner.address }}</span>
+            <br />
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

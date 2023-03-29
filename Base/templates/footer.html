@@ -18,11 +18,13 @@
             </a>
         </div>
         <div class="footer__right--side">
-            <div class="footer__review">
+
+            {% comment %} <form class="footer__review" method="post" id="review__form">
                 <h4 class="foot__review--heading">Your Feedback</h4>
                 <textarea name="feedback" id="feedback" cols="30" rows="10" class="review__textBox" placeholder="Type your Feedback hare ..."></textarea>
 
                 <div class="star__rating--container">
+
                     <label for="check-1">
                         <i class="fa-solid fa-star"></i>
                     </label>
@@ -43,10 +45,13 @@
                         <i class="fa-solid fa-star"></i>
                     </label>
                     <input type="radio" name="5" id="check-5" value="5">
+
                 </div>
 
                 <button type="submit" class="btn-blue w-100">Submit</button>
-            </div>
+
+            </form> {% endcomment %}
+
             <div class="footer__social">
                 <a href="http://" target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-facebook"></i>
@@ -69,10 +74,10 @@
 
    <div class="copyRight__container">
     <p class="copyRight-txt">
-        &copy; All rights reserved
+        &copy; 2023 &nbsp;<a href="/" class="site__name">StudentQ</a> . All right reserved.
     </p>
     <p class="companyDetails">
-        Designed &amp; Hosted by <span>PS<sup>3</sup></span>&nbsp;Tech
+        Designed &amp; Hosted by &nbsp;<span class="ps3">PS<sup>3</sup>&nbsp;Tech</span>
     </p>
    </div> 
 </div>

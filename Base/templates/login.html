@@ -14,28 +14,29 @@
 
 
 <div class="loginPage__container">
-  <div class="image">
+  <div class="login__form">
     <img src="{% static 'media/Wlcome-screen.png' %}" alt="welcome" class="imageSize">
-  </div>
+  {% comment %} </div> {% endcomment %}
 
-  <div class="position">
-    <header class="loginStyle " >
-      <h2 class='margin'> Login </h2>
-    </header>
+    <div class="position__form">
+      {% comment %} <header class="loginStyle " > {% endcomment %}
+        <h2 class='margin__heading'> Login </h2>
+      {% comment %} </header> {% endcomment %}
 
-    <form action="" method="post">
-      {% csrf_token %}
-      <label for="userName" class="labels"  >Username</label> <br>
-      <input type="text" id="userName" name="username" placeholder="Enter your username"><br>
-      <label for="password" class="labels">Password</label><br>
-      <input type="password" id="password" name="password" placeholder="Enter your password"><br>
-      <button type="submit">Sign in</button>
-    </form>
-    <div  class="linkPosition">
-      <a href="{% url 'register' %}" target="_blank" rel="" class="linkDecoration">Don't have an account? <u>Register</u></a><br>
-      <a href="/" target="_blank" rel="" class="linkDecoration"> Forgot Password</a>
+      <form action="" method="post">
+        {% csrf_token %}
+        <label for="userName" class="labels">Username</label> <br>
+        <input type="text" id="userName" name="username" placeholder="Enter your username" required><br><br>
+        <label for="password" class="labels">Password</label><br>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required><br><br><br>
+        <button type="submit"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Sign in</button>
+      </form>
+      <div  class="linkPosition">
+        <a href="{% url 'register' %}" rel="" class="linkDecoration">Don't have an account? <u>Register</u></a><br>
+        <a href="/" rel="" class="linkDecoration"> <u>Forgot Password</u></a>
+      </div>
+      
     </div>
-    
   </div>
 </div>
 

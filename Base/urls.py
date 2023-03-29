@@ -13,6 +13,9 @@ urlpatterns = [
     path('profile-details/', views.profileDetails, name='profile-details'),
     path('role-details/', views.roleDetails, name='role-details'),
 
+    # profile section
+    path('profile/<str:id>/', views.profile, name='profile'),
+
 
     # study metirial 
 

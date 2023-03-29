@@ -3,72 +3,93 @@
 {% load static %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'mStyle/role_details.css' %}">
+  <link rel="stylesheet" href="{% static 'mStyle/role_details.css' %}">
 {% endblock %}
 
 
 {% block body %}
 
 
-<div id="form1">
-  
-  
-  
-  {% if page == 'student' %}
+<div class="role--details__container">
+
+  <div id="form1">
     
-    <form class="form1" action="" method="POST">
-      <header id="in_head">
-        <h2 class="header_in">Professional Details</h2>
-       </header>
+    
+    
+    {% if page == 'student' %}
+      
+      <form class="position__form" action="" method="POST">
+
+          <h2 class="margin__heading">Professional Details</h2>
+
+        {% csrf_token %}
 
 
-      {% csrf_token %}
-
-
-      {% comment %}student data input form{% endcomment %}
-  
-      <input class="input_role"  type="text" name="institute" placeholder="institute" />
-      <input class="input_role" type="text" name="subject" placeholder="subject" />
-      <input class="input_role" type="text" name="interest" placeholder="interest" />
-      <input class="input_role" type="text" name="courseDuration" placeholder="courseDuration" />
-
-      <button id="submit"type="submit">Submit</button>
-    </form>
-
-    {% comment %}teacher data input form{% endcomment %}
-    {% elif page == 'teacher' %}
-   
-    <form class="form1" action="" method="POST">
-      <header id="in_head">
-        <h2 class="header_in">Professional Details</h2>
+        {% comment %}student data input form{% endcomment %}
         
-       </header>
-      {% csrf_token %}
-      <input class="input_role" class="input_role" type="text" name="location" placeholder="location" />
-      <input class="input_role"type="text" name="dptOfTeaching" placeholder="dptOfTeaching" />
-      <input class="input_role"type="text" name="qualification" placeholder="qualification" />
+        <label for="institute" class="labels">Select Institute</label>
+        <input class="input_role" id="institute" type="text" name="institute" placeholder="institute" />
 
-      <button id="submit"type="submit">Submit</button>
-    </form>
+        <label for="subject" class="labels">Select subject</label>
+        <input class="input_role" id="subject" type="text" name="subject" placeholder="subject" />
 
-    {% comment %}mess details input form{% endcomment %}
-    {% elif page == 'owner' %}
+        <label for="interest" class="labels">Select interest</label>
+        <input class="input_role" id="interest" type="text" name="interest" placeholder="interest" />
 
-    <form class="form1" action="" method="POST">
-      <header id="in_head">
-        <h2 class="header_in">Professional Details</h2>
-       </header>
-      {% csrf_token %}
-      <input class="input_role"  type="text" name="mess_name" placeholder="mess Name" />
-      <input class="input_role" type="text" name="rent" placeholder="rent " />
-      <input class="input_role" type="text" name="bedAvailable" placeholder="bedAvailable" />
-      <input class="input_role" type="text" name="address" placeholder="address" />
+        <label for="courceDuration" class="labels">Select cource deration</label>
+        <input class="input_role" id="courceDuration" type="text" name="courseDuration" placeholder="courseDuration" />
 
-      <button id="submit"type="submit">Submit</button>
-    </form>
+        <button id="submit" type="submit">Submit</button>
+      </form>
 
-    {% endif %}
-  </div>
+      {% comment %}teacher data input form{% endcomment %}
+      {% elif page == 'teacher' %}
+    
+      <form class="position__form" action="" method="POST">
+
+          <h2 class="margin__heading">Professional Details</h2>
+
+        {% csrf_token %}
+
+        <label for="location" class="labels">Select location</label>
+        <input class="input_role" id="location" type="text" name="location" placeholder="Location" />
+
+        <label for="deptOfTeach" class="labels">Select Depertment</label>
+        <input class="input_role" type="text" id="deptOfTeach" name="dptOfTeaching" placeholder="Depertment Of Teaching" />
+
+        <label for="qualification" class="labels">Select qualification</label>
+        <input class="input_role" id="qualification" type="text" name="qualification" placeholder="Qualification" />
+
+        <button id="submit" type="submit">Submit</button>
+      </form>
+
+      {% comment %}mess details input form{% endcomment %}
+      {% elif page == 'owner' %}
+
+      <form class="position__form" action="" method="POST">
+        
+          <h2 class="margin__heading">Professional Details</h2>
+          
+        {% csrf_token %}
+
+        <label for="messName" class="labels">Select mess name</label>
+        <input class="input_role" id=""  type="text" name="mess_name" placeholder="mess Name" />
+
+        <label for="rent" class="labels">Select rent</label>
+        <input class="input_role" id="rent" type="text" name="rent" placeholder="rent " />
+
+        <label for="bedAvailable" class="labels">Select bed available</label>
+        <input class="input_role" id="bedAvailable" type="text" name="bedAvailable" placeholder="bedAvailable" />
+
+        <label for="address" class="labels">Select address</label>
+        <input class="input_role" id="address" type="text" name="address" placeholder="address" />
+
+        <button id="submit"type="submit">Submit</button>
+      </form>
+
+      {% endif %}
+    </div>
+</div>
 
  
 

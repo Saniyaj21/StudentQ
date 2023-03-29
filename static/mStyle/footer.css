@@ -8,7 +8,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 8rem 5rem 4rem;
+  padding: 8rem 5rem 0rem;
 }
 .footer__content {
   display: flex;
@@ -121,6 +121,18 @@
 .footer__content .footer__right--side .footer__review .star__rating--container input[type=radio] {
   display: none;
 }
+.footer__content .footer__right--side .footer__review .btn-blue {
+  background-color: var(--main-blue);
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--drk-white);
+  padding: 0.6rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+.footer__content .footer__right--side .footer__review .w-100 {
+  width: 100%;
+}
 .footer__content .footer__right--side .footer__social {
   display: flex;
   flex-direction: column;
@@ -142,4 +154,51 @@
     flex-direction: column;
     justify-content: center;
   }
+}
+.footer .copyRight__container {
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 2rem 0 0 0;
+  padding: 0.5rem 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 -4px 10px 0 rgba(0, 0, 0, 0.25);
+}
+.footer .copyRight__container .copyRight-txt {
+  font-size: 1.2rem;
+  font-family: var(--font-primary);
+  color: var(--drk-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer .copyRight__container .copyRight-txt .site__name {
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: var(--main-yellow);
+  font-family: var(--font-ternary);
+  letter-spacing: 0.1rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.footer .copyRight__container .companyDetails {
+  display: flex;
+  color: var(--drk-white);
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+.footer .copyRight__container .companyDetails .ps3 {
+  font-size: 1.5rem;
+  font-family: var(--font-ps);
+  color: var(--main-yellow);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }/*# sourceMappingURL=footer.css.map */

@@ -2,37 +2,39 @@
 
 {% block css %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'mStyle/register.css' %}">
-{% endblock %}
+  <link rel="stylesheet" href="{% static 'mStyle/register.css' %}">
+{% endblock css %}
 
 {% block body %}
 
+<div class="register__container">
+  <div id="form1">
+    {% comment %} <h1 style="text-align: center; margin-top:50px; color: rgb(226, 182, 38);">Wollcome To StudentQ</h1> {% endcomment %}
+    {% comment %} <div class="image"> {% endcomment %}
+      <img src="{% static 'media/Wlcome-screen.png' %}" alt="welcome" class="imageSize">
+    {% comment %} </div> {% endcomment %}
 
-<div id="form1">
-  {% comment %} <h1 style="text-align: center; margin-top:50px; color: rgb(226, 182, 38);">Wollcome To StudentQ</h1> {% endcomment %}
-  <div class="image">
-    <img src="{% static 'media/Wlcome-screen.png' %}" alt="welcome" class="imageSize">
+    <div id="position__form">
+      <h2 class="margin__heading">Register</h2>
+    
+      <form method="POST" action="">
+        {% csrf_token %}
+        <label class="labels" style="font-size: 20px; color: #075E53; margin-top: 15px;" for="form-input1">Create
+          Userid</label>
+        <br>{{form.username}}
+        <br><br><label class="labels" style="font-size: 20px; color: #075E15; margin-top: 15px;"
+          for="id_password1">Password</label>
+        <br>{{form.password1}}
+        <br><br><label class="labels" style="font-size: 20px; color: #075E53; margin-top: 15px;" for="id_password2">Confirm
+          password</label>
+        <br>{{form.password2}}
+
+        <br><br><br>
+        <button id="submit" type="submit" name="sign up">Register</button>
+
+      </form>
+    </div>
   </div>
-
-  <header id="in_head">
-    <h2 class="header_in">Register</h2>
-  </header>
-  <form method="POST" action="">
-    {% csrf_token %}
-    <label class="label" style="font-size: 20px; color: #075E53; margin-top: 15px;" for="form-input1">Create
-      Userid</label>
-    <br>{{form.username}}
-    <br><label class="label" style="font-size: 20px; color: #075E15; margin-top: 15px;"
-      for="id_password1">Password</label>
-    <br>{{form.password1}}
-    <br><label class="label" style="font-size: 20px; color: #075E53; margin-top: 15px;" for="id_password2">Confirm
-      password</label>
-    <br>{{form.password2}}
-
-
-    <input id="submit" type="submit" name="sign up" value="Register">
-
-  </form>
 </div>
 
 

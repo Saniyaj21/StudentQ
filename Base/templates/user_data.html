@@ -3,39 +3,53 @@
 {% extends 'main.html' %}
 
 {% block css %}
+
 {% load static %}
-<link rel="stylesheet" href="{% static 'mStyle/profile_details.css' %}">
-{% endblock %}
+  <link rel="stylesheet" href="{% static 'mStyle/profile_details.css' %}">
+{% endblock css %}
 
 
 {% block body %}
+
+<div class="personal--details__container">
+
 <div id="form1">
  
-  <form action="" method="POST"  enctype="multipart/form-data">
+  <form action="" method="POST"  enctype="multipart/form-data" id="position__form">
 
-    <header id="in_head">
-      <h2 class="header_in">Personal</h2>
-      <h2 class="header_in">Details</h2>
-     </header>
+    <h2 class="margin__heading">Personal Details</h2>
 
     {% csrf_token %}
 
     {% comment %}profile data inputs{% endcomment %}
     <div  class="file_show"  >
-    <!-- <div class="in"><input  id="input_photo" class="input_role" type="file" name="dp" accept="image/*"></div>
-    <div class="in"><img id="img" src="{% static 'media/insta.png' %}" alt="not img"></div> -->
-    <div class="dp">
-      <img src="{% static 'media/img.jpg' %}" alt="not" id="img" >
-      <input type="file" name="dp" id="file" accept="image/*">
-      <label for="file" id="upload">➕</label>
-    </div>
-    <p class="msg" >This is requird field, picture size also (30kb-70kb)</p>
+      <label for="input_photo" class="file_upload_btn"><i class="fa-solid fa-image"></i>&nbsp;<span>Select an image file</span></label>
+      <input  id="input_photo" class="input_role" type="file" name="dp" accept="image/*">
+      <p class="msg-line" >
+        <span class="msg-info-require"> 
+          <i class="fa-solid fa-circle-info fontIcon"></i>
+            &nbsp;This is requird field, picture size also (30kb-70kb)
+        </span>
+        <span class="msg-exclamation">
+          <i class="fa-solid fa-triangle-exclamation"></i>&nbsp;
+          Picture must be (30kb-70kb)
+        </span>
+        <span class="msg-success">
+          <i class="fa-solid fa-circle-check"></i>&nbsp;
+          Image added successfully
+        </span>
+      </p>
+
+      {% comment %} <i class="fa-solid fa-triangle-exclamation"></i>
+      <i class="fa-solid fa-circle-info"></i>
+      <i class="fa-solid fa-circle-check"></i> {% endcomment %}
     </div> 
     
     <input  class="input_role" type="text" name="full-name" placeholder="full-name" />
     <input class="input_role" type="email" name="email" placeholder="Email" />
     
     <select name="role" id="role" class="input_role" type="">
+      {% comment %} <option value="student">Select your role</option> {% endcomment %}
       <option value="student">Student</option>
         <option value="teacher">Teacher</option>
     

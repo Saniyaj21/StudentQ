@@ -1,16 +1,33 @@
 {% extends "main.html" %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'mStyle/postNotice.css' %}">
+{% endblock %}
+
 {% block body %}
 
 <h2>Post Notice</h2>
+<a class="back" href="{{request.META.HTTP_REFERER}}">🔙</a>
 
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="file" name="notice"  >
-    <input type="submit" value="Create" class="btn btn-success">
-    <a class="my-3 mx-5 text-end" href="{{request.META.HTTP_REFERER}}">Go Back</a>
+    <div class="dp">
+        <input type="file" name="notice" id="file" accept="image/*">
+        <img src="{% static 'media/image.png' %}" alt="image" id="img" >
+       
+      </div>
 
+      <div class="sub">
+      <p class="msg" ><i style="width: 20px;" class="fa-solid fa-circle-info fontIcon"></i>&nbsp;<b>Notice size must be(45kb-200kb)</b></p>
+      
+      
+    <input type="submit" value="Upload" id="submit"><br>
+</div>
 
 </form>
+
+<script src="{% static 'mscript/postNotice.js' %}"></script>
 
 
 

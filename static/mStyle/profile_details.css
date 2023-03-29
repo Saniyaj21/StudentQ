@@ -54,7 +54,7 @@
   visibility: hidden;
   opacity: 0;
 }
-.personal--details__container #form1 #position__form .file_show label {
+/* .personal--details__container #form1 #position__form .file_show label {
   width: 100%;
   height: 4.5rem;
   background: var(--theme-clr);
@@ -68,7 +68,7 @@
   border: none;
   border-radius: 1rem;
   cursor: pointer;
-}
+} */
 .personal--details__container #form1 #position__form .file_show .msg-line {
   font-size: 1.4rem;
   padding: 0.2rem;
@@ -76,6 +76,8 @@
 .personal--details__container #form1 #position__form .file_show .msg-line .msg-info-require {
   font-size: 1.4rem;
   color: var(--main-blue);
+  /* border: 1px solid  var(--main-blue);
+  border-radius: 5px; */
   font-weight: 500;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -91,6 +93,8 @@
           user-select: none;
   cursor: help;
   display: none;
+  /* border: 1px solid  #ff6347;
+  border-radius: 5px; */
 }
 .personal--details__container #form1 #position__form .file_show .msg-line .msg-success {
   font-size: 1.6rem;
@@ -101,6 +105,8 @@
           user-select: none;
   cursor: help;
   display: none;
+  /* border: 1px solid  #22a222;
+  border-radius: 5px; */
 }
 .personal--details__container #form1 #position__form input,
 .personal--details__container #form1 #position__form select {
@@ -144,3 +150,54 @@
 .personal--details__container #form1 #position__form button:active, .personal--details__container #form1 #position__form button:hover {
   transform: scale(1.02);
 }/*# sourceMappingURL=profile_details.css.map */
+
+
+
+.dp{
+  /* margin: 20%;
+  margin-left: 40%; */
+  align-items: center;
+  /* border: solid 3px red; */
+  height: 180px;
+  width: 180px;
+  position: relative;
+  padding-top: 20px;
+  
+}
+
+#profile_picture_show_after_upload{
+  border: solid 2px green;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 150px;
+  width: 155px;
+  
+  
+}
+#input_profile_picture{
+  display: none;
+}
+#upload_button{
+  border: solid 3px rgb(251, 252, 251); 
+  border-radius:50% ;
+  background: var(--theme-clr);
+  color: var(--drk-white);
+  width: 34px;
+  position: absolute;
+  bottom:20px;
+  left: 116px;
+  padding: 2px;
+  font-size: 17px;
+  
+}
+
+p.filename{
+  font-size: 1.4rem;
+  padding: 0.2rem;
+  color: var(--theme-clr);
+  border: 1px solid  var(--theme-clr);
+  border-radius: 5px;
+  display: none;
+}
+

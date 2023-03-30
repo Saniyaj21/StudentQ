@@ -170,24 +170,12 @@
   .swiper-container .swiper-button-next {
     display: none;
   }
-}/*# sourceMappingURL=home.css.map */
-
-
-
-
-
-
-
-
-
-
-
+}
 
 /* =========================
 work on user counter style
 ============================*/
-
-.counter{
+.counter {
   display: grid;
   place-content: center;
   border-radius: 30%;
@@ -196,19 +184,18 @@ work on user counter style
   margin-bottom: 5%;
 }
 
-.counter-numbers{
+.counter-numbers {
   font-size: 4.8rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-img.UserImage{
+img.UserImage {
   width: 60%;
   height: auto;
   border-radius: 50%;
-  
+}
 
-}
-.TotalUser{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.TotalUser {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 3rem;
-}
+}/*# sourceMappingURL=home.css.map */

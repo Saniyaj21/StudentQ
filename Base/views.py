@@ -1,5 +1,5 @@
 
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
@@ -339,10 +339,10 @@ def Notices(request, id):
     return render(request, "notices.html", context)
 
 def PostNotice(request,id):
-    student=request.user.username
     institute = Institute.objects.get(id = id)
    
     if request.method == "POST" and request.FILES['notice']:
+        student=request.user.username
         notice = request.FILES['notice']
         notice_caption=request.POST['notice_caption']
         url=reverse('notices',args=[id])
@@ -357,7 +357,9 @@ def PostNotice(request,id):
 def delete_notice(request,id):
     notice=Notice.objects.get(id=id)
     notice.delete()
-    url=reverse('notices',args=[id])
+    return redirect('institute')
+    # url=reverse('notices',args=[id])
+    # return render(request , "delete_msg.html")
     
 
 

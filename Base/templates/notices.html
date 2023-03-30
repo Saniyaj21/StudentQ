@@ -15,15 +15,18 @@
 
 {% for notice in ins_notices %}
 
-<!-- {% if user.username == notice.caption%}
-<a href="{% url 'delete' notice.id %}"><button type="button">Delete</button></a>
-{% endif %} -->
 {{notice.institute}}
 {{notice.date_of_post}}
 {{notice.student}}
 {{notice.caption}}
 <img src="{{notice.notice.url}}" alt="">
 
+{% if request.user.username == notice.student %}
+<h1>{{request.user}}</h1>
+<a href="{% url 'delete' notice.id %}" onclick=""><button>Delete</button></a>
+{% endif %}
+<hr>
 {% endfor %}
+
 
 {% endblock body %}

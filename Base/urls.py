@@ -29,7 +29,7 @@ urlpatterns = [
    
     path('upload-notice/<str:id>/', views.PostNotice, name='postNotice'),
     
-    path('delete/<int:id>',views.delete_notice,name="delete_notice")
+    path('delete/<str:id>/', views.delete_notice ,name="delete")
 ]
 
 # owner -

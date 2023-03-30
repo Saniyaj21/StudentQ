@@ -62,6 +62,14 @@
 
 
 <div class="home__body">
+  <div class="counter">
+    <div class="user">
+      <img src="{% static 'icons/user.png' %}" alt="user" class='UserImage'>
+    </div>
+    <p class="counter-numbers" data-target="{{TotalUser}}">0</p>
+    <p class="TotalUser">Total Users</p>
+  </div>
+
   <h1>Total Users -- {{TotalUser}}</h1>
   <h3 class="stylish__desc--heading">Description</h3>
   <p class="home__body--description">
@@ -199,5 +207,7 @@
   }); {% endcomment %}
 
 </script>
+
+<script src="{% static 'mscript/userCounter.js' %}"></script>
 
 {% endblock javaScript %}

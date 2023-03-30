@@ -171,3 +171,44 @@
     display: none;
   }
 }/*# sourceMappingURL=home.css.map */
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+work on user counter style
+============================*/
+
+.counter{
+  display: grid;
+  place-content: center;
+  border-radius: 30%;
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.counter-numbers{
+  font-size: 4.8rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+img.UserImage{
+  width: 60%;
+  height: auto;
+  border-radius: 50%;
+  
+
+}
+.TotalUser{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 3rem;
+}

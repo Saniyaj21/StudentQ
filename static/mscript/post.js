@@ -49,7 +49,6 @@ function deletePopUp() {
     let element = parent.querySelector('.popUp');
     parent.removeChild(element);
     // element.style.display='none';
-
 }
 
 

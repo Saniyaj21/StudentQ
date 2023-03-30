@@ -108,13 +108,13 @@ input:focus {
     text-align: left;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     outline: none;
-    color: #075E53;
+    color: #075e5281;
 
 }
 ::-webkit-file-upload-button{
 
     color:aliceblue;
-    background: #075E53;
+    background: #075e52fa;
     border-radius: 15px;
     outline: none;
     border: none;
@@ -127,4 +127,29 @@ input:focus {
 
 
 }  
+
+div.sub #notice_caption{
+    width: 90%;
+    height: 40px;
+    left: 40%;
+    top: 35px;
+    padding-left: 15px;
+    background: #D9D9D9;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    font-size: large;
+    text-align: left;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    outline: none;
+    color: #075E53;
+
+
+}
+
+::-webkit-input-placeholder{
+
+    color:#075e5280;
+
+}
 

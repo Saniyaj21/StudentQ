@@ -49,25 +49,51 @@
   display: flex;
   flex-direction: column;
 }
+.personal--details__container #form1 #position__form .file_show .dp {
+  /* margin: 20%;
+  margin-left: 40%; */
+  align-items: center;
+  /* border: solid 3px red; */
+  height: 180px;
+  width: 180px;
+  position: relative;
+  padding-top: 20px;
+}
+.personal--details__container #form1 #position__form .file_show .dp #profile_picture_show_after_upload {
+  border: solid 2px green;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 150px;
+  width: 155px;
+}
+.personal--details__container #form1 #position__form .file_show .dp #input_profile_picture {
+  display: none;
+}
+.personal--details__container #form1 #position__form .file_show .dp #upload_button {
+  border: solid 3px rgb(251, 252, 251);
+  border-radius: 50%;
+  background: var(--theme-clr);
+  color: var(--drk-white);
+  width: 34px;
+  position: absolute;
+  bottom: 20px;
+  left: 116px;
+  padding: 2px;
+  font-size: 17px;
+}
+.personal--details__container #form1 #position__form .file_show .filename {
+  font-size: 1.4rem;
+  padding: 0.2rem;
+  color: var(--theme-clr);
+  border: 1px solid var(--theme-clr);
+  border-radius: 5px;
+  display: none;
+}
 .personal--details__container #form1 #position__form .file_show input[type=file] {
   display: none;
   visibility: hidden;
   opacity: 0;
-}
-.personal--details__container #form1 #position__form .file_show label {
-  width: 100%;
-  height: 4.5rem;
-  background: var(--theme-clr);
-  color: var(--drk-white);
-  text-align: center;
-  font-size: 1.6rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 1rem;
-  cursor: pointer;
 }
 .personal--details__container #form1 #position__form .file_show .msg-line {
   font-size: 1.4rem;

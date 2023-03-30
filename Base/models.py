@@ -106,7 +106,8 @@ class Notice(models.Model):
     notice = models.ImageField(null = False, blank = False, upload_to="media/notice")
     institute = models.ForeignKey(Institute, on_delete=models.CASCADE, null=True)
     date_of_post =models.DateTimeField(auto_now_add=True, null=True)
-
+    caption=models.CharField(max_length=300 , blank=True , null=True)
+    student=models.CharField(max_length=100,null=True)
     
 
    

@@ -339,16 +339,26 @@ def Notices(request, id):
     return render(request, "notices.html", context)
 
 def PostNotice(request,id):
-
+    student=request.user.username
     institute = Institute.objects.get(id = id)
    
     if request.method == "POST" and request.FILES['notice']:
         notice = request.FILES['notice']
+        notice_caption=request.POST['notice_caption']
         url=reverse('notices',args=[id])
-        Notice.objects.create(notice=notice , institute = institute)
+        Notice.objects.create(notice=notice , institute = institute , caption=notice_caption ,student=student)
         return redirect(url)
      
     return render(request, "postNotice.html")
+
+
+
+@login_required(login_url='login')
+def delete_notice(request,id):
+    notice=Notice.objects.get(id=id)
+    notice.delete()
+    url=reverse('notices',args=[id])
+    
 
 
            

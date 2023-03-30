@@ -14,14 +14,15 @@
     {% csrf_token %}
     <div class="dp">
         <input type="file" name="notice" id="file" accept="image/*">
-        <img src="{% static 'media/image.png' %}" alt="image" id="img" >
+        <img src="{% static 'media/default_image/image.png' %}" alt="image" id="img" >
        
       </div>
 
       <div class="sub">
       <p class="msg" ><i style="width: 20px;" class="fa-solid fa-circle-info fontIcon"></i>&nbsp;<b>Notice size must be(45kb-200kb)</b></p>
       
-      
+      <input type="text" name="notice_caption" id="notice_caption" placeholder="About the notice">
+ 
     <input type="submit" value="Upload" id="submit"><br>
 </div>
 

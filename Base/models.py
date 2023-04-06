@@ -29,6 +29,7 @@ class Student(models.Model):
     student_userid  = models.CharField(max_length=200)
     institute = models.CharField(max_length=200, null=True)
     subject = models.CharField(max_length=200, null=True)
+    full_name = models.CharField(max_length=200, null=True)
   
     interest = models.CharField(max_length=200, null=True)
     courseDuration = models.CharField(max_length=200, null=True)

@@ -1,32 +1,113 @@
 {% extends "main.html" %}
 
 {% block body %}
-<h2>Notices</h2>
-
-<!-- checks if user is student and his institute is this institute -->
-{% if post_able %}
-<a href="{% url 'postNotice' id %}"><button>post</button></a>
-
-{% endif %}
 
 
+<style>
+    /* note */
+    /* initially mess and alumni div display will be none */
+    #mess-div {
+        display: none;
+    }
+
+    #alumni-div {
+        display: none;
+    }
+</style>
 
 
 
-{% for notice in ins_notices %}
+<div class="sub-nav">
+    <button id="notice" onclick="noticeToggle()">notice</button>
+    <button id="mess" onclick="messToggle()">mess</button>
+    <button id="alumni" onclick="alumniToggle()">alumni</button>
+</div>
 
-{{notice.institute}}
-{{notice.date_of_post}}
-{{notice.student}}
-{{notice.caption}}
-<img src="{{notice.notice.url}}" alt="">
+<!-- notice -->
+<div class="notice-div" id="notice-div">
 
-{% if request.user.username == notice.student %}
-<h1>{{request.user}}</h1>
-<a href="{% url 'delete' notice.id %}" onclick=""><button>Delete</button></a>
-{% endif %}
-<hr>
-{% endfor %}
+    <h2>Notices</h2>
 
+    <!-- checks if user is student and his institute is this institute -->
+    {% if post_able %}
+    <a href="{% url 'postNotice' id %}"><button>post</button></a>
+
+    {% endif %}
+
+
+    {% for notice in ins_notices %}
+
+    {{notice.institute}}
+    {{notice.date_of_post}}
+    {{notice.student}}
+    {{notice.caption}}
+    <img src="{{notice.notice.url}}" alt="">
+
+    <!-- who can delete ? if he is poster of that notice -->
+    {% if request.user.username == notice.student %}
+    <h1>{{request.user}}</h1>
+    <a href="{% url 'delete' notice.id %}" onclick=""><button>Delete</button></a>
+    {% endif %}
+    <hr>
+    {% endfor %}
+
+</div>
+
+<!-- mess -->
+<div class="mess-div" id="mess-div">
+    <h2>mess</h2>
+</div>
+
+<!-- alumni -->
+<div class="alumni-div" id="alumni-div">
+    <h2>alumni</h2>
+    {% for alumni in alumnis %}
+
+    <a href="{% url 'profile' alumni.student_userid %}">
+        <div>
+            {{alumni.id}} <br>
+            {{alumni.full_name}}
+
+            {% for user in users %}
+            {% if alumni.student_userid == user.id %}
+            {{user.profile.role}}
+            {% endif %}
+            {% endfor %}
+
+            {{alumni.student_userid}}
+            <!-- {{request.user.id}} -->
+        </div>
+    </a>
+
+    {% endfor %}
+</div>
+
+
+
+<script>
+    let notice = document.getElementById('notice-div')
+    let mess = document.getElementById('mess-div')
+    let alumni = document.getElementById('alumni-div')
+
+    function noticeToggle() {
+
+        notice.style.display = 'block'
+        mess.style.display = 'none'
+        alumni.style.display = 'none'
+    }
+    function messToggle() {
+        notice.style.display = 'none'
+        mess.style.display = 'block'
+        alumni.style.display = 'none'
+    }
+    function alumniToggle() {
+        notice.style.display = 'none'
+        mess.style.display = 'none'
+        alumni.style.display = 'block'
+    }
+
+
+
+</script>
 
 {% endblock body %}

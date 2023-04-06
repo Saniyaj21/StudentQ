@@ -9,9 +9,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StudentQ - The ultimate helping hand for Student , Teacher &amp; Room Owner </title>
 
+
+{% comment %} all favicons for all devices {% endcomment %}
+
+  <link rel="apple-touch-icon" sizes="57x57" href="{% static 'icons/apple-icon-57x57.png' %}">
+  <link rel="apple-touch-icon" sizes="60x60" href="{% static 'icons/apple-icon-60x60.png' %}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{% static 'icons/apple-icon-72x72.png' %}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'icons/apple-icon-76x76.png' %}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{% static 'icons/apple-icon-114x114.png' %}">
+  <link rel="apple-touch-icon" sizes="120x120" href="{% static 'icons/apple-icon-120x120.png' %}">
+  <link rel="apple-touch-icon" sizes="144x144" href="{% static 'icons/apple-icon-144x144.png' %}">
+  <link rel="apple-touch-icon" sizes="152x152" href="{% static 'icons/apple-icon-152x152.png' %}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-icon-180x180.png' %}">
+  {% comment %} <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"> {% endcomment %}
+
+  <link rel="shortcut icon" href="{% static 'icons/favicon.ico' %}" type="image/x-icon" />
+
+  <link rel="manifest" href="{% static 'icons/manifest.json' %}">
+  <meta name="msapplication-TileColor" content="#D2FFF9">
+  <meta name="msapplication-TileImage" content="{% static 'icons/ms-icon-144x144.png' %}">
+
+  {% comment %} <meta name="theme-color" content="#D2FFF9"> {% endcomment %}
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#1a376e">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#1a376e">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  {% comment %} <meta name="apple-mobile-web-app-status-bar-style" content="#1a376e"> {% endcomment %}
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+
+{% comment %} all favicons for all devices {% endcomment %}
+
+
+
   {% comment %} <a target="_blank" href="https://icons8.com/icon/80355/star">Star</a> icon by <a target="_blank"
     href="https://icons8.com">Icons8</a> {% endcomment %}
-  <link rel="shortcut icon" href="{% static 'icons/favicon.png' %}" type="image/png" />
+  {% comment %} <link rel="shortcut icon" href="{% static 'icons/favicon.ico' %}" type="image/x-icon" /> {% endcomment %}
 
 
   <link rel="stylesheet" href="{% static 'mStyle/main.css' %}">
@@ -31,7 +70,22 @@
 
 </head>
 
-<body>
+<body onload="logingStart()">
+
+{% comment %} Page loader added for great user experience  ---->Starts hare {% endcomment %}
+
+  <div class="loaderPage__container">
+    <img src="{% static 'media/Site_Logo.png' %}" alt="Logo" class="logo__loader">
+        <div class="ball-loader">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+        </div>
+  </div>
+
+  {% comment %} Page loader added for great user experience ---->Ends hare  {% endcomment %}
 
   <nav class="nav" id="nav">
 

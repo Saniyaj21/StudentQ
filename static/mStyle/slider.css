@@ -112,6 +112,10 @@
 
 @media screen and (max-width:450px) {
 
+    /* .slider__container{
+        margin-top: 6.5rem;
+    } */
+
     .slider__container,
     .slide,
     .slideImages__container,

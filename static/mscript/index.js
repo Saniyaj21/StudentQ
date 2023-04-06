@@ -7,15 +7,21 @@ const navber = document.querySelector(".navber");
 const toggleBarIcon = document.querySelector(".toggle__bars");
 const logInOut = document.querySelector(".log__in--out");
 const visibleBtnsDiv = document.querySelector(".btnContainer--btns");
+const load = document.querySelector(".loaderPage__container");
 
-window.onscroll = function () {
-    if (window.pageYOffset >= menu.offsetTop) {
-        nav.classList.add("fixed");
-    }
-    else {
-        nav.classList.remove("fixed");
-    }
+function logingStart() {
+    load.style.display = 'none';
 }
+
+
+// window.onscroll = function () {
+//     if (window.pageYOffset >= menu.offsetTop) {
+//         nav.classList.add("nav_fixed");
+//     }
+//     else {
+//         nav.classList.remove("nav_fixed");
+//     }
+// }
 
 toggle.addEventListener('click',()=>{
     console.log("toggle clicked");

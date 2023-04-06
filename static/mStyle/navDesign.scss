@@ -6,11 +6,25 @@
     z-index: 9999 !important;
 
     @media screen and (max-width: 450px) {
-        flex-direction: row;
         background-color: var(--dark-blue);
+        flex-direction: row;
         align-items: center;
         justify-content: center;
+        // position: fixed;
+        // top: 0;
+        // left: 0;
     }
+
+    // &.nav_fixed{
+    //     position: fixed;
+    //     top: 0;
+    //     left: 0;
+    //     background: rgba($color: #d2fff9, $alpha: 0.9);
+
+    //     @media screen and (max-width:450px) {
+    //         background-color: var(--dark-blue);
+    //     }
+    // }
 
     .header {
         display: flex;

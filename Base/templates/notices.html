@@ -65,16 +65,17 @@
 
     <a href="{% url 'profile' alumni.student_userid %}">
         <div>
-            {{alumni.id}} <br>
-            {{alumni.full_name}}
+            <!-- {{alumni.full_name}} -->
 
+            <!-- {{alumni.id}} <br>
             {% for user in users %}
             {% if alumni.student_userid == user.id %}
             {{user.profile.role}}
             {% endif %}
-            {% endfor %}
+            {% endfor %} -->
 
             {{alumni.student_userid}}
+            {{alumni.name}}
             <!-- {{request.user.id}} -->
         </div>
     </a>

@@ -150,8 +150,8 @@ def profileDetails(request):
             Teacher.objects.create(teacher_userid = uId)
         elif role == "student":
             Student.objects.create(student_userid = uId)
-            that_student = Student.objects.get(student_userid = uId)
-            that_student.full_name = fullname
+            # that_student = Student.objects.get(student_userid = uId)
+            # that_student.full_name = fullname
         elif role == "owner":
             Owner.objects.create(mess_userid = uId)
 
@@ -189,11 +189,14 @@ def roleDetails(request):
             courseDuration = request.POST['courseDuration']
             
             student = Student.objects.get(student_userid = uId)
+            fullName = request.user.profile.fullName
+            print(fullName)
 
             student.institute = institute
             student.subject = subject
             student.interest = interest
             student.courseDuration = courseDuration
+            student.name = fullName
 
             student.save()
             return redirect('home')
@@ -337,10 +340,10 @@ def Notices(request, id):
 
     # all alumni of that institute
     alumnis = Student.objects.filter(institute = institute)
-    users = User.objects.all()
+    # users = User.objects.all()
 
     context['alumnis'] = alumnis
-    context['users'] = users
+    # context['users'] = users
  
     
 

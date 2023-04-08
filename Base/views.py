@@ -274,20 +274,6 @@ def profile(request,id):
 
 
 
-# study meririal
-def studyMetirial(request):
-
-    user = request.user
-    context={}
-
-    
-
-    posts = Tutorial.objects.all()
-    context["posts"] = posts
-    return render(request,"study_metirial.html", context)
-
-        
-
         
 
 def postPage(request):
@@ -376,12 +362,37 @@ def delete_notice(request,id):
 
 
            
+# study meririal
+def studyMetirial(request):
 
+    user = request.user
+    context={}
 
-           
+    
+
+    posts = Tutorial.objects.all()
+    context["posts"] = posts
+    return render(request,"study_metirial.html", context)
+
+        
+
             
-           
+# @login_required(login_url='login')          
+def search(request):
+    query=request.GET['query']
+    if len(query)>100:
+        posts=Tutorial.objects.none()
+        query=query[0:10]+'.....'
+    else:
+        postsTopic=Tutorial.objects.filter(topic__icontains=query)
+        postsDescription=Tutorial.objects.filter(desc__icontains=query)
+        posts=postsTopic.union(postsDescription)
 
+    if posts.count()==0:
+        messages.error(request, 'No search result found, Please refine your query')
+    
+    context={'posts':posts,'query':query}
+    return render(request, 'study_metirial.html', context)
 
 
 

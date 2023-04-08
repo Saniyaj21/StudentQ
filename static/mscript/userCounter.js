@@ -1,6 +1,6 @@
 
 
-const workSection = document.body.querySelector('.counter');
+const workSection = document.body.querySelector('.counter-numbers');
 const workObserver = new IntersectionObserver((entries, observer) => {
     const [entry] = entries;
     console.log(entry);

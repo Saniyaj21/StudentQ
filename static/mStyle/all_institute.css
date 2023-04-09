@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: auto;
+    box-sizing: border-box;
+}
+h2{
+    text-align: center;
+    font-size: 3rem;
+    font-family: var(--font-secondary);
+    color: var(--theme-clr);
+    margin-top: 15px;
+    font-weight: 400;
+}
+
+div.institute_container{
+    padding: 10px;
+    /* border: solid 2px green; */
+    border-radius: 10px;
+    height: auto;
+    width: 80%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    align-content:center;
+    justify-content: center;
+    padding-top: 30px;
+}
+div.institute_container a{
+    width: 350px;
+    height: 100px;
+    /* background:#075E53; */
+    margin: 10px;
+    border: solid 1px #075E53;
+   color:rgb(26, 27, 28);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    font-size: large;
+    text-align: center;
+    justify-items: center;
+    text-align: center;
+    
+    cursor: pointer;
+
+}
+div.institute_container a:hover{
+
+    background: linear-gradient(45deg ,#075E53,#075e5288);
+    color:aliceblue;
+    
+    transition: 0.5s;
+   
+}
+ 
+a div.institute_item p{
+    margin-top: 30px;
+    /* border: red solid 2px; */
+    font-family: var(--font-secondary);
+    font-weight: 100;
+    letter-spacing:2px;
+}

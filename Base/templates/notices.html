@@ -1,5 +1,13 @@
 {% extends "main.html" %}
 
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'mstyle/notice.css'%}">
+
+
+{% endblock %}
+
+
 {% block body %}
 
 
@@ -16,39 +24,88 @@
 </style>
 
 
-
-<div class="sub-nav">
-    <button id="notice" onclick="noticeToggle()">notice</button>
-    <button id="mess" onclick="messToggle()">mess</button>
-    <button id="alumni" onclick="alumniToggle()">alumni</button>
-</div>
-
 <!-- notice -->
 <div class="notice-div" id="notice-div">
-
-    <h2>Notices</h2>
+    <!-- sub-nev bar adding -->
+    <nav>
+    
+        <div class="sub-nav">
+            <button id="notice" onclick="noticeToggle()"><i class="fa-sharp fa-solid fa-file-contract"></i>&nbsp;notice</button>
+            <button id="mess" onclick="messToggle()"><i class="fa-sharp fa-solid fa-bed"></i>&nbsp;mess</button>
+            <button id="alumni" onclick="alumniToggle()"><i class="fa-solid fa-user"></i>&nbsp;alumni</button>
+            <button id="teacher" onclick="teacherToggle()"><i class="fa-solid fa-person-chalkboard"></i>&nbsp;Teacher</button>
+        </div>
+    </nav>
+ <!-- show institute name -->
+    <h2 align="center">Notices of:&nbsp; <u style="color:#075E53;;">{{instituteName }} </u> </h2>
 
     <!-- checks if user is student and his institute is this institute -->
     {% if post_able %}
-    <a href="{% url 'postNotice' id %}"><button>post</button></a>
+    <nav>
+        <a href="{% url 'postNotice' id %}"><button ><i style="width: 20px;" class="fa-solid fa-image"></i>&nbsp;post</button></a>
+
+    </nav>
 
     {% endif %}
 
 
     {% for notice in ins_notices %}
+      
+    <!-- chack profile , whose student upload the notices -->
 
-    {{notice.institute}}
-    {{notice.date_of_post}}
-    {{notice.student}}
-    {{notice.caption}}
-    <img src="{{notice.notice.url}}" alt="">
+     {%  for poster in noticePoster %}
+
+        <!-- if find notice  poster(student) profile , then show her dp and fullname   -->
+          {% if notice.student == poster.user.username%}
+          
+     
+        <table>
+            <tr>
+                <td rowspan="2" style="align-items: end;">
+                    <!-- profile dp -->
+                    <img  id="dp" src="{{poster.dp.url}}" alt="image" class="notice_file">
+
+                </td>
+                <td>
+                    <!-- full name of the student -->
+                  <h2> {{poster.fullName}}
+                </h2>
+
+                </td>
+            </tr>
+
+                <tr>
+                <td style="color: gray; font-size:15px;">
+                   <!-- upload time -->
+                    {{notice.date_of_post | timesince}} &nbsp;ago
+                </td>
+            </tr>
+         
+        </table>
+        {% endif %}    
+        {% endfor %}
+
+
+    <!-- {{notice.institute}} -->
+    {% if notice.caption %}
+    <p>
+        <!-- notice caption -->
+       <b style="color:#075E53;">Topic:&nbsp;</b> <i style="color:#075e52c4;">{{notice.caption}}</i>
+    </p>
+    {% endif%}
+    <!-- show notice  -->
+    <img style="margin-top: 5px;" src="{{notice.notice.url}}" alt="image" class="notice_file">
+   <nav>
+    <b>upload at :&nbsp;</b> <u style="color:rgb(117, 92, 92); font-size: 15px;"> {{notice.date_of_post }}</u>
+   </nav>
 
     <!-- who can delete ? if he is poster of that notice -->
     {% if request.user.username == notice.student %}
-    <h1>{{request.user}}</h1>
-    <a href="{% url 'delete' notice.id %}" onclick=""><button>Delete</button></a>
+   
+    <a href="{% url 'delete' notice.id %}" onclick=""><button type="button" style="background: red;"><i class="fa-solid fa-trash" style="color: #e8eaee;"></i>&nbsp;Delete</button></a>
     {% endif %}
-    <hr>
+
+    <hr style="margin-top: 10px;">
     {% endfor %}
 
 </div>
@@ -56,6 +113,11 @@
 <!-- mess -->
 <div class="mess-div" id="mess-div">
     <h2>mess</h2>
+</div>
+
+<!-- teacher -->
+<div class="teacher-div" id="teacher-div">
+    <h2>Teacher</h2>
 </div>
 
 <!-- alumni -->
@@ -89,22 +151,37 @@
     let notice = document.getElementById('notice-div')
     let mess = document.getElementById('mess-div')
     let alumni = document.getElementById('alumni-div')
+    let teacher=document.getElementById('teacher-div')
 
     function noticeToggle() {
 
         notice.style.display = 'block'
         mess.style.display = 'none'
         alumni.style.display = 'none'
+        teacher.style.display= 'none'
     }
     function messToggle() {
         notice.style.display = 'none'
         mess.style.display = 'block'
         alumni.style.display = 'none'
+        teacher.style.display= 'none'
+
     }
     function alumniToggle() {
         notice.style.display = 'none'
         mess.style.display = 'none'
         alumni.style.display = 'block'
+        teacher.style.display= 'none'
+
+    }
+
+    function teacherToggle() {
+        notice.style.display = 'none'
+        mess.style.display = 'none'
+        alumni.style.display = 'none'
+        teacher.style.display= 'block'
+
+
     }
 
 

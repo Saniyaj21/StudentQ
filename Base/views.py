@@ -330,8 +330,13 @@ def Notices(request, id):
 
     context['alumnis'] = alumnis
     # context['users'] = users
- 
     
+    # get all notice-poster profile
+    noticePoster = Profile.objects.all()
+    context['noticePoster']=noticePoster
+    # get when institute are select from user
+    context['instituteName']=institute
+  
 
     
     return render(request, "notices.html", context)

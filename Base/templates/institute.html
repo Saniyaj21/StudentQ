@@ -1,10 +1,22 @@
 {% extends "main.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'mStyle/all_institute.css' %}">
 
+{% endblock css %}
 {% block body %}
 <h2>Institutes</h2>
-{% for instut in all_institutes %}
-<a href="{% url 'notices' instut.id  %}">{{instut.name}}</a>
+    <div class="institute_container">
+        {% for instut in all_institutes %}
+        <a href="{% url 'notices' instut.id  %}">
+                <div class="institute_item">
+                
+                <p>{{instut.name}}</p>
+            </div>
+            </a>
+            
+            {% endfor %}
 
-{% endfor %}
+    </div>
 
 {% endblock body %}

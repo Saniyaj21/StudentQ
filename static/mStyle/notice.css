@@ -1,0 +1,136 @@
+div.notice-div{
+    position: relative;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width:50%;
+    height: auto;
+    font-size: 20px;
+    /* border: solid red 2px; */
+    padding:5px;
+
+
+}
+
+div.notice-div img{
+    position:relative;
+    border-radius: 10px;
+    /* border: solid 3px red; */
+    margin-left: 50%;
+    transform: translateX(-50%);
+    height:100%;
+    width:100%;
+
+}
+
+div.notice-div nav{
+    text-align: end;
+}
+div.notice-div a button{
+
+    width: 100px;
+    height: 40px;
+    margin-top: 20px;
+    background: #0650c7;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    font-size: large;
+    text-align: center;
+    color: aliceblue;
+    text-align: center;
+   
+    cursor: pointer;
+
+}
+div.notice-div #dp{
+    height: 70px;
+    width: 70px;
+    border: 1px solid #075E53;
+    border-radius: 50%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom:-5px;
+  
+}
+ul li{
+    display: inline;
+}
+nav{
+    position: relative;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width:100%;
+    height: auto;
+    font-size: 20px;
+    /* border: solid red 2px; */
+    padding:5px;
+}
+
+nav div.sub-nav{
+   text-align: center;
+   border: rgba(0, 0, 0, 0.25) solid 1px ;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+   border-radius: 10px;
+   padding: 5px;
+   /* background: #075E53;;  */
+}
+nav div.sub-nav button{
+    width: 100px;
+    height: 40px;
+    background:none;
+    border: solid 1px #075E53;
+   
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    font-size: large;
+    text-align: center;
+    
+    text-align: center;
+   
+    cursor: pointer;
+}
+nav div.sub-nav button:hover {
+    background: #075E53;
+    color: aliceblue;
+}
+nav div.sub-nav button:hover i{
+    color:aliceblue;
+}
+nav div.sub-nav button:active{
+    background: #075E53;
+    color: aliceblue;
+
+}
+
+@media screen and (max-width: 1000px) {
+    div.notice-div{
+        width: 80%;
+    }
+    div.notice-div img{
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    div.notice-div{
+        width: 100%;
+    }
+    div.notice-div  img{
+        width: 100%;
+    }
+   
+}
+
+@media screen and (max-width:450px)
+{
+    nav div.sub-nav button{
+        width: 65px ;
+        font-size:12px;
+        padding: 0px;
+        border-radius: 8px;
+      
+    }
+
+}

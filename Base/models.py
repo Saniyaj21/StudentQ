@@ -26,14 +26,13 @@ class Profile(models.Model):
 
 class Student(models.Model):
     
-    student_userid  = models.CharField(max_length=200)
+    student_userid  = models.IntegerField()
     institute = models.CharField(max_length=200, null=True)
     subject = models.CharField(max_length=200, null=True)
     name = models.CharField(max_length=200, null=True)
-  
     interest = models.CharField(max_length=200, null=True)
     courseDuration = models.CharField(max_length=200, null=True)
-
+    
     def __str__(self):
         return self.student_userid
     
@@ -42,13 +41,14 @@ class Student(models.Model):
 
 class Teacher(models.Model):
 
-    teacher_userid  = models.CharField(max_length=200)
+    teacher_userid  =models.IntegerField()
     location = models.CharField(max_length=200, null=True)
     dptOfTeaching = models.CharField(max_length=200, null=True)
     qualification = models.CharField(max_length=200, null=True)
+    institute=models.CharField(max_length=200, null=True)
     
     def __str__(self):
-        return self.teacher_userid
+        return self.institute
 
     
     
@@ -59,9 +59,10 @@ class Teacher(models.Model):
 
 class Owner(models.Model):
 
-    mess_userid  = models.CharField(max_length=200)
+    mess_userid  = models.IntegerField()
     mess_name = models.CharField(max_length=200, null=True)
     rent =models.CharField(max_length = 10, null = True)
+    institute=models.CharField(max_length=200, null=True)
     
     bedAvailable =models.CharField(max_length = 10, null = True)
     address =models.CharField(max_length = 300, null = True)
@@ -85,7 +86,7 @@ class Review(models.Model):
 
 # public share video model
 class Tutorial(models.Model):
-    poster_user_id = models.CharField(max_length=10)
+    poster_user_id = models.IntegerField()
     name = models.CharField(max_length=200 ,null=True)
     link = models.CharField(max_length=500)
     topic = models.CharField(max_length=500)
@@ -98,7 +99,8 @@ class Tutorial(models.Model):
 
 class Institute(models.Model):
     name = models.CharField(max_length=200)
-    
+    institute_location=models.CharField(max_length=200, null=True)
+
 
     def __str__(self):
         return self.name

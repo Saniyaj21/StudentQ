@@ -21,21 +21,25 @@
     #alumni-div {
         display: none;
     }
+    #teacher-div{
+        display: none;
+    }
 </style>
 
+ <!-- sub-nev bar adding -->
+ <nav>
+    
+    <div class="sub-nav">
+        <button id="notice" onclick="noticeToggle()"><i class="fa-sharp fa-solid fa-file-contract"></i>&nbsp;Notice</button>
+        <button id="mess" onclick="messToggle()"><i class="fa-sharp fa-solid fa-bed"></i>&nbsp;Mess</button>
+        <button id="alumni" onclick="alumniToggle()"><i class="fa-solid fa-user"></i>&nbsp;Alumni</button>
+        <button id="teacher" onclick="teacherToggle()"><i class="fa-solid fa-person-chalkboard"></i>&nbsp;Teacher</button>
+    </div>
+</nav>
 
 <!-- notice -->
 <div class="notice-div" id="notice-div">
-    <!-- sub-nev bar adding -->
-    <nav>
-    
-        <div class="sub-nav">
-            <button id="notice" onclick="noticeToggle()"><i class="fa-sharp fa-solid fa-file-contract"></i>&nbsp;notice</button>
-            <button id="mess" onclick="messToggle()"><i class="fa-sharp fa-solid fa-bed"></i>&nbsp;mess</button>
-            <button id="alumni" onclick="alumniToggle()"><i class="fa-solid fa-user"></i>&nbsp;alumni</button>
-            <button id="teacher" onclick="teacherToggle()"><i class="fa-solid fa-person-chalkboard"></i>&nbsp;Teacher</button>
-        </div>
-    </nav>
+   
  <!-- show institute name -->
     <h2 align="center">Notices of:&nbsp; <u style="color:#075E53;;">{{instituteName }} </u> </h2>
 
@@ -68,8 +72,8 @@
                 </td>
                 <td>
                     <!-- full name of the student -->
-                  <h2> {{poster.fullName}}
-                </h2>
+                  <h3> {{poster.fullName}}
+                </h3>
 
                 </td>
             </tr>
@@ -95,9 +99,13 @@
     {% endif%}
     <!-- show notice  -->
     <img style="margin-top: 5px;" src="{{notice.notice.url}}" alt="image" class="notice_file">
+    <p  id="url" style="display: none;">{{notice.notice.url}}</p>
+    <p  id="caption" style="display: none;">{{notice.caption}}</p>
    <nav>
-    <b>upload at :&nbsp;</b> <u style="color:rgb(117, 92, 92); font-size: 15px;"> {{notice.date_of_post }}</u>
+       <span onclick="whatsapp()"><i style="font-size:30px; color:#075E53;" class="fa-brands fa-whatsapp"></i></span>
+       <b style="margin-right:2px;">upload at :&nbsp;</b> <u style="color:rgb(117, 92, 92); font-size: 15px;"> {{notice.date_of_post }}</u>
    </nav>
+   
 
     <!-- who can delete ? if he is poster of that notice -->
     {% if request.user.username == notice.student %}
@@ -112,37 +120,134 @@
 
 <!-- mess -->
 <div class="mess-div" id="mess-div">
-    <h2>mess</h2>
+    <h2 class="header">Mess</h2>
+     <div class="items-container">
+
+        {% for mess in allMess %}
+        <a href="{% url 'profile' mess.mess_userid %}" > 
+        <div class="items" style="margin-top:15px;">
+         <p><h2>{{mess.mess_name}}</h2></p>
+         <p id="mess-address"><i class="fa-solid fa-location-dot"></i>&nbsp;{{mess.address}}</p>
+         <p id="sites_Available"><i class="fa-sharp fa-solid fa-bed"></i>&nbsp;{{mess.bedAvailable}}</p>
+         </div>
+         </a>
+        {% endfor %}
+
+     </div>
 </div>
 
 <!-- teacher -->
 <div class="teacher-div" id="teacher-div">
-    <h2>Teacher</h2>
+
+    <h2 class="header">Teacher</h2>
+     
+     
+     <div class="items-container">
+   {% for teacher in allTeachers %}
+        <a style="height:125px;" href="{% url 'profile' teacher.teacher_userid %}" > 
+        <div class="items">
+         {%  for poster in noticePoster %}  
+
+                {% comment %} {{poster.user.id}} {% endcomment %}
+
+                {% if teacher.teacher_userid == poster.user.id %}
+                     {% comment %} {{poster.user.id}} {% endcomment %}
+                      <table style="padding:5px; margin-left:20px; margin-top:-27px;">
+            <tr>
+                <td rowspan="2" style="align-items: end;">
+                    <!-- profile dp -->
+                    <img style="margin-bottom:-13px; margin-left:30%;" id="dp" src="{{poster.dp.url}}" alt="image" class="notice_file">
+
+                </td>
+                <td>
+                    <!-- full name of the student -->
+                  <h2 style="margin-left:0px; font-size:23px; "> {{poster.fullName}}
+                </h2>
+                
+                </td>
+            </tr>
+
+                <tr>
+                <td  id="subject" style="font-size:15px; text-align:left;">
+                   <!-- upload time -->
+                <p id="subject" style="font-size:15px;"><i class="fa-solid fa-graduation-cap"></i>&nbsp;{{teacher.qualification}}</p>
+
+                   <p><i class="fa-solid fa-person-chalkboard"></i>&nbsp;{{teacher.dptOfTeaching}}</p>
+                   <p><i class="fa-solid fa-location-dot"></i>&nbsp;{{teacher.location}}</p>
+
+                </td>
+            </tr>
+         
+        </table>
+           
+        {% endif %}  
+              
+        {% endfor %}
+        
+        </div>
+         </a>
+        {% endfor %}
+     </div>
 </div>
 
 <!-- alumni -->
 <div class="alumni-div" id="alumni-div">
-    <h2>alumni</h2>
-    {% for alumni in alumnis %}
+    <h2 class="header">Alumni</h2>
+    <div class="items-container">
 
-    <a href="{% url 'profile' alumni.student_userid %}">
-        <div>
-            <!-- {{alumni.full_name}} -->
+        {% for alumni in alumnis %}
+    
+        <a href="{% url 'profile' alumni.student_userid %}">
+            <div class="items">
+                <!-- {{alumni.full_name}} -->
+    
+                <!-- {{alumni.id}} <br>
+                {% for user in users %}
+                {% if alumni.student_userid == user.id %}
+                {{user.profile.role}}
+                {% endif %}
+                {% endfor %} --> 
+                
+                {% comment %} {{alumni.student_userid}} {% endcomment %}
+                {%  for poster in noticePoster %}  
 
-            <!-- {{alumni.id}} <br>
-            {% for user in users %}
-            {% if alumni.student_userid == user.id %}
-            {{user.profile.role}}
-            {% endif %}
-            {% endfor %} -->
+                {% comment %} {{poster.user.id}} {% endcomment %}
 
-            {{alumni.student_userid}}
-            {{alumni.name}}
-            <!-- {{request.user.id}} -->
-        </div>
-    </a>
+                {% if alumni.student_userid == poster.user.id %}
+                     {% comment %} {{poster.user.id}} {% endcomment %}
+                      <table style="padding:5px; margin-left:20px; margin-top:-27px;">
+            <tr>
+                <td rowspan="2" style="align-items: end;">
+                    <!-- profile dp -->
+                    <img  id="dp" src="{{poster.dp.url}}" alt="image" class="notice_file">
 
-    {% endfor %}
+                </td>
+                <td>
+                    <!-- full name of the student -->
+                  <h3 style="margin-left:5px;"> {{poster.fullName}}
+                </h3>
+
+                </td>
+            </tr>
+
+                <tr>
+                <td  id="subject" style="font-size:15px;">
+                   <!-- upload time -->
+                   <h4><i class="fa-solid fa-graduation-cap"></i>&nbsp; {{alumni.subject}}</h4>
+                </td>
+            </tr>
+         
+        </table>
+           
+        {% endif %}  
+              
+        {% endfor %}
+                <!-- {{request.user.id}} -->
+            </div>
+        </a>
+    
+        {% endfor %}
+    </div>
 </div>
 
 
@@ -152,6 +257,11 @@
     let mess = document.getElementById('mess-div')
     let alumni = document.getElementById('alumni-div')
     let teacher=document.getElementById('teacher-div')
+
+    let url=document.getElementById("url").innerHTML
+    console.log(url)
+    let caption= document.getElementById("caption").innerHTML
+    console.log(caption)
 
     function noticeToggle() {
 
@@ -184,8 +294,30 @@
 
     }
 
+    function whatsapp(){
+
+       
+        // Define the image URL
+        // var imageUrl = "{{notice.notice.url}}"; 
+        var imageUrl = "http://127.0.0.1:8000/"+url;
+        
+        // Define the WhatsApp message
+        var message = "Notice topic:" +caption +"_____Image:"+ imageUrl;
+        
+        // Construct the WhatsApp URL
+        var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(message);
+        
+        // Create an anchor element with the WhatsApp URL
+        var whatsappLink = document.createElement("a");
+        whatsappLink.href = whatsappUrl;
+        
+        // Open the WhatsApp share dialog
+        whatsappLink.click();
+    }
+
 
 
 </script>
+
 
 {% endblock body %}

@@ -42,14 +42,16 @@ div.notice-div a button{
     cursor: pointer;
 
 }
-div.notice-div #dp{
+div.notice-div #dp , #dp{
     height: 70px;
     width: 70px;
     border: 1px solid #075E53;
     border-radius: 50%;
     margin-left: 50%;
     transform: translateX(-50%);
-    margin-bottom:-5px;
+    padding:2px;
+    margin-bottom: -9px;
+    
   
 }
 ul li{
@@ -70,7 +72,9 @@ nav div.sub-nav{
    text-align: center;
    border: rgba(0, 0, 0, 0.25) solid 1px ;
    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
+   margin-left: 50%;
+   transform: translateX(-50%);
+   width: 50%;
    border-radius: 10px;
    padding: 5px;
    /* background: #075E53;;  */
@@ -110,6 +114,9 @@ nav div.sub-nav button:active{
     div.notice-div img{
         width: 100%;
     }
+    nav div.sub-nav{
+        width: 80%;
+    }
 
 }
 
@@ -120,17 +127,106 @@ nav div.sub-nav button:active{
     div.notice-div  img{
         width: 100%;
     }
+    nav div.sub-nav{
+        width: 100%;
+    }
    
 }
 
 @media screen and (max-width:450px)
 {
+    
+    nav div.sub-nav{
+        align-items: start;
+    }
+
     nav div.sub-nav button{
-        width: 65px ;
-        font-size:12px;
-        padding: 0px;
+        width: 62px ;
+        font-size:15px;
+        padding: 2px;
+        margin-left: 2px;
         border-radius: 8px;
+        
       
     }
 
 }
+
+
+
+/* heder all page */
+div  h2.header{
+    text-align: center;
+    font-size: 3rem;
+    font-family: var(--font-secondary);
+    color: var(--theme-clr);
+    margin-top: 15px;
+    font-weight: 400;
+}
+
+div .items-container{
+    padding: 10px;
+    /* border: solid 2px green; */
+    border-radius: 10px;
+    height: auto;
+    width: 80%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    align-content:center;
+    justify-content: center;
+    padding-top: 30px;
+
+}
+
+ div.alumni-div a , div.mess-div a , div.teacher-div a{
+    width: 350px;
+    height: 100px;
+    /* background:#075E53; */
+    margin: 10px;
+    border: solid 1px #075E53;
+   color:rgb(26, 27, 28);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    font-size: large;
+    text-align: center;
+    
+    cursor: pointer;
+
+}
+
+ div.alumni-div a:hover , div.mess-div a:hover , div.teacher-div a:hover{
+
+    background: linear-gradient(45deg ,#075E53,#075e5288);
+    color:aliceblue;
+    
+    transition: 0.5s;
+   
+}
+
+a div.items {
+    margin-top: 30px;
+    /* border: red solid 2px; */
+    font-family: var(--font-secondary);
+    font-weight: 100;
+    letter-spacing:2px;
+}
+
+#subject , div.items #mess-address , div.items #sites_Available{
+    color:gray;
+    font-size: 15px;
+}
+
+a:hover #subject , div.mess-div a:hover div.items #mess-address
+, div.mess-div a:hover div.items #sites_Available{
+    color: rgba(244, 248, 248, 0.68);
+}
+
+a:hover #dp{
+    border: solid 2px aliceblue;
+}
+
+
+ 

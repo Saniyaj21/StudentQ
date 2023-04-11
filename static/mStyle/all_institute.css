@@ -29,7 +29,7 @@ div.institute_container{
 }
 div.institute_container a{
     width: 350px;
-    height: 100px;
+    height: 125px;
     /* background:#075E53; */
     margin: 10px;
     border: solid 1px #075E53;
@@ -52,11 +52,24 @@ div.institute_container a:hover{
     transition: 0.5s;
    
 }
+a div.institute_item{
+    margin-top: 17px;
+    padding:3px;
+}
  
 a div.institute_item p{
-    margin-top: 30px;
+    margin-top:5px;
     /* border: red solid 2px; */
     font-family: var(--font-secondary);
-    font-weight: 100;
+    font-weight: 600;
+    font-size: 22px;
     letter-spacing:2px;
+}
+#p{
+    color:gray;
+    font-size: 15px;
+}
+
+a:hover .institute_item #p{
+    color: rgba(244, 248, 248, 0.68);
 }

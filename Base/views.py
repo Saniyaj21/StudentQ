@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Student, Teacher, Owner, Review,Tutorial, Institute, Notice
+from django.db.models import Q
 
 from django.core.files.storage import FileSystemStorage
 
@@ -176,7 +177,7 @@ def roleDetails(request):
             institute = request.POST['institute']
             subject = request.POST['subject']
             interest = request.POST['interest']
-            
+            inst_location=request.POST['institute_location']
             try:
                 institute_obj = Institute.objects.get(name=institute)
             except Institute.DoesNotExist:
@@ -184,7 +185,7 @@ def roleDetails(request):
 
             if institute_obj is None:
                 # Create new Institute object if it doesn't exist
-                institute_obj = Institute.objects.create(name=institute)
+                institute_obj = Institute.objects.create(name=institute , institute_location=inst_location)
                 
             courseDuration = request.POST['courseDuration']
             
@@ -209,12 +210,16 @@ def roleDetails(request):
             location = request.POST['location']
             dptOfTeaching = request.POST['dptOfTeaching']
             qualification = request.POST['qualification']
+            institute = request.POST['institute']
+            
             
             teacher = Teacher.objects.get(teacher_userid = uId)
 
             teacher.location = location
             teacher.dptOfTeaching = dptOfTeaching
             teacher.qualification = qualification
+            teacher.institute =institute
+
 
             teacher.save()
             return redirect('home')
@@ -226,6 +231,7 @@ def roleDetails(request):
             rent = request.POST['rent']
             bedAvailable = request.POST['bedAvailable']
             address = request.POST['address']
+            institute = request.POST['institute']
             
             owner = Owner.objects.get(mess_userid = uId)
 
@@ -233,6 +239,7 @@ def roleDetails(request):
             owner.rent = rent
             owner.bedAvailable = bedAvailable
             owner.address = address
+            owner.institute=institute
 
             owner.save()
 
@@ -336,10 +343,29 @@ def Notices(request, id):
     context['noticePoster']=noticePoster
     # get when institute are select from user
     context['instituteName']=institute
-  
-
     
+    # Allmess
+    # allMess=Owner.objects.filter(address__icontains = institute.institute_location).values()
+    allMess = Owner.objects.filter(
+    Q(institute__icontains=institute.name) | Q(institute=institute.name)
+).values()
+   
+    context['allMess']=allMess
+    
+    allTeachers = Teacher.objects.filter(institute = institute.name).values()
+   
+    context['allTeachers']=allTeachers
+   
+    print(allMess)
+    print(institute.institute_location)
+    print(allTeachers)
+
     return render(request, "notices.html", context)
+
+
+
+
+
 
 def PostNotice(request,id):
     institute = Institute.objects.get(id = id)

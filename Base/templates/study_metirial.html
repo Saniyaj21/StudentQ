@@ -13,68 +13,27 @@
 
 
 <!-- two options will be there one is iframes that will hard code us....and other will be public that they can post by sharing link of youtube video -->
-<div class="head-mini-nav">
-    <button id="public" onclick='publicBox()' class='navBtn' > <i class="fa-regular fa-newspaper fa-2xl"></i>&nbsp;Public Resources</button>
-    <button id="Recomandations" onclick='recomand()' class='navBtn'> <i class="fa-regular fa-thumbs-up fa-2xl"></i> &nbsp;Our Recomandations</button>
-    <a href="{% url 'post' %}"><button id='Post'> <i class="fa-solid fa-plus fa-2xl"></i> &nbsp; Post</button></a>
-
-    <form action="/search" method='get' class="search-box"> 
-        {% comment %} {% csrf_token %} {% endcomment %}
-        <input type="text" class="search-text" placeholder='search anything' name='query' id='query'>
-        <button type='submit' class="search-btn">
-            <i class="fa-solid fa-magnifying-glass fa-sm"></i>
-        </button>
-    </form>
-    <br>
+<div class="miniNav">    
+    <div class="head-mini-nav">
+        <div class="buttons">
+            <button id="public" onclick='publicBox()' class='navBtn' > <i class="fa-regular fa-newspaper fa-xl"></i>&nbsp;Public Resources</button>
+            <button id="Recomandations" onclick='recomand()' class='navBtn'> <i class="fa-regular fa-thumbs-up fa-xl"></i> &nbsp;Our Recomandations</button>
+            <a href="{% url 'post' %}"><button id='Post'> <i class="fa-solid fa-plus fa-xl"></i>Post</button></a>
+        </div>
+        <div class="search">
+            <form action="" method='get' class="search-box"> 
+                {% comment %} {% csrf_token %} {% endcomment %}
+                <input type="text" class="search-text" placeholder='search anything' name='q' id='query'>
+                <button type='submit' class="search-btn">
+                    <i class="fa-solid fa-magnifying-glass fa-2xl" style='color:#20950F'></i>
+                </button>
+            </form>
+        </div>
+    </div>
+   
 </div>
 
-
 <div class="main-study">
-
-    <div id='recommand' class='titles'>Rrecomanded videos</div>
-    <!-- Recomandations -->
-    <div id="recomand-videos">
-        <div id="c-sharp" class='iframeVideos'>
-            <div class="videoTitle">C# in one video from <span class="channel-name">Code With Harry</span></div>
-            <iframe  src="https://www.youtube.com/embed/SuLiu5AK9Ps" title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-        </div>
-        <div id="python" class='iframeVideos'>
-            <div class="videoTitle">Python in one video from <span class="channel-name">Apna College</span></div>
-            <iframe src="https://www.youtube.com/embed/vLqTf2b6GZw" title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-        </div>
-        <div id="java" class='iframeVideos'>
-            <div class="videoTitle">Java in one video from <span class="channel-name">Apna college</span></div>
-            <iframe  src="https://www.youtube.com/embed/UmnCZ7-9yDY" title="YouTube video player" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen></iframe>
-
-        </div>
-        <div id="c-sharp" class='iframeVideos'>
-            <div class="videoTitle">C# in one video from <span class="channel-name">Code With Harry</span></div>
-            <iframe  src="https://www.youtube.com/embed/SuLiu5AK9Ps" title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-        </div>
-        <div id="python" class='iframeVideos'>
-            <div class="videoTitle">Python in one video from <span class="channel-name">Apna College</span></div>
-            <iframe src="https://www.youtube.com/embed/vLqTf2b6GZw" title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-        </div>
-        <div id="java" class='iframeVideos'>
-            <div class="videoTitle">Java in one video from <span class="channel-name">Apna college</span></div>
-            <iframe  src="https://www.youtube.com/embed/UmnCZ7-9yDY" title="YouTube video player" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen></iframe>
-
-        </div>
-
-    </div>
-
 
     <!-- public shares -->
     <div id='publicButton' class='titles'>Public Shared resources</div>
@@ -102,6 +61,16 @@
             </div>
         {% endfor %}
     </div>
+
+    
+    <div id='recommand' class='titles'>Rrecomanded videos</div>
+    <!-- Recomandations -->
+    <div id="recomand-videos">
+
+        {% include 'iframes.html' %}
+
+    </div>
+    
 </div>
 
 <script src="{% static 'mscript/studyMaterials.js' %}"></script>

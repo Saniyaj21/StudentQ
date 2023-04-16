@@ -31,8 +31,7 @@ urlpatterns = [
     
     path('delete/<str:id>/', views.delete_notice ,name="delete"),
 
-    # study materials search
-    path('search/', views.search, name='search')
+  
 ]
 
 # owner -

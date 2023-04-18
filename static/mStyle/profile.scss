@@ -1,0 +1,243 @@
+// $theme-clr: #075e53;
+// $main-blue: #2f6bda;
+// $black: #000;
+
+.profilePage__container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    .settings__card-tray {
+        display: flex;
+        flex-direction: column;
+        width: 45rem;
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -70%);
+        z-index: 1111111;
+        display: none;
+        opacity: 0;
+        transition: 0.5s all ease-in;
+        // background: rgba($black, 0.85);
+        backdrop-filter: blur(4px);
+        padding: 3rem 2rem;
+        animation: bottomTop 0.5s;
+
+        &-activate {
+            transform: translate(-50%, 0%);
+            display: block;
+            opacity: 1;
+            transition: 0.5s all ease-in;
+            animation: topBottom 0.5s;
+        }
+
+        .cross__btn {
+            width: 100%;
+            background: var(--main-blue);
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+        }
+    }
+
+    .profile__main--section {
+        max-width: 120rem;
+        // left: 50%;
+        // transform: translateX(-50%);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 5rem;
+        gap: 2rem;
+        position: relative;
+
+        .settings-btn {
+            border: none;
+            padding: 0;
+            position: absolute;
+            outline: none;
+            border-radius: 50%;
+            font-size: 2.5rem;
+            // z-index: 1111;
+            top: 0rem;
+            right: 3rem;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.2s all ease-in;
+            color: var(--theme-clr);
+
+            &:hover {
+                transform: rotate(45deg);
+                color: var(--hover-green);
+            }
+        }
+
+        .img__container {
+            position: relative;
+
+            .profile-pic {
+                height: 25rem;
+                width: 25rem;
+                border: none;
+                border-radius: 50%;
+                outline: none;
+                box-shadow: 0rem 0.5rem 0.5rem #c0c0c0;
+                // position: relative;
+                overflow: hidden;
+                cursor: not-allowed;
+
+                img {
+                    // position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    user-select: none;
+                }
+
+                @media screen and (max-width: 450px) {
+                    height: 20rem;
+                    width: 20rem;
+                }
+            }
+
+            .btn-profile-type {
+                position: absolute;
+                width: 3.5rem;
+                height: 3.5rem;
+                background: var(--theme-clr);
+                color: var(--drk-white);
+                font-size: 1.8rem;
+                border: none;
+                border-radius: 1.75rem;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                bottom: 6%;
+                // right: 11%;
+                left: 75%;
+                transition: all 0.2s ease-in;
+
+                .profileType__txt {
+                    display: none;
+                    user-select: none;
+                    cursor: default;
+                }
+
+                &:hover {
+                    width: 12rem;
+                    border-radius: 1.7rem;
+                    justify-content: flex-start;
+                    padding-left: 1rem;
+                }
+                &:hover .profileType__txt {
+                    display: inline;
+                    margin-left: 0.5rem;
+                }
+            }
+        }
+
+        .profile__details-main {
+            display: flex;
+            // flex-direction: row;
+            flex-wrap: wrap;
+            // max-width: 97rem;
+            width: 100%;
+            // flex: 1 1 0%;
+            padding: 2rem 1rem;
+            border: none;
+            outline: none;
+            gap: 3.5rem;
+            font-size: 1.8rem;
+            font-weight: 500;
+            font-family: var(--font-primary);
+            align-items: flex-start;
+            justify-content: space-between;
+            position: relative;
+
+            // .devider{
+            //     position: absolute;
+            //     height: 100%;
+            //     width: 100%;
+            //     // background-color: #c0c0c0;
+
+            //     @media screen and (max-width:450px) {
+            //         transform: rotate(90deg);
+            //     }
+
+            //     &::before {
+            //         content: '';
+            //         position: absolute;
+            //         width: 0.3rem;
+            //         height: 100%;
+            //         background-color: var(--light-gray);
+            //         left: 50%;
+            //         top: 0;
+            //         transform: translateX(-50%);
+            //     }
+
+            //     &::after{
+            //         content: '';
+            //         position: absolute;
+            //         height: 2.2rem;
+            //         aspect-ratio: 1;
+            //         // width: 3.2rem;
+            //         background: var(--light-gray);
+            //         top: 50%;
+            //         left: 50%;
+            //         transform: translate(-50%,-50%) rotate(45deg);
+            //         transform-origin: center;
+            //     }
+            // }
+
+            .details__box {
+                text-align: justify;
+                width: 45rem;
+                padding-left: 3rem;
+
+                .profile__label {
+                    font-size: 1.9rem;
+                    font-weight: 600;
+                    user-select: none;
+                    color: var(--theme-clr);
+                    cursor: none;
+
+                    span {
+                        font-weight: 500;
+                        user-select: text;
+                        cursor: default;
+                        color: var(--hover-green);
+                    }
+                }
+            }
+        }
+    }
+
+
+}
+
+@keyframes topBottom {
+    from{
+        transform: translate(-50%, -70%);
+        opacity: 0;
+    }
+    to{
+        transform: translate(-50%, 0%);
+        opacity: 1;
+    }
+}
+
+@keyframes bottomTop {
+    from{
+        transform: translate(-50%, 0%);
+        opacity: 1;
+    }
+    to{
+        transform: translate(-50%, -700%);
+        opacity: 0;
+    }
+}

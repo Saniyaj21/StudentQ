@@ -1,82 +1,118 @@
 {% extends 'main.html' %}
 {% load static %}
 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'mStyle/profile.css' %}">
+{% endblock css %}
+
 {% block body %}
-<style>
-    .main {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
 
-    .details-main {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+<div class="profilePage__container">
 
-    .box {
-        margin: 10px 20px;
-    }
-
-    img {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-    }
-</style>
-
-<div class="main">
-    <div class="profile-pic"><img src="{{dp.url}}" alt="{{profileUser.profile.fullName | upper}}"></div>
-    <div class="details-main">
-        <div class="details-left box">
-            <div>User Name : {{profileUser.username}} </div>
-            <div>Full Name : {{profileUser.profile.fullName | upper}} </div>
-            <div>Email : {{profileUser.profile.email}} </div>
-            <div>Profession : {{profileUser.profile.role}} </div>
-            <div>Phone Number : {{profileUser.profile.phNo}} </div>
-            <div>Social Media : {{profileUser.profile.socialId}}
+    {% comment %} settings__card-tray-activate {% endcomment %}
+    <div class="settings__card-tray ">
+        <div class="cross__btn">
+            <button class="btn_cross" onclick="hideSettingsTray()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="main__tray">
+            <div class="ProfileImage__tray">
+                <img src="" alt="" />
+                <input type="file" id="fileInput" />
+                <label for="fileInput">Select File</label>
             </div>
-            <div>About : {{profileUser.profile.desc}} </div>
+            <div class="ProfileDescription__tray">
+                <label for="fullname">Full Name</label>
+                <input type="text" name="" id="fullName" placeholder="Enter your full name" />
+
+                <label for="password">Password</label>
+                <input type="password" name="" id="password" placeholder="Enter your password" />
+
+                <label for="passwordConfirm">Re-enter Password </label>
+                <input type="password" name="" id="passwordConfirm" placeholder="Re-enter your password" />
+
+                <label for="emailId">Email Id. </label>
+                <input type="email" name="" id="emailId" placeholder="Enter your email id" />
+
+                <label for="phNo">Phone No.</label>
+                <input type="number" name="" id="phNo" placeholder="Enter your mobile no " />
+
+                <label for="institute">Institute </label>
+                <input type="text" name="" id="institute" />
+            </div>
 
         </div>
+    </div>
 
+    <div class="profile__main--section">
 
-        <div class="details-right box">
-            {% if profileUser.profile.role == 'teacher' %}
-            Teacher Location is <span>{{ teacher.location|capfirst }}</span>
-            <br />
-            dptOfTeaching is <span>{{ teacher.dptOfTeaching|upper }}</span>
-            <br />
-            Teacher Location is <span>{{ teacher.qualification|upper }}</span>
-            <br />
+        <button class="settings-btn" role="button" title="Edit profile" id="profileEditBtn" onclick="showSettingsTray();">
+            <i class="fa-solid fa-gear"></i>
+        </button>
 
-            {% elif profileUser.profile.role == 'student' %}
-            Student Institute is <span>{{ student.institute|capfirst }}</span>
-            <br />
-            Student subject is <span>{{ student.subject|upper }}</span>
-            <br />
-            interest in <span>{{ student.interest }}</span>
-            <br />
-            Student courseDuration is <span>{{ student.courseDuration }}</span>
-            <br />
-
-            {% elif profileUser.profile.role == 'owner' %}
-            Owner of Mess <span>{{ owner.mess_name|capfirst }}</span>
-            <br />
-            Room rent <span>{{ owner.rent }}</span>
-            <br />
-            bedAvailable<span>{{ owner.bedAvailable }}</span>
-            <br />
-            address <span>{{ owner.address }}</span>
-            <br />
-            {% endif %}
+        {% comment %}todo profile pic added  {% endcomment %}
+        <div class="img__container">
+            <div class="profile-pic"><img src="{{dp.url}}" alt="{{profileUser.profile.fullName | upper}}"></div>
+            <span role="button" class="btn-profile-type" title="{{ user.profile.role|capfirst }}">
+                {% if user.profile.role == "student" %}
+                <i class="fa-solid fa-graduation-cap"></i>
+                {% elif user.profile.role == "teacher" %}
+                <i class="fa-solid fa-person-chalkboard"></i>
+                {%  elif user.profile.role == "owner" %}
+                <i class="fa-solid fa-business-time"></i>
+                {% endif %}
+                <span class="profileType__txt">{{ user.profile.role|capfirst }}</span>
+            </span>
         </div>
+
+        {% comment %}todo profile pic added  {% endcomment %}
+
+
+        <div class="profile__details-main">
+            <div class="details-left details__box">
+
+                <p class="profile__label">User Name : <span>{{profileUser.username}} </span></p>
+                <p class="profile__label">Full Name : <span>{{profileUser.profile.fullName | upper}} </span></p>
+                <p class="profile__label">Email : <span>{{profileUser.profile.email}} </span></p>
+                <p class="profile__label">Profession : <span>{{profileUser.profile.role}} </span></p>
+                <p class="profile__label">Phone Number : <span>{{profileUser.profile.phNo}} </span></p>
+                <p class="profile__label">Social Media : <span>{{profileUser.profile.socialId}} </span></p>
+                <p class="profile__label">About : <span>{{profileUser.profile.desc}} </span></p>
+
+            </div>
+
+            {% comment %} <span class="devider"></span> {% endcomment %}
+
+            <div class="details-right details__box">
+                {% if profileUser.profile.role == 'teacher' %}
+                    <p class="profile__label"> Teacher Location : <span>{{ teacher.location|capfirst }}</span></p>
+                    <p class="profile__label"> Depertment is : <span>{{ teacher.dptOfTeaching|upper }}</span></p>
+                    <p class="profile__label"> Qualification : <span>{{ teacher.qualification|upper }}</span></p>
+
+                {% elif profileUser.profile.role == 'student' %}
+                    <p class="profile__label"> Institute : <span>{{ student.institute|capfirst }}</span></p>
+                    <p class="profile__label"> Subject : <span>{{ student.subject|upper }}</span></p>
+                    <p class="profile__label"> Interested in : <span>{{ student.interest }}</span></p>
+                    <p class="profile__label"> Course Duration : <span>{{ student.courseDuration }}</span></p>
+
+                {% elif profileUser.profile.role == 'owner' %}
+                    <p class="profile__label"> Messn Owner : <span>{{ owner.mess_name|capfirst }}</span></p>
+                    <p class="profile__label"> Room Rent : ₹ <span>{{ owner.rent }}</span></p>
+                    <p class="profile__label"> Available Bed :<span>{{ owner.bedAvailable }}</span></p>
+                    <p class="profile__label"> Address : <span>{{ owner.address }}</span></p>
+                {% endif %}
+            </div>
+        </div>
+
     </div>
 
 </div>
 
+
+{% comment %} {% block javaScript %}
+    <script src="{% static 'mscript/index.js' %}" type="text/javaScript"></script>
+{% endblock javaScript %} {% endcomment %}
 
 
 {% endblock %}

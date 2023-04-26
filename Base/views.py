@@ -2,7 +2,7 @@
 from django.shortcuts import render, HttpResponse
 from django.urls import reverse
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+# from django.contrib.auth import authenticate, login
 from .forms import RegisterUserForm
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -20,29 +20,34 @@ def loginPage(request):
 
     context = {}
 
-    if request.user.is_authenticated:
+    if not request.user.is_authenticated:
+        
+        if request.method == "POST":
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            try:
+                user = User.objects.get(username=username)
+                if user.password != password:
+                    context['message'] = "Password not matched"
+            except:
+                context['message'] = "User does not exists"
+                # messages.error(request, 'User does not exists')
+            # this is in main branch 
+
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                context['message'] = "Login Successfull"
+                return redirect('home')
+            else:
+                context['message'] = "Username or passward does not exists"
+                # messages.error(request, 'Username or passward does not exists')
+        return render(request, 'login.html', context)
+    
+    else:
         return redirect('home')
-    if request.method == "POST":
-        username = request.POST.get('username').lower()
-        password = request.POST.get('password').lower()
-
-        try:
-            user = User.objects.get(username=username)
-            if user.password != password:
-                context['messages'] = "Password not matched"
-        except:
-            context['messages'] = "User does not exists"
-            # messages.error(request, 'User does not exists')
-
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-        else:
-            messages.error(request, 'Username or passward does not exists')
-
-    return render(request, 'login.html', context)
 
 
 def logoutUser(request):

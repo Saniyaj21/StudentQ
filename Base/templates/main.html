@@ -53,7 +53,7 @@
   {% comment %} <link rel="shortcut icon" href="{% static 'icons/favicon.ico' %}" type="image/x-icon" /> {% endcomment %}
 
 
-  <link rel="stylesheet" href="{% static 'mStyle/main.css' %}">
+   <link rel="stylesheet" href="{% static 'mStyle/main.css' %}">
   <link rel="stylesheet" href="{% static 'mStyle/navDesign.css' %}">
 
   <!-- for other css file are used-->
@@ -140,10 +140,16 @@
 
 
   {% comment %} closeable messages {% endcomment %}
+  {% comment %} {% if messages %}
+    {% for message in messages %}
+      {{message}}
+    {% endfor %}
+  {% endif %} {% endcomment %}
+  <span class >{{message}}</span>
 
-  {% for message in messages %}
-  {{message}}
-  {% endfor %}
+  
+
+  
 
 
   {% block body %}

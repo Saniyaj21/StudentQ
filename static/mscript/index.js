@@ -8,9 +8,21 @@ const toggleBarIcon = document.querySelector(".toggle__bars");
 const logInOut = document.querySelector(".log__in--out");
 const visibleBtnsDiv = document.querySelector(".btnContainer--btns");
 const load = document.querySelector(".loaderPage__container");
+const profileSettingTray = document.querySelector(".settings__card-tray");
+// const profileSettingTray = document.querySelector(".settings__card-tray");
 
 function logingStart() {
     load.style.display = 'none';
+}
+
+function showSettingsTray(){
+    console.log("I am clicked");
+    profileSettingTray.classList.add("settings__card-tray-activate");
+}
+
+function hideSettingsTray(){
+    console.log("hide button clicked");
+    profileSettingTray.classList.remove("settings__card-tray-activate");
 }
 
 

@@ -6,6 +6,12 @@
 /* Googlefont Poppins CDN Link ==> font-family: 'Righteous', cursive; */
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
+/* Googlefont Poppins CDN Link ==> font-family: 'Pacifico', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* Googlefont Poppins CDN Link ==> font-family: 'Alkatra', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600;700&display=swap');
+
 /*--- Import fonts from google ends ---*/
 
 
@@ -26,6 +32,8 @@
     --main-yellow: #FFE454;
     --font-primary: 'Poppins', sans-serif;
     --font-secondary: 'Righteous', cursive;
+    --font-ternary: 'Pacifico', cursive;
+    --font-ps: 'Alkatra', cursive;
 }
 
 *::selection {
@@ -208,6 +216,24 @@ a {
         filter: hue-rotate(360deg);
     }
 }
+
+
+/* notification css part */
+#message-box {
+    height: 30px;
+    width: 100%;
+    border: 2px solid red;
+    display: flex;
+}
+
+#text-message {
+    height: 100%;
+}
+
+.close {}
+
+
+
 
 /* input[type=password]{
     position: relative;

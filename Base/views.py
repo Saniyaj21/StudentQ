@@ -1,20 +1,14 @@
-
 from django.shortcuts import render, HttpResponse
 from django.urls import reverse
 from django.shortcuts import render, redirect
-# from django.contrib.auth import authenticate, login
 from .forms import RegisterUserForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Student, Teacher, Owner, Review, Tutorial, Institute, Notice
-
 from django.core.files.storage import FileSystemStorage
-
-# notes
-# pip install -r requirements.txt       to download all required packages
-
+# from django.contrib.auth import authenticate, login
 
 def loginPage(request):
 
@@ -75,9 +69,9 @@ def registerUser(request):
 
     return render(request, 'register.html', {'form': form})
 
-# @login_required(login_url='login')
 
 
+@login_required(login_url='login')
 def home(request):
     context = {}
 
@@ -108,7 +102,7 @@ def home(request):
 
     return render(request, 'home.html', context)
 
-
+@login_required(login_url='login')
 def profileDetails(request):
     uId = request.user.id
     user = User.objects.get(id=uId)
@@ -157,6 +151,7 @@ def profileDetails(request):
     return render(request, 'user_data.html', context)
 
 
+@login_required(login_url='login')
 def roleDetails(request):
     uId = request.user.id
     user = User.objects.get(id=uId)
@@ -266,7 +261,7 @@ def profile(request, id):
 
     return render(request, 'profile.html', context)
 
-
+@login_required(login_url='login')
 def postPage(request):
 
     user = request.user
@@ -289,7 +284,7 @@ def postPage(request):
         return redirect("studyMetirial")
     return render(request, 'post.html')
 
-
+@login_required(login_url='login')
 def Institutes(request):
     all_institutes = Institute.objects.all()
     context = {}
@@ -330,7 +325,7 @@ def Notices(request, id):
 
     return render(request, "notices.html", context)
 
-
+@login_required(login_url='login')
 def PostNotice(request, id):
     institute = Institute.objects.get(id=id)
 

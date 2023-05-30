@@ -9,25 +9,57 @@
 {% endblock css %}
 
 {% block body %}
-{% comment %} <style>
-  span {
-    color: green;
-    font-weight: 700;
-  }
 
-  .dpProfile {
-    height: 100px;
-    width: 100px;
-  }
-</style> {% endcomment %}
 
 {% if request.user.is_authenticated %}
 
 <div class="main">
 
 
+  <div class="profile">
+
+    <a href="{% url 'profile' user.id %}">
+      <img src="{{dp.url}}" alt="" class="dpProfile">
+    </a>
+
+
+
+    {% if user.profile.role == 'teacher' %}
+
+    <div class="institute">{{ teacher.institute|capfirst }}</div>
+
+    {% elif user.profile.role == 'student' %}Student Institute is <span>{{ student.institute|capfirst }}</span>
+
+    <div class="institute">{{ student.institute|capfirst }}</div>
+
+    {% elif user.profile.role == 'owner' %}Owner of Mess <span>{{ owner.mess_name|capfirst }}</span>
+
+    <div class="institute">{{ owner.institute|capfirst }}</div>
+
+    {% endif %}
+
+  </div>
+  <!-- profile div end -->
+
+  <!-- event div start -->
+
+  <div class="event">
+    <div class="eventsItem">
+      <h4>Event Heading</h4>
+    </div>
+    <div class="eventsItem">
+      <h4>Event Heading</h4>
+    </div>
+    <div class="eventsItem">
+      <h4>Event Heading</h4>
+    </div>
+  </div>
+
+
+
+
   <!-- display total user of this website -->
-  <div class="userVisits">
+  <!-- <div class="userVisits">
 
     <h1>User total -- {{TotalUser}}</h1>
   </div>
@@ -73,7 +105,11 @@
   <br />
   address <span>{{ owner.address }}</span>
   <br />
-  {% endif %}
+  {% endif %} -->
+
+
+
+  <!-- main div end -->
 </div>
 {% else %}
 

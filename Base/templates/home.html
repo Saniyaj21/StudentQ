@@ -26,15 +26,15 @@
 
     {% if user.profile.role == 'teacher' %}
 
-    <div class="institute">{{ teacher.institute|capfirst }}</div>
+    <div class="institute">Institute : {{ teacher.institute|capfirst }}</div>
 
-    {% elif user.profile.role == 'student' %}Student Institute is <span>{{ student.institute|capfirst }}</span>
+    {% elif user.profile.role == 'student' %}
 
-    <div class="institute">{{ student.institute|capfirst }}</div>
+    <div class="institute">Institute : {{ student.institute|capfirst }}</div>
 
-    {% elif user.profile.role == 'owner' %}Owner of Mess <span>{{ owner.mess_name|capfirst }}</span>
+    {% elif user.profile.role == 'owner' %}
 
-    <div class="institute">{{ owner.institute|capfirst }}</div>
+    <div class="institute">Institute : {{ owner.institute|capfirst }}</div>
 
     {% endif %}
 

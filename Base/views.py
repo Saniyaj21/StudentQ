@@ -36,8 +36,8 @@ def loginPage(request):
                 context['message'] = "Login Successfull"
                 return redirect('home')
             else:
-                context['message'] = "Username or passward does not exists"
-                # messages.error(request, 'Username or passward does not exists')
+                context['message'] = "Username or password does not exists"
+                # messages.error(request, 'Username or password does not exists')
         return render(request, 'login.html', context)
     
     else:
@@ -58,7 +58,7 @@ def registerUser(request):
         # form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.username = user.username.lower()
+            user.username = user.username
             user.save()
             login(request, user)
             profile = Profile.objects.create(user=user)

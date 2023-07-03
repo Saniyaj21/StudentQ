@@ -10,12 +10,13 @@ from .models import Profile, Student, Teacher, Owner, Review, Tutorial, Institut
 from django.core.files.storage import FileSystemStorage
 # from django.contrib.auth import authenticate, login
 
+
 def loginPage(request):
 
     context = {}
 
     if not request.user.is_authenticated:
-        
+
         if request.method == "POST":
             username = request.POST.get('username')
             password = request.POST.get('password')
@@ -27,7 +28,7 @@ def loginPage(request):
             except:
                 context['message'] = "User does not exists"
                 # messages.error(request, 'User does not exists')
-            # this is in main branch 
+            # this is in main branch
 
             user = authenticate(request, username=username, password=password)
 
@@ -39,7 +40,7 @@ def loginPage(request):
                 context['message'] = "Username or password does not exists"
                 # messages.error(request, 'Username or password does not exists')
         return render(request, 'login.html', context)
-    
+
     else:
         return redirect('home')
 
@@ -68,7 +69,6 @@ def registerUser(request):
             messages.error(request, 'Something error happend,Try again!')
 
     return render(request, 'register.html', {'form': form})
-
 
 
 @login_required(login_url='login')
@@ -101,6 +101,7 @@ def home(request):
     context["reviews"] = reviews
 
     return render(request, 'home.html', context)
+
 
 @login_required(login_url='login')
 def profileDetails(request):
@@ -261,6 +262,7 @@ def profile(request, id):
 
     return render(request, 'profile.html', context)
 
+
 @login_required(login_url='login')
 def postPage(request):
 
@@ -283,6 +285,7 @@ def postPage(request):
         )
         return redirect("studyMetirial")
     return render(request, 'post.html')
+
 
 @login_required(login_url='login')
 def Institutes(request):
@@ -323,7 +326,14 @@ def Notices(request, id):
     # get when institute are select from user
     context['instituteName'] = institute
 
+# frontend all mess list under a Institute
+    context["allMess"] = Owner.objects.filter(institute=institute.name)
+
+# frontend all teachers list under a Institute
+    context["allTeachers"] = Teacher.objects.filter(institute=institute.name)
+
     return render(request, "notices.html", context)
+
 
 @login_required(login_url='login')
 def PostNotice(request, id):
@@ -348,7 +358,6 @@ def delete_notice(request, id):
     return redirect('institute')
     # url=reverse('notices',args=[id])
     # return render(request , "delete_msg.html")
-
 
 
 # study meririal
@@ -379,4 +388,3 @@ def studyMetirial(request):
         posts = Tutorial.objects.all()
         context["posts"] = posts
         return render(request, "study_metirial.html", context)
-

@@ -4,7 +4,7 @@
 {% block css %}
 
 <link rel="stylesheet" href="{% static 'mStyle/slider.css' %}">
-<link rel="stylesheet" href="{% static 'mstyle/home.css' %}">
+<link rel="stylesheet" href="{% static 'mStyle/home.css' %}">
 
 {% endblock css %}
 
@@ -45,71 +45,19 @@
 
   <div class="event">
     <div class="eventsItem">
-      <h4>Event Heading</h4>
+      23 July, Code Compitition
     </div>
     <div class="eventsItem">
-      <h4>Event Heading</h4>
+      25 July, Python classes
     </div>
     <div class="eventsItem">
-      <h4>Event Heading</h4>
+      30 July, Hackathon
     </div>
   </div>
 
 
 
 
-  <!-- display total user of this website -->
-  <!-- <div class="userVisits">
-
-    <h1>User total -- {{TotalUser}}</h1>
-  </div>
-
-  Hello <span>{{ user.profile.fullName|capfirst }}</span>
-  <a href="{% url 'profile' user.id %}"><button>Your Profile</button></a>
-  <br />
-  I am a <span>{{ user.profile.role|capfirst }}</span>
-  <br />
-  Phone no <span>{{ user.profile.phNo }}</span>
-  <br />
-  Social media link <span>{{ user.profile.socialId }}</span>
-  <br />
-  About me - <span>{{ user.profile.desc }}</span>
-  <br />
-  <img src="{{dp.url}}" alt="" class="dpProfile">
-  <br />
-
-  <h3>Role details</h3>
-
-  {% if user.profile.role == 'teacher' %}
-  Teacher Location is <span>{{ teacher.location|capfirst }}</span>
-  <br />
-  dptOfTeaching is <span>{{ teacher.dptOfTeaching|upper }}</span>
-  <br />
-  Teacher Location is <span>{{ teacher.qualification|upper }}</span>
-  <br />
-
-  {% elif user.profile.role == 'student' %}Student Institute is <span>{{ student.institute|capfirst }}</span>
-  <br />
-  Student subject is <span>{{ student.subject|upper }}</span>
-  <br />
-  interest in <span>{{ student.interest }}</span>
-  <br />
-  Student courseDuration is <span>{{ student.courseDuration }}</span>
-  <br />
-
-  {% elif user.profile.role == 'owner' %}Owner of Mess <span>{{ owner.mess_name|capfirst }}</span>
-  <br />
-  Room rent <span>{{ owner.rent }}</span>
-  <br />
-  bedAvailable<span>{{ owner.bedAvailable }}</span>
-  <br />
-  address <span>{{ owner.address }}</span>
-  <br />
-  {% endif %} -->
-
-
-
-  <!-- main div end -->
 </div>
 {% else %}
 

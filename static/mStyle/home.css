@@ -198,4 +198,62 @@ img.UserImage {
 .TotalUser {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 3rem;
+}
+
+.main {
+  max-width: 72rem;
+  min-width: 32rem;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-top: 3rem;
+}
+.main .profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+.main .profile a {
+  width: 25rem;
+  height: 25rem;
+  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 0.2rem solid black;
+}
+.main .profile a img {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.main .profile div.institute {
+  font-size: 2.5rem;
+  font-weight: 500;
+  font-family: var(--font-primary);
+  color: var(--dark-blue);
+  padding-top: 1.5rem;
+}
+.main .event {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.main .event .eventsItem {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--black);
+  font-family: var(--font-primary);
+  border: 3px solid var(--light-gray);
+  border-radius: 0.6rem;
+  padding: 1rem 2.5rem;
 }/*# sourceMappingURL=home.css.map */

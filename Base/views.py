@@ -71,7 +71,7 @@ def registerUser(request):
     return render(request, 'register.html', {'form': form})
 
 
-@login_required(login_url='login')
+#@login_required(login_url='login')
 def home(request):
     context = {}
 

@@ -34,7 +34,7 @@ class Student(models.Model):
     courseDuration = models.CharField(max_length=200, null=True)
     
     def __str__(self):
-        return self.student_userid
+        return self.name
     
     
     

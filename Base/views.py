@@ -8,7 +8,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Student, Teacher, Owner, Review, Tutorial, Institute, Notice
 from django.core.files.storage import FileSystemStorage
-# from django.contrib.auth import authenticate, login
 
 def loginPage(request):
 
@@ -26,8 +25,6 @@ def loginPage(request):
                     context['message'] = "Password not matched"
             except:
                 context['message'] = "User does not exists"
-                # messages.error(request, 'User does not exists')
-            # this is in main branch 
 
             user = authenticate(request, username=username, password=password)
 
@@ -37,12 +34,10 @@ def loginPage(request):
                 return redirect('home')
             else:
                 context['message'] = "Username or password does not exists"
-                # messages.error(request, 'Username or password does not exists')
-        return render(request, 'login.html', context)
-    
+
+        return render(request, 'login.html', context)    
     else:
         return redirect('home')
-
 
 def logoutUser(request):
     logout(request)
@@ -71,7 +66,6 @@ def registerUser(request):
 
 
 
-@login_required(login_url='login')
 def home(request):
     context = {}
 
@@ -109,10 +103,7 @@ def profileDetails(request):
     profile = Profile.objects.get(user=user)
     context = {}
 
-    # print(profile.user)
-
     # profile data taking input
-
     if request.method == "POST" and request.FILES['dp']:
         fullname = request.POST['full-name']
         email = request.POST['email'].lower()
@@ -121,11 +112,8 @@ def profileDetails(request):
         socialId = request.POST['socialId']
         desc = request.POST['desc']
         dp = request.FILES['dp']
-
         fs = FileSystemStorage()
         dp = fs.save(dp.name, dp)
-
-        # print(fullname,email,role)
 
         profile.fullName = fullname
         profile.email = email
@@ -141,15 +129,12 @@ def profileDetails(request):
             Teacher.objects.create(teacher_userid=uId)
         elif role == "student":
             Student.objects.create(student_userid=uId)
-            # that_student = Student.objects.get(student_userid = uId)
-            # that_student.full_name = fullname
         elif role == "owner":
             Owner.objects.create(mess_userid=uId)
 
         return redirect("role-details")
 
     return render(request, 'user_data.html', context)
-
 
 @login_required(login_url='login')
 def roleDetails(request):
@@ -227,11 +212,9 @@ def roleDetails(request):
             owner.save()
 
             return redirect('home')
-
     context = {'page': page}
 
     return render(request, 'role-details.html', context)
-
 
 # profile section
 @login_required(login_url='login')
@@ -340,16 +323,11 @@ def PostNotice(request, id):
 
     return render(request, "postNotice.html")
 
-
 @login_required(login_url='login')
 def delete_notice(request, id):
     notice = Notice.objects.get(id=id)
     notice.delete()
     return redirect('institute')
-    # url=reverse('notices',args=[id])
-    # return render(request , "delete_msg.html")
-
-
 
 # study meririal
 def studyMetirial(request):

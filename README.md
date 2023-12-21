@@ -1,5 +1,7 @@
 ## StudentQ
 
+live link -> https://saniyajmallik.pythonanywhere.com/
+
 ## Final Year Project
 ### README file managed by Saniyaj Mallik.
 
